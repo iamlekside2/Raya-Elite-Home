@@ -5,6 +5,7 @@ const U = (id: string, w = 1200, q = 78) =>
 
 export const IMAGES = {
   hero: U("1567767292278-a4f21aa2d36e", 2000, 80),
+  heroCleaner: "/images/cleaner-hero.jpeg",
   ctaKitchen: U("1556911220-bff31c812dba", 2000, 80),
   servicesHeader: U("1502672260266-1c1ef2d93688", 2000, 80),
   aboutHeader: U("1505693416388-ac5ce068fe85", 2000, 80),
@@ -16,46 +17,119 @@ export const IMAGES = {
 };
 
 export const WHY_CARDS = [
-  { title: "Licensed & Insured", desc: "Fully bonded and insured for complete peace of mind on every single visit." },
-  { title: "Eco-Friendly Products", desc: "EPA Safer Choice solutions that are safe for children, pets, and staff alike." },
-  { title: "Professionally Trained", desc: "Background-checked, uniformed teams trained to an elite, consistent standard." },
-  { title: "Satisfaction Guaranteed", desc: "If it isn't right, we return and re-clean at no extra cost. Every time." },
+  {
+    title: "Licensed & Fully Insured",
+    desc: "Every job is covered. You don't have to wonder whether your home or business is protected — it is. We carry full liability insurance so you can open the door with complete peace of mind.",
+  },
+  {
+    title: "Eco-Friendly Products",
+    desc: "We use EPA-recognized, non-toxic cleaning products that are safe for your children, your pets, and your surfaces. Better for your home. Better for the environment. No compromise on results.",
+  },
+  {
+    title: "Professionally Trained Staff",
+    desc: "Our team doesn't just show up — they come prepared. Every cleaner is trained to our standard, background-checked, and held accountable to a detailed quality checklist on every visit.",
+  },
+  {
+    title: "Satisfaction, Guaranteed",
+    desc: "If something isn't right, we come back and fix it. No arguments or fine print. That's the Raya Elite standard, and we've maintained it across every single client we've served.",
+  },
 ];
 
 export const SERVICES_PREVIEW = [
   {
     title: "Residential Deep Clean",
-    price: "From $189",
-    desc: "Top-to-bottom detailing for kitchens, baths, and living spaces.",
+    price: "Starting at $189",
+    desc: "Your home deserves more than a surface wipe-down. Our residential deep clean covers every room, corner, and surface — from baseboards to ceiling fans — so you can walk in and actually breathe easy.",
     img: U("1586023492125-27b2c045efd7", 1100, 75),
   },
   {
-    title: "Office & Commercial",
+    title: "Office & Commercial Cleaning",
     price: "Custom Pricing",
-    desc: "Reliable recurring cleaning for offices, banks, and institutions.",
+    desc: "A clean workspace isn't just about appearances. It reduces sick days, improves focus, and tells your clients you run a tight operation. We work around your schedule — including evenings and weekends.",
     img: U("1497366811353-6870744d04b2", 1100, 75),
   },
   {
-    title: "Move-In / Move-Out",
-    price: "From $279",
-    desc: "Spotless handover cleaning for tenants, owners, and realtors.",
+    title: "Move-In / Move-Out Cleaning",
+    price: "Starting at $279",
+    desc: "One less thing to worry about during one of the most stressful transitions you'll make. We get the space spotless for when you're handing over keys or walking into your new beginning.",
     img: U("1505693416388-ac5ce068fe85", 1100, 75),
   },
 ];
 
 export const HOW_STEPS = [
-  { n: "1", title: "Request a Quote", desc: "Tell us about your space online in under two minutes." },
-  { n: "2", title: "We Clean Your Space", desc: "A vetted, uniformed team arrives right on schedule." },
-  { n: "3", title: "Enjoy a Spotless Home", desc: "Walk into a flawless space — guaranteed, every time." },
+  {
+    n: "1",
+    title: "Request a Quote or Book Online",
+    desc: "Tell us about your space and what you need. It takes under two minutes. You'll hear back from us the same day — often within the hour.",
+  },
+  {
+    n: "2",
+    title: "We Show Up and Do the Work",
+    desc: "Our team arrives on time, in uniform, with everything needed to do the job properly. You don't need to lift a finger — or be home if you'd rather not be.",
+  },
+  {
+    n: "3",
+    title: "You Walk Into a Spotless Space",
+    desc: "That's it. No follow-up calls asking if you're happy. We get it right the first time — and if anything was missed, we return and fix it, no questions asked.",
+  },
 ];
 
-export const CLIENTS_SERVE = [
-  "Residential Homeowners",
-  "Commercial Offices",
-  "Banks & Financial",
-  "Government Agencies",
-  "Embassies & Diplomats",
-  "Non-Profit Organizations",
+export type ClientServed = { title: string; desc: string; img: string };
+
+export const CLIENTS_SERVE: ClientServed[] = [
+  {
+    title: "Residential Homeowners",
+    desc: "Your home is your sanctuary. We treat it that way — arriving prepared, working carefully, and leaving every room exactly as it should be.",
+    img: U("1586023492125-27b2c045efd7", 900, 75),
+  },
+  {
+    title: "Commercial Offices",
+    desc: "A well-maintained workspace signals professionalism before anyone says a word. We keep your office clean, consistent, and ready for business every single day.",
+    img: U("1497366811353-6870744d04b2", 900, 75),
+  },
+  {
+    title: "Banks & Financial Institutions",
+    desc: "High-traffic environments with high standards of presentation. We work discreetly, thoroughly, and on schedules that keep your operations uninterrupted.",
+    img: U("1524758631624-e2822e304c36", 900, 75),
+  },
+  {
+    title: "Government Agencies",
+    desc: "Compliance, reliability, and discretion are non-negotiable in government facilities. Our team is background-checked, fully insured, and experienced in regulated environments.",
+    img: U("1497366216548-37526070297c", 900, 75),
+  },
+  {
+    title: "Embassies & Diplomatic Residences",
+    desc: "These are spaces where presentation carries real weight. We bring the level of care, professionalism, and attention to detail that diplomatic settings demand — without exception.",
+    img: U("1505693416388-ac5ce068fe85", 900, 75),
+  },
+  {
+    title: "Non-Profit Organizations",
+    desc: "You stretch every dollar to serve your mission. We offer reliable, high-quality cleaning that respects your budget and keeps your space welcoming for the people you serve.",
+    img: U("1502672260266-1c1ef2d93688", 900, 75),
+  },
+];
+
+export const LOCATIONS = [
+  "Bethesda, MD",
+  "Rockville, MD",
+  "Silver Spring, MD",
+  "Gaithersburg, MD",
+  "Chevy Chase, MD",
+  "Potomac, MD",
+  "College Park, MD",
+  "Bowie, MD",
+  "Annapolis, MD",
+  "Washington, DC",
+];
+
+export const QUOTE_HELP_OPTIONS = [
+  "Residential Cleaning",
+  "Office & Commercial Cleaning",
+  "Move-In / Move-Out Cleaning",
+  "Post-Construction Cleaning",
+  "Government or Agency Facility",
+  "Embassy or Diplomatic Residence",
+  "Not Sure Yet",
 ];
 
 export const HOME_REVIEWS = [
