@@ -1,14 +1,16 @@
 import { TRUST_BADGES } from "@/lib/constants";
+import Sprig from "@/components/ui/Sprig";
 
-export default function TrustBadges({ py = "py-[54px]" }: { py?: string }) {
+export default function TrustBadges({ py = "py-16" }: { py?: string }) {
   return (
-    <section className="bg-navy">
-      <div className={`container-x flex flex-wrap justify-center gap-[14px] ${py}`}>
+    <section className="bg-sage-deep">
+      <div className={`container-x flex flex-wrap items-center justify-center gap-3 ${py}`}>
         {TRUST_BADGES.map((b) => (
           <span
             key={b}
-            className="rounded-full bg-champagne px-[22px] py-[11px] text-[13px] font-bold text-navy"
+            className="inline-flex items-center gap-2 rounded-full bg-cream/10 px-5 py-[10px] text-[13px] font-semibold text-cream ring-1 ring-cream/15"
           >
+            <Sprig className="h-[14px] w-[14px] text-gold" />
             {b}
           </span>
         ))}

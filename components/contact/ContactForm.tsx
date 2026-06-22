@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { SERVICE_OPTIONS, HEAR_OPTIONS } from "@/lib/data";
+import Sprig from "@/components/ui/Sprig";
 
 type FormState = {
   name: string;
@@ -21,17 +22,18 @@ const empty = (service = ""): FormState => ({
   hear: "",
 });
 
-const labelCls =
-  "flex flex-col gap-[7px] text-[12.5px] font-bold uppercase tracking-[0.5px] text-navy";
+const labelCls = "flex flex-col gap-2 text-[13px] font-bold text-ink";
 const inputCls =
-  "rounded-sm border border-[#d6cfc0] bg-[#fbf9f5] px-[14px] py-[13px] text-[15px] font-normal normal-case tracking-normal text-charcoal outline-none focus:border-gold";
+  "rounded-2xl border border-ink/15 bg-cream px-4 py-3 text-[15px] font-normal text-ink outline-none transition-colors focus:border-clay";
 
 export default function ContactForm({ initialService = "" }: { initialService?: string }) {
   const [form, setForm] = useState<FormState>(empty(initialService));
   const [status, setStatus] = useState<"idle" | "error" | "success" | "sending">("idle");
 
-  const set = (k: keyof FormState) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
+  const set =
+    (k: keyof FormState) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
+      setForm((f) => ({ ...f, [k]: e.target.value }));
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -58,12 +60,12 @@ export default function ContactForm({ initialService = "" }: { initialService?: 
 
   if (status === "success") {
     return (
-      <div className="border-t-4 border-emerald bg-white px-10 py-14 text-center shadow-[0_12px_40px_rgba(0,33,71,0.1)]">
-        <div className="mx-auto mb-[22px] flex h-16 w-16 items-center justify-center rounded-full bg-emerald text-[32px] text-white">
-          ✓
+      <div className="rounded-4xl bg-cream px-10 py-16 text-center shadow-soft">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage-deep text-cream">
+          <Sprig className="h-8 w-8" />
         </div>
-        <h2 className="m-0 mb-3 font-playfair text-[26px] font-bold text-navy">Thank You!</h2>
-        <p className="m-0 mb-[26px] text-[15.5px] leading-[1.7] text-[#5a5a5a]">
+        <h2 className="mt-6 font-display text-[28px] font-semibold text-ink">Thank you!</h2>
+        <p className="mx-auto mt-3 max-w-[360px] text-[16px] leading-relaxed text-ink-soft">
           We&apos;ve received your message and will be in touch within 2 business hours.
         </p>
         <button
@@ -72,7 +74,7 @@ export default function ContactForm({ initialService = "" }: { initialService?: 
             setForm(empty());
             setStatus("idle");
           }}
-          className="btn-outline-navy px-7 py-3 text-[14px]"
+          className="btn-outline mt-7 px-7 py-3 text-[14px]"
         >
           Send Another Message
         </button>
@@ -81,17 +83,14 @@ export default function ContactForm({ initialService = "" }: { initialService?: 
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="flex flex-col gap-[18px] bg-white px-9 py-[38px] shadow-[0_12px_40px_rgba(0,33,71,0.08)]"
-    >
+    <form onSubmit={onSubmit} className="flex flex-col gap-5 rounded-4xl bg-cream p-8 shadow-soft md:p-10">
       {status === "error" && (
-        <div className="border-l-[3px] border-[#b3261e] bg-[#fbeaea] px-4 py-3 text-[13.5px] text-[#8a1e18]">
+        <div className="rounded-2xl border-l-4 border-clay bg-clay-tint px-4 py-3 text-[14px] font-semibold text-clay-deep">
           Please complete the required fields marked with an asterisk.
         </div>
       )}
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[18px]">
+      <div className="grid gap-5 sm:grid-cols-2">
         <label className={labelCls}>
           Full Name *
           <input type="text" value={form.name} onChange={set("name")} className={inputCls} />
@@ -102,7 +101,7 @@ export default function ContactForm({ initialService = "" }: { initialService?: 
         </label>
       </div>
 
-      <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-[18px]">
+      <div className="grid gap-5 sm:grid-cols-2">
         <label className={labelCls}>
           Phone
           <input type="tel" value={form.phone} onChange={set("phone")} className={inputCls} />
@@ -137,11 +136,7 @@ export default function ContactForm({ initialService = "" }: { initialService?: 
         </select>
       </label>
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="btn-primary mt-[6px] min-h-[52px] py-4 text-[15px] disabled:opacity-70"
-      >
+      <button type="submit" disabled={status === "sending"} className="btn-clay mt-1 py-4 text-[16px] disabled:opacity-70">
         {status === "sending" ? "Sending…" : "Send Message"}
       </button>
     </form>

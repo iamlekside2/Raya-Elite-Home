@@ -12,9 +12,14 @@ body {
   box-sizing: border-box;
 }
 
+body {
+  overflow-x: hidden;
+  background: #faf6ef;
+}
+
 ::selection {
-  background: #c9a84c;
-  color: #002147;
+  background: #c0603f;
+  color: #fffdf9;
 }
 
 ::-webkit-scrollbar {
@@ -22,79 +27,68 @@ body {
   height: 11px;
 }
 ::-webkit-scrollbar-thumb {
-  background: #002147;
-  border-radius: 0;
+  background: #c0603f;
+  border-radius: 999px;
 }
 ::-webkit-scrollbar-track {
-  background: #e7e1d6;
+  background: #efe5d5;
 }
 
-body {
-  overflow-x: hidden;
-}
-
-/* Brand utility helpers ------------------------------------------------ */
 @layer components {
   .container-x {
     @apply mx-auto w-full max-w-container px-6;
   }
 
-  /* Gold rotated-square diamond motif */
-  .diamond {
-    @apply inline-block rotate-45 bg-gold;
+  /* Small uppercase kicker label */
+  .kicker {
+    @apply inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-clay;
   }
 
-  .eyebrow {
-    @apply text-[11px] font-bold uppercase tracking-[3px] text-gold-text;
-  }
-
-  /* Buttons */
+  /* Pill buttons -------------------------------------------------------- */
   .btn {
-    @apply inline-flex items-center justify-center rounded-sm font-bold transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-200;
   }
-  .btn-primary {
-    @apply btn bg-navy text-white hover:bg-gold hover:text-navy;
+  .btn-clay {
+    @apply btn bg-clay text-cream hover:bg-clay-deep hover:-translate-y-[2px];
   }
-  .btn-gold {
-    @apply btn bg-gold text-navy hover:bg-white;
+  .btn-sage {
+    @apply btn bg-sage-deep text-cream hover:bg-sage hover:-translate-y-[2px];
   }
-  .btn-outline-navy {
-    @apply btn border-2 border-navy bg-transparent text-navy hover:bg-navy hover:text-white;
+  .btn-outline {
+    @apply btn border-2 border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream;
   }
   .btn-outline-light {
-    @apply btn border-2 border-white/60 bg-transparent text-white hover:border-white hover:bg-white hover:text-navy;
+    @apply btn border-2 border-cream/50 bg-transparent text-cream hover:bg-cream hover:text-ink;
   }
   .btn-link {
-    @apply inline-block cursor-pointer border-b-2 border-gold pb-1 text-[13px] font-bold uppercase tracking-wider text-navy;
+    @apply inline-flex items-center gap-2 text-[14px] font-bold text-clay transition-colors hover:text-clay-deep;
+  }
+
+  /* Arched media frame (boutique signature) ---------------------------- */
+  .arch {
+    border-radius: 999px 999px 14px 14px;
+  }
+  .arch-sm {
+    border-radius: 240px 240px 12px 12px;
   }
 }
 
-/* Hero & banner photo overlays ---------------------------------------- */
-.overlay-hero {
-  background: radial-gradient(circle at 80% 28%, rgba(201, 168, 76, 0.18), transparent 48%),
-    linear-gradient(
-      90deg,
-      rgba(0, 12, 28, 0.94) 0%,
-      rgba(0, 24, 52, 0.82) 42%,
-      rgba(0, 33, 71, 0.42) 75%,
-      rgba(0, 33, 71, 0.25) 100%
-    );
+/* Hand-drawn underline accent under emphasised words */
+.underline-sketch {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='14' viewBox='0 0 200 14'%3E%3Cpath d='M2 9 C 50 2, 150 2, 198 8' stroke='%23C0603F' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 0 100%;
+  background-size: 100% 0.5em;
+  padding-bottom: 0.08em;
 }
-.overlay-banner {
-  background: radial-gradient(circle at 82% 22%, rgba(201, 168, 76, 0.15), transparent 50%),
-    linear-gradient(
-      120deg,
-      rgba(0, 12, 28, 0.93),
-      rgba(0, 33, 71, 0.8) 58%,
-      rgba(10, 50, 98, 0.7)
-    );
-}
-.overlay-cta {
-  background: radial-gradient(circle at 80% 20%, rgba(201, 168, 76, 0.16), transparent 50%),
-    linear-gradient(
-      120deg,
-      rgba(0, 13, 30, 0.93),
-      rgba(0, 33, 71, 0.84) 55%,
-      rgba(10, 50, 98, 0.78)
-    );
+
+/* Grain/paper texture overlay helper */
+.paper-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(rgba(46, 42, 36, 0.05) 1px, transparent 1px);
+  background-size: 4px 4px;
 }

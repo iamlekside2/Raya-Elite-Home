@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
+import SectionHeading from "@/components/ui/SectionHeading";
 import Accordion from "@/components/services/Accordion";
+import Sprig from "@/components/ui/Sprig";
 import { IMAGES, SERVICE_PACKAGES, RES_PRICING, COM_PRICING, ADDONS, FAQS } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -21,98 +23,93 @@ export default function ServicesPage() {
         img={IMAGES.servicesHeader}
         imgAlt="Bright, spotless living room"
         breadcrumb="Home / Services"
-        title="Our Cleaning Services"
+        title="Our cleaning services"
         subtitle="Transparent pricing and meticulous detail for homes, offices, and institutions across Maryland and D.C."
       />
 
       {/* PACKAGES */}
-      <section className="container-x py-[clamp(56px,7vw,90px)]">
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(290px,1fr))] gap-[26px]">
-          {SERVICE_PACKAGES.map((p) => (
-            <div
-              key={p.name}
-              className="relative flex flex-col border-t-4 border-gold bg-white px-[30px] py-[34px] shadow-card transition-all duration-300 hover:-translate-y-[6px] hover:shadow-card-hover"
-            >
-              <div className="relative -mx-[30px] -mt-[34px] mb-6 h-[160px] overflow-hidden bg-navy-img">
-                <Image src={p.img} alt={p.name} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[rgba(0,21,46,0.3)]" />
-              </div>
-              {p.badge && (
-                <span className="absolute right-6 top-[142px] rounded-full bg-navy px-[14px] py-[7px] text-[11px] font-bold uppercase tracking-[1px] text-gold">
-                  {p.badge}
-                </span>
-              )}
-              <h3 className="m-0 mb-2 font-playfair text-[24px] font-bold text-navy">{p.name}</h3>
-              <div className="mb-[22px] text-[13px] font-bold uppercase tracking-[1.5px] text-gold-text">
-                {p.price}
-              </div>
-              <div className="mb-[26px] flex-1">
-                {p.items.map((it) => (
-                  <div key={it} className="flex items-start gap-[11px] py-[7px] text-[14.5px] text-[#444]">
-                    <span className="diamond mt-[6px] h-2 w-2 flex-none" />
-                    <span>{it}</span>
+      <section className="bg-cream">
+        <div className="container-x py-20 md:py-24">
+          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
+            {SERVICE_PACKAGES.map((p) => (
+              <article
+                key={p.name}
+                className="group flex flex-col overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft transition-transform duration-300 hover:-translate-y-2"
+              >
+                <div className="relative h-44 overflow-hidden">
+                  <Image src={p.img} alt={p.name} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                  {p.badge && (
+                    <span className="absolute right-4 top-4 rounded-full bg-clay px-3 py-1 text-[12px] font-bold text-cream">
+                      {p.badge}
+                    </span>
+                  )}
+                </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <h3 className="font-display text-[23px] font-semibold text-ink">{p.name}</h3>
+                  <div className="mt-1 text-[14px] font-bold uppercase tracking-wider text-clay">
+                    {p.price}
                   </div>
-                ))}
-              </div>
-              <Link href="/book" className="btn-primary min-h-[50px] py-[14px] text-[14px]">
-                Book This Service
-              </Link>
-            </div>
-          ))}
+                  <div className="mt-5 flex-1 space-y-[10px]">
+                    {p.items.map((it) => (
+                      <div key={it} className="flex items-start gap-3 text-[15px] text-ink-soft">
+                        <Sprig className="mt-[2px] h-[18px] w-[18px] flex-none text-sage" />
+                        <span>{it}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <Link href="/book" className="btn-clay mt-6 py-[14px] text-[15px]">
+                    Book This Service
+                  </Link>
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
       {/* TRANSPARENT PRICING */}
-      <section className="border-y border-[#eee] bg-white">
-        <div className="container-x py-[clamp(56px,7vw,90px)]">
-          <h2 className="m-0 mb-9 text-center font-playfair text-[clamp(26px,3.4vw,38px)] font-bold text-navy">
-            Transparent Pricing
-          </h2>
-          <div className="grid grid-cols-[repeat(auto-fit,minmax(320px,1fr))] gap-9">
+      <section className="bg-sand">
+        <div className="container-x py-20 md:py-24">
+          <SectionHeading eyebrow="No Surprises" title="Transparent pricing" className="mb-12" />
+          <div className="grid gap-8 lg:grid-cols-2">
             {/* Residential */}
-            <div>
-              <div className="mb-4 text-[12px] font-bold uppercase tracking-[2px] text-gold-text">
+            <div className="overflow-hidden rounded-4xl bg-cream shadow-soft">
+              <div className="bg-sage-deep px-7 py-5 font-display text-[18px] font-semibold text-cream">
                 Residential — by bedroom
               </div>
-              <div className="overflow-hidden border border-card-border">
-                <div className="grid grid-cols-[2fr_1fr_1fr] bg-navy text-[13px] font-bold tracking-[0.5px] text-white">
-                  <div className="px-[18px] py-[14px]">Home Size</div>
-                  <div className="px-3 py-[14px] text-center">Standard</div>
-                  <div className="px-3 py-[14px] text-center">Deep</div>
-                </div>
-                {RES_PRICING.map((r) => (
-                  <div
-                    key={r.home}
-                    className="grid grid-cols-[2fr_1fr_1fr] border-t border-[#f0ece2] bg-white transition-colors hover:bg-pearl"
-                  >
-                    <div className="px-[18px] py-[14px] text-[14.5px] font-bold text-[#333]">{r.home}</div>
-                    <div className="px-3 py-[14px] text-center text-[14.5px] text-[#444]">{r.std}</div>
-                    <div className="px-3 py-[14px] text-center text-[14.5px] font-bold text-navy">{r.deep}</div>
-                  </div>
-                ))}
+              <div className="grid grid-cols-[2fr_1fr_1fr] px-7 py-3 text-[12px] font-bold uppercase tracking-wider text-ink-soft">
+                <div>Home Size</div>
+                <div className="text-center">Standard</div>
+                <div className="text-center">Deep</div>
               </div>
+              {RES_PRICING.map((r) => (
+                <div
+                  key={r.home}
+                  className="grid grid-cols-[2fr_1fr_1fr] items-center border-t border-ink/5 px-7 py-[14px] transition-colors hover:bg-paper-2"
+                >
+                  <div className="text-[15px] font-bold text-ink">{r.home}</div>
+                  <div className="text-center text-[15px] text-ink-soft">{r.std}</div>
+                  <div className="text-center text-[15px] font-bold text-clay">{r.deep}</div>
+                </div>
+              ))}
             </div>
             {/* Commercial */}
             <div>
-              <div className="mb-4 text-[12px] font-bold uppercase tracking-[2px] text-gold-text">
-                Commercial — by square footage
-              </div>
-              <div className="overflow-hidden border border-card-border">
-                <div className="grid grid-cols-[2fr_1fr] bg-navy text-[13px] font-bold tracking-[0.5px] text-white">
-                  <div className="px-[18px] py-[14px]">Facility Size</div>
-                  <div className="px-3 py-[14px] text-right">Rate</div>
+              <div className="overflow-hidden rounded-4xl bg-cream shadow-soft">
+                <div className="bg-clay px-7 py-5 font-display text-[18px] font-semibold text-cream">
+                  Commercial — by square footage
                 </div>
                 {COM_PRICING.map((c) => (
                   <div
                     key={c.size}
-                    className="grid grid-cols-[2fr_1fr] border-t border-[#f0ece2] bg-white transition-colors hover:bg-pearl"
+                    className="flex items-center justify-between gap-4 border-t border-ink/5 px-7 py-[18px] transition-colors hover:bg-paper-2 first:border-t-0"
                   >
-                    <div className="px-[18px] py-4 text-[14px] font-bold text-[#333]">{c.size}</div>
-                    <div className="px-[18px] py-4 text-right text-[14px] font-bold text-navy">{c.rate}</div>
+                    <div className="text-[15px] font-bold text-ink">{c.size}</div>
+                    <div className="text-right text-[15px] font-bold text-clay">{c.rate}</div>
                   </div>
                 ))}
               </div>
-              <p className="m-0 mt-4 text-[13px] leading-[1.6] text-[#8a8a8a]">
+              <p className="mt-4 px-2 text-[14px] leading-relaxed text-ink-soft">
                 No hidden fees. Final quote confirmed after a brief walkthrough. Recurring service
                 discounts available.
               </p>
@@ -122,42 +119,37 @@ export default function ServicesPage() {
       </section>
 
       {/* ADD-ONS */}
-      <section className="mx-auto max-w-[1000px] px-6 py-[clamp(56px,7vw,90px)]">
-        <div className="mb-[14px] text-center">
-          <span className="eyebrow">Add-On Services</span>
+      <section className="container-x py-20 md:py-24">
+        <div className="mx-auto max-w-[820px]">
+          <SectionHeading eyebrow="Add-On Services" title="Customize your clean" className="mb-10" />
+          <Accordion
+            variant="addon"
+            items={ADDONS.map((a) => ({ title: a.name, price: a.price, body: a.desc }))}
+          />
         </div>
-        <h2 className="m-0 mb-9 text-center font-playfair text-[clamp(26px,3.4vw,38px)] font-bold text-navy">
-          Customize Your Clean
-        </h2>
-        <Accordion
-          variant="addon"
-          items={ADDONS.map((a) => ({ title: a.name, price: a.price, body: a.desc }))}
-        />
       </section>
 
       {/* SERVICE AREAS */}
-      <section className="bg-champagne">
-        <div className="container-x grid grid-cols-[repeat(auto-fit,minmax(300px,1fr))] items-center gap-10 py-[clamp(56px,7vw,80px)]">
+      <section className="bg-sage-tint/50">
+        <div className="container-x grid items-center gap-12 py-20 md:py-24 lg:grid-cols-2">
           <div>
-            <h2 className="m-0 mb-4 font-playfair text-[clamp(24px,3vw,34px)] font-bold text-navy">
-              Service Areas
-            </h2>
-            <p className="m-0 mb-5 text-[15.5px] leading-[1.7] text-[#5a5740]">
+            <SectionHeading centered={false} eyebrow="Where We Clean" title="Service areas" />
+            <p className="mt-5 max-w-[460px] text-[16px] leading-relaxed text-ink-soft">
               Proudly serving the greater Maryland and Washington D.C. metropolitan area — including
               Bethesda, Silver Spring, Rockville, Potomac, Chevy Chase, and the District.
             </p>
-            <div className="flex flex-wrap gap-[10px]">
+            <div className="mt-6 flex flex-wrap gap-3">
               {["Montgomery County", "Washington D.C.", "Prince George's County"].map((p) => (
-                <span key={p} className="rounded-full bg-white px-4 py-2 text-[13px] font-bold text-navy">
+                <span key={p} className="rounded-full bg-cream px-5 py-2 text-[14px] font-semibold text-ink shadow-soft">
                   {p}
                 </span>
               ))}
             </div>
           </div>
-          <div className="relative h-[280px] border-[6px] border-white bg-gradient-to-br from-navy-img to-[#16406e] shadow-[0_12px_34px_rgba(0,33,71,0.18)]">
-            <div className="absolute inset-0 [background:radial-gradient(circle_at_45%_50%,rgba(201,168,76,0.35),transparent_45%)]" />
-            <div className="absolute left-[45%] top-1/2 h-[18px] w-[18px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold shadow-[0_0_0_8px_rgba(201,168,76,0.25)]" />
-            <div className="absolute bottom-4 left-5 font-mono text-[11px] text-champagne/60">
+          <div className="arch-sm relative aspect-[4/3] overflow-hidden bg-sage-deep shadow-lift">
+            <div className="absolute inset-0 [background:radial-gradient(circle_at_45%_45%,rgba(216,162,74,0.4),transparent_50%)]" />
+            <div className="absolute left-[45%] top-[45%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold shadow-[0_0_0_10px_rgba(216,162,74,0.25)]" />
+            <div className="absolute bottom-5 left-6 font-mono text-[12px] text-cream/60">
               [ Google Maps — MD &amp; DC coverage ]
             </div>
           </div>
@@ -165,27 +157,23 @@ export default function ServicesPage() {
       </section>
 
       {/* FAQ */}
-      <section className="mx-auto max-w-[1000px] px-6 py-[clamp(56px,7vw,90px)]">
-        <h2 className="m-0 mb-9 text-center font-playfair text-[clamp(26px,3.4vw,38px)] font-bold text-navy">
-          Frequently Asked Questions
-        </h2>
-        <Accordion
-          variant="faq"
-          defaultOpen={0}
-          items={FAQS.map((f) => ({ title: f.q, body: f.a }))}
-        />
+      <section className="container-x py-20 md:py-24">
+        <div className="mx-auto max-w-[820px]">
+          <SectionHeading eyebrow="Good To Know" title="Frequently asked questions" className="mb-10" />
+          <Accordion variant="faq" defaultOpen={0} items={FAQS.map((f) => ({ title: f.q, body: f.a }))} />
+        </div>
       </section>
 
       {/* BOTTOM CTA */}
-      <section className="bg-gradient-to-br from-navy-deep via-navy to-navy-light">
-        <div className="mx-auto max-w-[820px] px-6 py-[clamp(54px,7vw,84px)] text-center">
-          <h2 className="m-0 mb-[14px] font-playfair text-[clamp(26px,3.6vw,40px)] font-bold text-white">
-            Not Sure Which Package?
+      <section className="container-x pb-24">
+        <div className="rounded-[2.5rem] bg-sage-deep px-8 py-16 text-center text-cream md:px-14">
+          <h2 className="mx-auto max-w-[640px] font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-tight">
+            Not sure which package?
           </h2>
-          <p className="m-0 mb-[30px] text-[16px] text-white/80">
+          <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-cream/85">
             Tell us about your space and we&apos;ll recommend the perfect fit — and a custom quote.
           </p>
-          <Link href="/contact" className="btn-gold min-h-[54px] px-10 py-[17px] text-[15px]">
+          <Link href="/contact" className="btn-clay mt-8 px-9 py-4 text-[16px]">
             Get a Custom Quote
           </Link>
         </div>

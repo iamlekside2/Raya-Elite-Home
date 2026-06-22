@@ -17,20 +17,19 @@ export default function GalleryPage() {
       <PageHeader
         img={IMAGES.galleryHeader}
         imgAlt="Pristine luxury bathroom"
-        title="Our Work Speaks For Itself"
+        title="Our work speaks for itself"
         subtitle="Before & After Transformations Across Maryland & D.C."
-        centered
       />
 
       <GalleryClient />
 
       {/* BOTTOM CTA */}
-      <section className="bg-champagne">
-        <div className="mx-auto max-w-[820px] px-6 py-[clamp(50px,6.5vw,80px)] text-center">
-          <h2 className="m-0 mb-[14px] font-playfair text-[clamp(26px,3.6vw,40px)] font-bold text-navy">
-            Ready For Your Own Transformation?
+      <section className="container-x pb-24">
+        <div className="rounded-[2.5rem] bg-sage-deep px-8 py-16 text-center text-cream md:px-14">
+          <h2 className="mx-auto max-w-[640px] font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-tight">
+            Ready for your own transformation?
           </h2>
-          <Link href="/book" className="btn-primary mt-[14px] min-h-[54px] px-10 py-[17px] text-[15px]">
+          <Link href="/book" className="btn-clay mt-8 px-9 py-4 text-[16px]">
             Book Now
           </Link>
         </div>

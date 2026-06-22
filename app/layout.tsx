@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato } from "next/font/google";
+import { Fraunces, Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -8,17 +8,18 @@ import FBPixelScript from "@/components/analytics/FBPixelScript";
 import TidioScript from "@/components/analytics/TidioScript";
 import { SITE } from "@/lib/constants";
 
-const playfair = Playfair_Display({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-  variable: "--font-playfair",
+  weight: ["400", "500", "600", "700", "900"],
+  style: ["normal", "italic"],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
-const lato = Lato({
+const nunito = Nunito_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
-  variable: "--font-lato",
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-nunito",
   display: "swap",
 });
 
@@ -41,8 +42,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${playfair.variable} ${lato.variable}`}>
-      <body className="bg-pearl font-lato text-charcoal antialiased">
+    <html lang="en" className={`${fraunces.variable} ${nunito.variable}`}>
+      <body className="bg-paper font-sans text-ink antialiased">
         <GA4Script />
         <FBPixelScript />
         <TidioScript />

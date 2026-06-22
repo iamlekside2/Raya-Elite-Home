@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import JobberWidget from "@/components/booking/JobberWidget";
 import TrustBadges from "@/components/ui/TrustBadges";
+import Sprig from "@/components/ui/Sprig";
 import { BOOK_REASSURANCE, IMAGES } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -18,45 +19,48 @@ export default function BookPage() {
       <PageHeader
         img={IMAGES.bookHeader}
         imgAlt="Inviting, freshly cleaned living space"
-        title="Book Your Cleaning Online"
-        centered
+        title="Book your cleaning online"
         subtitle={
-          <span className="inline-flex flex-wrap justify-center gap-[14px] text-[14px]">
+          <span className="inline-flex flex-wrap gap-x-4 gap-y-1">
             <span>Secure booking</span>
-            <span className="text-gold/50">/</span>
+            <span className="text-clay">·</span>
             <span>No payment required today</span>
-            <span className="text-gold/50">/</span>
+            <span className="text-clay">·</span>
             <span>Instant confirmation</span>
           </span>
         }
       />
 
-      <section className="container-x grid grid-cols-1 items-start gap-9 py-[clamp(48px,6vw,80px)] lg:grid-cols-[1fr_300px]">
+      <section className="container-x grid grid-cols-1 items-start gap-9 py-20 md:py-24 lg:grid-cols-[1fr_320px]">
         <JobberWidget />
 
-        <aside className="flex flex-col gap-[18px] lg:sticky lg:top-[104px]">
-          <div className="bg-navy px-[26px] py-7 text-white">
-            <div className="mb-5 font-playfair text-[19px] font-bold">Why book with us</div>
-            {BOOK_REASSURANCE.map((b) => (
-              <div key={b} className="flex items-start gap-3 py-[9px] text-[14px] text-white/[0.88]">
-                <span className="diamond mt-[5px] h-2 w-2 flex-none" />
-                <span>{b}</span>
-              </div>
-            ))}
+        <aside className="flex flex-col gap-5 lg:sticky lg:top-28">
+          <div className="rounded-4xl bg-sage-deep px-7 py-8 text-cream">
+            <div className="font-display text-[20px] font-semibold">Why book with us</div>
+            <div className="mt-5 space-y-[10px]">
+              {BOOK_REASSURANCE.map((b) => (
+                <div key={b} className="flex items-start gap-3 text-[15px] text-cream/90">
+                  <Sprig className="mt-[2px] h-[18px] w-[18px] flex-none text-gold" />
+                  <span>{b}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="bg-champagne px-[26px] py-6">
-            <div className="mb-2 text-[15px] font-bold text-navy">Prefer a custom quote?</div>
-            <p className="m-0 mb-4 text-[13.5px] leading-[1.6] text-[#6b5d3a]">
+          <div className="rounded-4xl bg-clay-tint px-7 py-7">
+            <div className="font-display text-[18px] font-semibold text-ink">
+              Prefer a custom quote?
+            </div>
+            <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">
               For enterprise, embassy, or government work, request a formal proposal.
             </p>
-            <Link href="/contact" className="btn-primary w-full py-[13px] text-[13.5px]">
+            <Link href="/contact" className="btn-clay mt-5 w-full py-[13px] text-[14px]">
               Request a Quote
             </Link>
           </div>
         </aside>
       </section>
 
-      <TrustBadges py="py-[46px]" />
+      <TrustBadges py="py-14" />
     </>
   );
 }
