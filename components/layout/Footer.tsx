@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NAV_ITEMS, FOOTER_SERVICES, SITE } from "@/lib/constants";
+import { FOOTER_SERVICES, FOOTER_COMPANY, SOCIALS, SITE } from "@/lib/constants";
 
 export default function Footer() {
   return (
@@ -12,10 +12,20 @@ export default function Footer() {
             <span className="font-playfair text-[21px] font-bold tracking-[3px]">RAYA ELITE</span>
           </div>
           <p className="mb-5 max-w-[260px] text-[14px] leading-[1.7] text-white/65">
-            Luxury residential &amp; commercial cleaning for Maryland and Washington D.C. An elite
-            standard, every time.
+            An elite standard of clean — for homes, offices, and the spaces that matter most.
           </p>
-          <span className="text-[15px] tracking-[2px] text-gold">★★★★★</span>
+          <div className="flex flex-wrap gap-2">
+            {SOCIALS.map((s) => (
+              <a
+                key={s}
+                href="#"
+                aria-label={s}
+                className="rounded-sm border border-white/20 px-3 py-[6px] text-[12px] font-bold text-white/75 transition-colors hover:border-gold hover:bg-gold hover:text-navy"
+              >
+                {s}
+              </a>
+            ))}
+          </div>
         </div>
 
         {/* Services */}
@@ -39,9 +49,9 @@ export default function Footer() {
           <div className="mb-[18px] text-[12px] font-bold uppercase tracking-[2px] text-gold">
             Company
           </div>
-          {NAV_ITEMS.map((item) => (
+          {FOOTER_COMPANY.map((item) => (
             <Link
-              key={item.href}
+              key={item.label}
               href={item.href}
               className="block py-[7px] text-left text-[14px] text-white/70 transition-colors hover:text-gold"
             >
@@ -67,9 +77,13 @@ export default function Footer() {
 
       <div className="container-x mt-[54px] flex flex-wrap justify-between gap-3 border-t border-white/10 py-6 text-[12.5px] text-white/50">
         <span>
-          © {new Date().getFullYear()} {SITE.name}. All rights reserved.
+          © {new Date().getFullYear()} {SITE.name} · All Rights Reserved
         </span>
-        <span>Licensed · Bonded · Insured · Maryland</span>
+        <span className="flex gap-3">
+          <Link href="#" className="transition-colors hover:text-gold">Privacy Policy</Link>
+          <span aria-hidden>·</span>
+          <Link href="#" className="transition-colors hover:text-gold">Terms of Service</Link>
+        </span>
       </div>
     </footer>
   );

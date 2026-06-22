@@ -31,11 +31,19 @@ export const TRUST_BADGES = [
 ];
 
 export const FOOTER_SERVICES = [
-  "Standard Clean",
-  "Deep Clean",
+  "Residential Deep Clean",
+  "Office & Commercial Cleaning",
   "Move-In / Move-Out",
-  "Office & Commercial",
+  "Post-Construction Cleaning",
   "Government & Embassy",
+];
+
+export const FOOTER_COMPANY: { label: string; href: string }[] = [
+  { label: "About Raya Elite", href: "/about" },
+  { label: "Our Team", href: "/about" },
+  { label: "Gallery", href: "/gallery" },
+  { label: "Client Reviews", href: "/testimonials" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export const SOCIALS = ["Instagram", "Facebook", "LinkedIn", "TikTok"];
