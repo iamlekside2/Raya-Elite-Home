@@ -6,6 +6,7 @@ const U = (id: string, w = 1200, q = 78) =>
 export const IMAGES = {
   hero: U("1567767292278-a4f21aa2d36e", 2000, 80),
   heroCleaner: "/images/cleaner-hero.jpeg",
+  heroTeam: "/images/hero-team.jpeg",
   ctaKitchen: U("1556911220-bff31c812dba", 2000, 80),
   servicesHeader: U("1502672260266-1c1ef2d93688", 2000, 80),
   aboutHeader: U("1505693416388-ac5ce068fe85", 2000, 80),

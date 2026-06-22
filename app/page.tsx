@@ -52,28 +52,29 @@ export default function HomePage() {
       {/* SECTION 1 — HERO */}
       <section className="paper-grain relative overflow-hidden">
         <div className="pointer-events-none absolute -right-32 top-0 h-[460px] w-[460px] rounded-full bg-clay-tint/50 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 bottom-0 h-80 w-80 rounded-full bg-sage-tint/50 blur-3xl" />
-        <div className="container-x relative grid items-center gap-12 py-16 md:py-24 lg:grid-cols-[1.05fr_0.95fr]">
-          <div className="animate-rise">
-            <div className="kicker mb-5">
+        <div className="pointer-events-none absolute -left-24 top-40 h-80 w-80 rounded-full bg-sage-tint/50 blur-3xl" />
+        <div className="container-x relative py-16 md:py-20">
+          {/* Headline + CTAs */}
+          <div className="mx-auto max-w-[880px] animate-rise text-center">
+            <div className="kicker mb-5 justify-center">
               <Sprig className="h-4 w-4 text-sage" />
               Serving Maryland &amp; Washington D.C.
             </div>
-            <h1 className="font-display text-[clamp(38px,5.6vw,64px)] font-semibold leading-[1.04] tracking-[-0.02em] text-ink">
+            <h1 className="font-display text-[clamp(40px,6vw,68px)] font-semibold leading-[1.03] tracking-[-0.02em] text-ink">
               Maryland&apos;s Most Trusted{" "}
               <span className="underline-sketch text-clay">Luxury Cleaning</span> Service
             </h1>
-            <p className="mt-6 max-w-[540px] text-[18px] leading-relaxed text-ink-soft">
+            <p className="mx-auto mt-6 max-w-[620px] text-[18px] leading-relaxed text-ink-soft">
               Your home or office reflects who you are. We make sure it always looks the part — with
               thorough, professional cleaning that respects your space, your time, and your standards.
             </p>
-            <div className="mt-9 flex flex-wrap gap-4">
+            <div className="mt-9 flex flex-wrap justify-center gap-4">
               <Link href="/book" className="btn-clay px-8 py-4 text-[16px]">
                 Book Your Cleaning
               </Link>
               <QuoteModal triggerLabel="Get a Free Quote" triggerClassName="btn-outline px-8 py-4 text-[16px]" />
             </div>
-            <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3 text-[14px] text-ink-soft">
+            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[14px] text-ink-soft">
               <span className="text-[17px] tracking-[2px] text-gold">★★★★★</span>
               <span className="font-semibold text-ink">500+ Satisfied Clients</span>
               <span className="h-1 w-1 rounded-full bg-clay" />
@@ -83,19 +84,19 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Cleaner photo in arched frame */}
-          <div className="relative mx-auto w-full max-w-[460px] animate-rise">
-            <div className="arch relative aspect-[4/5] overflow-hidden bg-gradient-to-b from-sage-tint to-clay-tint shadow-lift">
+          {/* Wide team photo */}
+          <div className="relative mx-auto mt-14 w-full max-w-[1080px] animate-rise">
+            <div className="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-sage-tint to-clay-tint shadow-lift sm:aspect-[2/1]">
               <Image
-                src={IMAGES.heroCleaner}
-                alt="Smiling Raya Elite cleaning professional in branded uniform"
+                src={IMAGES.heroTeam}
+                alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
                 fill
                 priority
-                sizes="(max-width:1024px) 90vw, 460px"
-                className="object-cover object-top"
+                sizes="(max-width:1100px) 92vw, 1080px"
+                className="object-cover"
               />
             </div>
-            <div className="absolute -left-6 top-10 flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 shadow-soft">
+            <div className="absolute -left-3 top-8 flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 shadow-soft sm:-left-6">
               <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sage-tint text-sage-deep">
                 <Sprig className="h-5 w-5" />
               </span>
@@ -105,7 +106,7 @@ export default function HomePage() {
                 products
               </span>
             </div>
-            <div className="absolute -bottom-5 right-6 rounded-2xl bg-cream px-5 py-3 text-center shadow-soft">
+            <div className="absolute -bottom-5 right-4 rounded-2xl bg-cream px-5 py-3 text-center shadow-soft sm:right-8">
               <div className="font-display text-[24px] font-semibold text-clay">5.0</div>
               <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
                 Google rating
