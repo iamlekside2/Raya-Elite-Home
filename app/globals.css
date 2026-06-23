@@ -73,6 +73,17 @@ body {
   }
 }
 
+/* Why-section cards: revealed one at a time on scroll */
+.why-card {
+  opacity: 0;
+  transform: translateY(44px) scale(0.97);
+  transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.why-card.why-in {
+  opacity: 1;
+  transform: none;
+}
+
 /* Hand-drawn underline accent under emphasised words */
 .underline-sketch {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='14' viewBox='0 0 200 14'%3E%3Cpath d='M2 9 C 50 2, 150 2, 198 8' stroke='%23C9A84C' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
