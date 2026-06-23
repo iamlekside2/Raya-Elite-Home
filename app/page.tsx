@@ -266,15 +266,22 @@ export default function HomePage() {
           subtitle="We've made booking as simple as possible. No back-and-forth. No uncertainty. Just a clean home or office, on your schedule."
           className="mb-16"
         />
-        <div className="relative grid gap-12 md:grid-cols-3">
+        <div className="relative grid gap-8 md:grid-cols-3">
           <div className="pointer-events-none absolute left-[16%] right-[16%] top-9 hidden border-t-2 border-dashed border-clay/30 md:block" />
           {HOW_STEPS.map((s) => (
-            <div key={s.n} className="relative text-center">
-              <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-clay bg-paper font-display text-[28px] font-semibold text-clay">
+            <div
+              key={s.n}
+              className="group relative rounded-3xl border border-ink/[0.08] bg-cream p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-[6px] hover:border-clay hover:bg-clay hover:shadow-lift"
+            >
+              <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-clay bg-paper font-display text-[28px] font-semibold text-clay transition-colors duration-300 group-hover:border-cream/70 group-hover:bg-cream/10 group-hover:text-cream">
                 {s.n}
               </div>
-              <h3 className="mt-6 font-display text-[21px] font-semibold text-ink">{s.title}</h3>
-              <p className="mx-auto mt-2 max-w-[300px] text-[15px] leading-relaxed text-ink-soft">{s.desc}</p>
+              <h3 className="mt-6 font-display text-[21px] font-semibold text-ink transition-colors duration-300 group-hover:text-cream">
+                {s.title}
+              </h3>
+              <p className="mx-auto mt-2 max-w-[300px] text-[15px] leading-relaxed text-ink-soft transition-colors duration-300 group-hover:text-cream/85">
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
