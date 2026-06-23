@@ -154,17 +154,18 @@ export default function HomePage() {
       {/* SECTION 4 — SOCIAL PROOF */}
       <section className="relative overflow-hidden">
         <Image
-          src="/images/office-cleaning.jpeg"
+          src="/images/foam.jpeg"
           alt=""
           aria-hidden
           fill
           sizes="100vw"
           className="object-cover"
         />
-        <div aria-hidden className="absolute inset-0 bg-clay-tint/[0.88]" />
+        <div aria-hidden className="absolute inset-0 bg-clay/[0.82]" />
         <div className="container-x relative py-20 md:py-24">
           <SectionHeading
             stars
+            light
             eyebrow="Client Reviews"
             title="What our clients say"
             subtitle="We let the work speak. Here's what Maryland and DC clients have said after experiencing the Raya Elite difference firsthand."
@@ -189,7 +190,7 @@ export default function HomePage() {
             ))}
           </div>
           <BirdeyeWidget />
-          <p className="mt-10 text-center text-[15px] font-semibold text-ink">
+          <p className="mt-10 text-center text-[15px] font-semibold text-cream">
             <span className="tracking-[2px] text-gold">★★★★★</span> Rated 5.0 · Serving Maryland &amp;
             Washington DC
           </p>
