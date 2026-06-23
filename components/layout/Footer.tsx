@@ -14,10 +14,10 @@ export default function Footer() {
         <div>
           <div className="mb-6">
             <Image
-              src="/images/raya-logo-light-v2.png"
+              src="/images/raya-logo-light-v3.png"
               alt="Raya Elite — Home & Office Cleaning"
-              width={691}
-              height={751}
+              width={688}
+              height={687}
               className="h-[104px] w-auto"
             />
           </div>

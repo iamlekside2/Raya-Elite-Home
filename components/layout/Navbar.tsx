@@ -20,10 +20,10 @@ export default function Navbar() {
           {/* Wordmark */}
           <Link href="/" className="flex items-center" aria-label="Raya Elite home">
             <Image
-              src="/images/raya-logo-v2.png"
+              src="/images/raya-logo-v3.png"
               alt="Raya Elite — Home & Office Cleaning"
-              width={691}
-              height={751}
+              width={688}
+              height={687}
               priority
               className="h-[58px] w-auto"
             />
