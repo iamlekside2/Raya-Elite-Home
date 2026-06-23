@@ -22,7 +22,7 @@ export default function Navbar() {
             <Image
               src="/images/raya-logo.png"
               alt="Raya Elite — Home & Office Cleaning"
-              width={684}
+              width={691}
               height={751}
               priority
               className="h-[58px] w-auto"

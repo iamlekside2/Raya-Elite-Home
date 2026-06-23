@@ -16,7 +16,7 @@ export default function Footer() {
             <Image
               src="/images/raya-logo-light.png"
               alt="Raya Elite — Home & Office Cleaning"
-              width={684}
+              width={691}
               height={751}
               className="h-[104px] w-auto"
             />
