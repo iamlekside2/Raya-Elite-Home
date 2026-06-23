@@ -58,7 +58,7 @@ export default function HomePage() {
           priority
           quality={90}
           sizes="100vw"
-          className="object-cover object-[60%_22%]"
+          className="object-cover object-[62%_18%]"
         />
         <div
           className="absolute inset-0"
