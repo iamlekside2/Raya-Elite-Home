@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { FOOTER_SERVICES, FOOTER_COMPANY, SOCIALS, SITE } from "@/lib/constants";
-import Sprig from "@/components/ui/Sprig";
 
 export default function Footer() {
   return (
@@ -12,11 +11,13 @@ export default function Footer() {
       <div className="container-x relative grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-12 pt-20">
         {/* Brand */}
         <div>
-          <div className="mb-5 flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-cream/10 text-clay">
-              <Sprig className="h-5 w-5" />
+          <div className="mb-5 flex flex-col leading-none">
+            <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em]">
+              Raya Elite
             </span>
-            <span className="font-display text-[22px] font-semibold">Raya Elite</span>
+            <span className="mt-[6px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
+              Home &amp; Office Cleaning
+            </span>
           </div>
           <p className="mb-6 max-w-[260px] text-[15px] leading-relaxed text-paper/65">
             An elite standard of clean — for homes, offices, and the spaces that matter most.

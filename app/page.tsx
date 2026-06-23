@@ -59,6 +59,7 @@ export default function HomePage() {
           alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
           fill
           priority
+          quality={90}
           sizes="100vw"
           className="object-cover object-[60%_22%]"
         />
@@ -66,10 +67,9 @@ export default function HomePage() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(circle at 80% 28%, rgba(201,168,76,0.18), transparent 48%), linear-gradient(90deg, rgba(0,12,28,0.94) 0%, rgba(0,24,52,0.82) 42%, rgba(0,33,71,0.42) 75%, rgba(0,33,71,0.25) 100%)",
+              "radial-gradient(circle at 82% 30%, rgba(201,168,76,0.12), transparent 52%), linear-gradient(90deg, rgba(0,16,34,0.82) 0%, rgba(0,22,46,0.58) 38%, rgba(0,33,71,0.18) 70%, rgba(0,33,71,0) 100%)",
           }}
         />
-        <div className="pointer-events-none absolute -right-[60px] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rotate-45 border border-[#C9A84C]/[0.18]" />
         <div className="container-x relative py-20">
           <div className="max-w-[660px] animate-rise">
             <div className="mb-[30px] inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/50 px-[18px] py-2">
@@ -88,13 +88,13 @@ export default function HomePage() {
             <div className="mb-[46px] flex flex-wrap gap-4">
               <Link
                 href="/book"
-                className="inline-flex min-h-[54px] items-center justify-center rounded-sm bg-[#C9A84C] px-[34px] py-[17px] text-[15px] font-bold text-[#002147] transition-colors hover:bg-white"
+                className="inline-flex min-h-[54px] items-center justify-center rounded-full bg-[#C9A84C] px-[34px] py-[17px] text-[15px] font-bold text-[#002147] transition-colors hover:bg-white"
               >
                 Book Your Cleaning
               </Link>
               <QuoteModal
                 triggerLabel="Get a Free Quote"
-                triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-sm border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#002147]"
+                triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-full border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#002147]"
               />
             </div>
             <div className="flex flex-wrap items-center gap-[18px] border-t border-white/10 pt-[30px]">

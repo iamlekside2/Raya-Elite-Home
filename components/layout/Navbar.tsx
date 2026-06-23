@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { NAV_ITEMS } from "@/lib/constants";
-import Sprig from "@/components/ui/Sprig";
 
 export default function Navbar() {
   const pathname = usePathname();
@@ -18,17 +17,12 @@ export default function Navbar() {
       <header className="sticky top-0 z-[60] border-b border-ink/10 bg-paper/85 backdrop-blur-md">
         <div className="container-x flex h-[78px] items-center justify-between gap-6">
           {/* Wordmark */}
-          <Link href="/" className="group flex items-center gap-3" aria-label="Raya Elite home">
-            <span className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-tint text-sage-deep transition-colors group-hover:bg-clay-tint group-hover:text-clay">
-              <Sprig className="h-5 w-5" />
+          <Link href="/" className="flex flex-col leading-none" aria-label="Raya Elite home">
+            <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em] text-ink">
+              Raya Elite
             </span>
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-[20px] font-semibold tracking-tight text-ink">
-                Raya Elite
-              </span>
-              <span className="mt-1 text-[9px] font-bold uppercase tracking-[0.3em] text-ink-soft">
-                Home &amp; Office Cleaning
-              </span>
+            <span className="mt-[5px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
+              Home &amp; Office Cleaning
             </span>
           </Link>
 
