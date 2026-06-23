@@ -121,13 +121,13 @@ export default function HomePage() {
             <div className="mb-[46px] flex flex-wrap gap-4">
               <Link
                 href="/book"
-                className="inline-flex min-h-[54px] items-center justify-center rounded-full bg-[#C9A84C] px-[34px] py-[17px] text-[15px] font-bold text-[#002147] transition-colors hover:bg-white"
+                className="inline-flex min-h-[54px] items-center justify-center rounded-full bg-[#C9A84C] px-[34px] py-[17px] text-[15px] font-bold text-[#002147] shadow-[0_8px_22px_-10px_rgba(0,0,0,0.55)] transition-all duration-200 hover:-translate-y-[3px] hover:bg-white hover:shadow-[0_16px_32px_-12px_rgba(0,0,0,0.6)] active:translate-y-0"
               >
                 Book Your Cleaning
               </Link>
               <QuoteModal
                 triggerLabel="Get a Free Quote"
-                triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-full border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#002147]"
+                triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-full border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-all duration-200 hover:-translate-y-[3px] hover:border-white hover:bg-white hover:text-[#002147] hover:shadow-[0_16px_30px_-12px_rgba(0,0,0,0.5)] active:translate-y-0"
               />
             </div>
             <div className="flex flex-wrap items-center gap-[18px] border-t border-white/10 pt-[30px]">
@@ -334,9 +334,9 @@ export default function HomePage() {
             {LOCATIONS.map((loc) => (
               <div
                 key={loc}
-                className="flex items-center justify-center gap-2 rounded-2xl bg-cream px-4 py-4 text-center text-[14px] font-semibold text-ink shadow-soft"
+                className="group flex cursor-default items-center justify-center gap-2 rounded-2xl bg-cream px-4 py-4 text-center text-[14px] font-semibold text-ink shadow-soft transition-all duration-300 hover:-translate-y-[5px] hover:bg-clay hover:text-cream hover:shadow-lift"
               >
-                <span className="h-[6px] w-[6px] flex-none rounded-full bg-clay" />
+                <span className="h-[6px] w-[6px] flex-none rounded-full bg-clay transition-colors duration-300 group-hover:bg-gold" />
                 {loc}
               </div>
             ))}
@@ -370,7 +370,7 @@ export default function HomePage() {
               </Link>
               <QuoteModal
                 triggerLabel="Get a Free Quote"
-                triggerClassName="rounded-full bg-cream/15 px-7 py-4 text-[16px] font-bold text-cream transition-colors hover:bg-cream/25"
+                triggerClassName="rounded-full bg-cream/15 px-7 py-4 text-[16px] font-bold text-cream transition-all duration-200 hover:-translate-y-[3px] hover:bg-cream/25 hover:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.45)] active:translate-y-0"
               />
             </div>
             <p className="mt-5 text-[14px] text-cream/75">

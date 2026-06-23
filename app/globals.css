@@ -44,21 +44,21 @@ body {
     @apply inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-clay;
   }
 
-  /* Pill buttons -------------------------------------------------------- */
+  /* Pill buttons — all float and react to the cursor ------------------- */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-200;
+    @apply inline-flex items-center justify-center gap-2 rounded-full font-bold transition-all duration-200 hover:-translate-y-[3px] active:translate-y-0;
   }
   .btn-clay {
-    @apply btn bg-clay text-cream hover:bg-clay-deep hover:-translate-y-[2px];
+    @apply btn bg-clay text-cream shadow-[0_8px_20px_-10px_rgba(0,33,71,0.6)] hover:bg-clay-deep hover:shadow-[0_16px_30px_-12px_rgba(0,33,71,0.65)] active:shadow-[0_5px_14px_-10px_rgba(0,33,71,0.6)];
   }
   .btn-sage {
-    @apply btn bg-sage-deep text-cream hover:bg-sage hover:-translate-y-[2px];
+    @apply btn bg-sage text-clay shadow-[0_8px_20px_-10px_rgba(201,168,76,0.6)] hover:bg-sage-deep hover:text-cream hover:shadow-[0_16px_30px_-12px_rgba(201,168,76,0.6)];
   }
   .btn-outline {
-    @apply btn border-2 border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream;
+    @apply btn border-2 border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream hover:shadow-[0_14px_28px_-12px_rgba(0,33,71,0.55)];
   }
   .btn-outline-light {
-    @apply btn border-2 border-cream/50 bg-transparent text-cream hover:bg-cream hover:text-ink;
+    @apply btn border-2 border-cream/50 bg-transparent text-cream hover:bg-cream hover:text-clay hover:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.4)];
   }
   .btn-link {
     @apply inline-flex items-center gap-2 text-[14px] font-bold text-clay transition-colors hover:text-clay-deep;
