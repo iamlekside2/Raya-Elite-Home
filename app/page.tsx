@@ -6,7 +6,6 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import TrustBadges from "@/components/ui/TrustBadges";
 import BirdeyeWidget from "@/components/reviews/BirdeyeWidget";
 import QuoteModal from "@/components/ui/QuoteModal";
-import Sprig from "@/components/ui/Sprig";
 import {
   IMAGES,
   WHY_CARDS,
@@ -39,6 +38,40 @@ const localBusinessSchema = {
 };
 
 const tint = ["bg-clay-tint text-clay", "bg-sage-tint text-sage-deep"];
+
+// One distinct gold-style icon per "Why" card (build guide: "each card has gold icon").
+const iconProps = {
+  viewBox: "0 0 24 24",
+  fill: "none",
+  stroke: "currentColor",
+  strokeWidth: 1.6,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+  className: "h-6 w-6",
+};
+const WHY_ICONS = [
+  // Licensed & Fully Insured — shield with check
+  <svg key="shield" {...iconProps}>
+    <path d="M12 3l7 2.6v5.1c0 4.3-2.9 7.4-7 8.8-4.1-1.4-7-4.5-7-8.8V5.6L12 3z" />
+    <path d="M9 12l2 2 4-4.2" />
+  </svg>,
+  // Eco-Friendly Products — leaf
+  <svg key="leaf" {...iconProps}>
+    <path d="M5 19c0-7 5-13 14-13 0 9-6 14-13 14" />
+    <path d="M5 19c2.5-4 5.5-6.6 9-8.2" />
+  </svg>,
+  // Professionally Trained Staff — award medal
+  <svg key="medal" {...iconProps}>
+    <circle cx="12" cy="9" r="6" />
+    <path d="M9.2 9l1.8 1.8L14.6 7" />
+    <path d="M8.5 14L7 21l5-2.6L17 21l-1.5-7" />
+  </svg>,
+  // Satisfaction, Guaranteed — seal with check
+  <svg key="seal" {...iconProps}>
+    <path d="M12 2.6l2.3 1.7 2.8-.2.9 2.7 2.3 1.6-1 2.7 1 2.7-2.3 1.6-.9 2.7-2.8-.2L12 21.4l-2.3-1.7-2.8.2-.9-2.7-2.3-1.6 1-2.7-1-2.7 2.3-1.6.9-2.7 2.8.2L12 2.6z" />
+    <path d="M9 12l2 2 4-4" />
+  </svg>,
+];
 
 export default function HomePage() {
   return (
@@ -111,8 +144,8 @@ export default function HomePage() {
 
       {/* SECTION 2 — WHY */}
       <section className="bg-cream">
-        <div className="container-x grid gap-12 py-20 md:py-24 lg:grid-cols-[0.85fr_1.15fr]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
+        <div className="container-x grid items-start gap-12 py-20 md:py-24 lg:grid-cols-[0.92fr_1.08fr]">
+          <div>
             <SectionHeading
               centered={false}
               eyebrow="Why Clients Choose Us"
@@ -121,17 +154,27 @@ export default function HomePage() {
             <p className="mt-5 font-display text-[20px] italic text-clay">
               We don&apos;t cut corners. We clean them.
             </p>
+            <div className="relative mt-9 aspect-[4/5] w-full max-w-[440px] overflow-hidden rounded-[2rem] bg-sage-tint/40 shadow-lift">
+              <Image
+                src={IMAGES.heroCleaner}
+                alt="A trained Raya Elite cleaner in branded uniform"
+                fill
+                sizes="(max-width:1024px) 90vw, 40vw"
+                className="object-cover object-top"
+              />
+            </div>
           </div>
-          <div className="grid gap-x-10 gap-y-9 sm:grid-cols-2">
+          <div className="grid content-start gap-6 sm:grid-cols-2">
             {WHY_CARDS.map((c, i) => (
-              <div key={c.title} className="flex gap-4">
-                <span className={`flex h-12 w-12 flex-none items-center justify-center rounded-full ${tint[i % 2]}`}>
-                  <Sprig className="h-6 w-6" />
+              <div
+                key={c.title}
+                className="group rounded-3xl border border-ink/[0.08] bg-paper p-7 shadow-soft transition-all duration-300 hover:-translate-y-[6px] hover:shadow-lift"
+              >
+                <span className={`mb-5 flex h-12 w-12 items-center justify-center rounded-full ${tint[i % 2]}`}>
+                  {WHY_ICONS[i % WHY_ICONS.length]}
                 </span>
-                <div>
-                  <h3 className="font-display text-[20px] font-semibold text-ink">{c.title}</h3>
-                  <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{c.desc}</p>
-                </div>
+                <h3 className="font-display text-[19px] font-semibold text-ink">{c.title}</h3>
+                <p className="mt-2 text-[15px] leading-relaxed text-ink-soft">{c.desc}</p>
               </div>
             ))}
           </div>
