@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
@@ -17,12 +18,22 @@ export default function Navbar() {
       <header className="sticky top-0 z-[60] border-b border-ink/10 bg-paper/85 backdrop-blur-md">
         <div className="container-x flex h-[78px] items-center justify-between gap-6">
           {/* Wordmark */}
-          <Link href="/" className="flex flex-col leading-none" aria-label="Raya Elite home">
-            <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em] text-ink">
-              Raya Elite
-            </span>
-            <span className="mt-[5px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
-              Home &amp; Office Cleaning
+          <Link href="/" className="flex items-center gap-3" aria-label="Raya Elite home">
+            <Image
+              src="/images/raya-crest.png"
+              alt="Raya Elite crest"
+              width={584}
+              height={448}
+              priority
+              className="h-11 w-auto"
+            />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-[20px] font-semibold uppercase tracking-[0.16em] text-ink">
+                Raya Elite
+              </span>
+              <span className="mt-[5px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
+                Home &amp; Office Cleaning
+              </span>
             </span>
           </Link>
 

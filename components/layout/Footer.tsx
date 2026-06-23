@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FOOTER_SERVICES, FOOTER_COMPANY, SOCIALS, SITE } from "@/lib/constants";
 
@@ -11,12 +12,21 @@ export default function Footer() {
       <div className="container-x relative grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-12 pt-20">
         {/* Brand */}
         <div>
-          <div className="mb-5 flex flex-col leading-none">
-            <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em]">
-              Raya Elite
-            </span>
-            <span className="mt-[6px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
-              Home &amp; Office Cleaning
+          <div className="mb-5 flex items-center gap-3">
+            <Image
+              src="/images/raya-crest.png"
+              alt="Raya Elite crest"
+              width={584}
+              height={448}
+              className="h-12 w-auto"
+            />
+            <span className="flex flex-col leading-none">
+              <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em]">
+                Raya Elite
+              </span>
+              <span className="mt-[6px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
+                Home &amp; Office Cleaning
+              </span>
             </span>
           </div>
           <p className="mb-6 max-w-[260px] text-[15px] leading-relaxed text-paper/65">
