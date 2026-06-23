@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-[60] border-b border-ink/10 bg-paper/85 backdrop-blur-md">
-        <div className="container-x flex h-[78px] items-center justify-between gap-6">
+        <div className="container-x flex h-[92px] items-center justify-between gap-6">
           {/* Wordmark */}
           <Link href="/" className="flex items-center" aria-label="Raya Elite home">
             <Image
@@ -25,7 +25,7 @@ export default function Navbar() {
               width={688}
               height={687}
               priority
-              className="h-[58px] w-auto"
+              className="h-[74px] w-auto"
             />
           </Link>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
 
       {/* Mobile panel */}
       {menuOpen && (
-        <div className="sticky top-[78px] z-[55] animate-fadeIn border-b border-ink/10 bg-paper px-6 pb-6 pt-2 min-[900px]:hidden">
+        <div className="sticky top-[92px] z-[55] animate-fadeIn border-b border-ink/10 bg-paper px-6 pb-6 pt-2 min-[900px]:hidden">
           {NAV_ITEMS.map((item) => (
             <Link
               key={item.href}

@@ -151,8 +151,17 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 4 — SOCIAL PROOF */}
-      <section className="bg-clay-tint/50">
-        <div className="container-x py-20 md:py-24">
+      <section className="relative overflow-hidden">
+        <Image
+          src="/images/office-cleaning.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div aria-hidden className="absolute inset-0 bg-clay-tint/[0.88]" />
+        <div className="container-x relative py-20 md:py-24">
           <SectionHeading
             stars
             eyebrow="Client Reviews"
