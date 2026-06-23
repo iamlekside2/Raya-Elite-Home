@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { WHY_CARDS, IMAGES } from "@/lib/data";
+import { WHY_CARDS } from "@/lib/data";
 
 const svg = {
   viewBox: "0 0 24 24",
@@ -45,76 +45,68 @@ export default function WhyChooseUs() {
     const cards = listRef.current?.querySelectorAll<HTMLElement>("[data-why-card]");
     if (!cards || cards.length === 0) return;
 
-    // Respect reduced-motion: show everything immediately.
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       cards.forEach((c) => c.classList.add("why-in"));
       return;
     }
 
+    // Single spaced column + reveal as each card scrolls up => one at a time.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) {
             e.target.classList.add("why-in");
-            io.unobserve(e.target); // reveal once, one at a time as each scrolls in
+            io.unobserve(e.target);
           }
         });
       },
-      { threshold: 0.4, rootMargin: "0px 0px -18% 0px" },
+      { threshold: 0.3, rootMargin: "0px 0px -22% 0px" },
     );
     cards.forEach((c) => io.observe(c));
     return () => io.disconnect();
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-clay text-cream">
-      {/* soft gold glow for depth */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(90% 60% at 15% 0%, rgba(201,168,76,0.18), transparent 60%)",
-        }}
-      />
-      <div className="container-x relative grid gap-12 py-20 md:py-28 lg:grid-cols-[0.92fr_1.08fr]">
-        {/* Left — sticky intro + cleaner photo */}
+    <section className="bg-clay-tint">
+      <div className="container-x grid gap-12 py-20 md:py-28 lg:grid-cols-[0.95fr_1.05fr]">
+        {/* Left — sticky intro + a real "people cleaning" photo */}
         <div className="lg:sticky lg:top-24 lg:self-start">
-          <p className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
+          <p className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-clay">
             Why Clients Choose Us
           </p>
-          <h2 className="mt-4 font-display text-[clamp(30px,4vw,46px)] font-semibold leading-[1.1] text-cream">
+          <h2 className="mt-4 font-display text-[clamp(30px,4vw,46px)] font-semibold leading-[1.1] text-ink">
             Cleaning you can count on. Every single time.
           </h2>
-          <p className="mt-5 font-display text-[20px] italic text-gold">
-            We don&apos;t cut corners. We clean them.
+          <p className="mt-5 max-w-[440px] text-[16px] leading-relaxed text-ink-soft">
+            Every Raya Elite clean is handled by trained, vetted professionals who
+            treat your space like their own — so the result always speaks for itself.
           </p>
-          <div className="relative mt-9 aspect-[4/5] w-full max-w-[400px] overflow-hidden rounded-[2rem] ring-1 ring-cream/15 shadow-lift">
+          <div className="relative mt-8 aspect-[3/2] w-full overflow-hidden rounded-[2rem] shadow-lift ring-1 ring-ink/5">
             <Image
-              src={IMAGES.heroCleaner}
-              alt="A Raya Elite cleaner in branded uniform"
+              src="/images/cleaning-lady.jpeg"
+              alt="A Raya Elite cleaner detailing a living room"
               fill
-              sizes="(max-width:1024px) 90vw, 400px"
-              className="object-cover object-top"
+              sizes="(max-width:1024px) 90vw, 45vw"
+              className="object-cover"
             />
           </div>
         </div>
 
         {/* Right — cards revealed one at a time on scroll */}
-        <div ref={listRef} className="flex flex-col gap-6">
+        <div ref={listRef} className="flex flex-col gap-8">
           {WHY_CARDS.map((c, i) => (
             <div
               key={c.title}
               data-why-card
-              className="why-card flex items-start gap-5 rounded-3xl bg-cream p-8 text-ink shadow-lift"
+              className="why-card rounded-[1.75rem] bg-cream p-8 shadow-lift md:p-9"
             >
-              <span className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-clay/[0.08] text-clay">
+              <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-clay text-cream">
                 {ICONS[i % ICONS.length]}
               </span>
-              <div>
-                <h3 className="font-display text-[22px] font-semibold text-ink">{c.title}</h3>
-                <p className="mt-2 text-[15.5px] leading-relaxed text-ink-soft">{c.desc}</p>
-              </div>
+              <h3 className="mt-5 font-display text-[23px] font-semibold text-ink">
+                {c.title}
+              </h3>
+              <p className="mt-3 text-[15.5px] leading-relaxed text-ink-soft">{c.desc}</p>
             </div>
           ))}
         </div>
