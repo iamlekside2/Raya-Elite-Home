@@ -8,48 +8,51 @@ export default function TestimonialsGrid() {
   const list = filter === "All" ? TESTIMONIALS : TESTIMONIALS.filter((t) => t.cat === filter);
 
   return (
-    <section className="container-x py-[clamp(48px,6vw,80px)]">
+    <section className="container-x py-20 md:py-24">
       {/* Filters */}
-      <div className="mb-11 flex flex-wrap justify-center gap-2">
+      <div className="mb-12 flex flex-wrap justify-center gap-2">
         {TEST_FILTERS.map((f) => (
           <button
             key={f}
             type="button"
             onClick={() => setFilter(f)}
-            className="relative px-4 py-[10px] text-[13px] font-bold uppercase tracking-[1px] text-navy transition-colors hover:text-gold-text"
+            className={`rounded-full px-5 py-[10px] text-[14px] font-semibold transition-colors ${
+              filter === f
+                ? "bg-clay text-cream"
+                : "bg-cream text-ink-soft ring-1 ring-ink/10 hover:text-ink"
+            }`}
           >
             {f}
-            {filter === f && <span className="absolute inset-x-3 bottom-[2px] h-[2px] bg-gold" />}
           </button>
         ))}
       </div>
 
       {/* Grid */}
-      <div className="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-6">
+      <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-3">
         {list.map((t, i) => (
-          <div
+          <figure
             key={`${t.name}-${i}`}
-            className="flex flex-col border border-card-border bg-white px-[30px] py-8 transition-all duration-200 hover:border-gold hover:shadow-[0_14px_36px_rgba(0,33,71,0.1)]"
+            className="flex flex-col rounded-4xl border border-ink/10 bg-cream p-8 transition-all duration-200 hover:-translate-y-1 hover:shadow-soft"
           >
-            <div className="mb-[14px] flex items-center justify-between">
+            <div className="flex items-center justify-between">
               <span className="text-[14px] tracking-[2px] text-gold">★★★★★</span>
-              <span className="rounded-full bg-champagne px-3 py-[5px] text-[11px] font-bold tracking-[0.5px] text-navy">
+              <span className="rounded-full bg-sage-tint px-3 py-1 text-[12px] font-bold text-sage-deep">
                 {t.cat}
               </span>
             </div>
-            <p className="m-0 mb-[22px] flex-1 text-[15.5px] italic leading-[1.7] text-[#3a3a3a]">
+            <blockquote className="mt-5 flex-1 text-[16px] italic leading-relaxed text-ink/80">
               {t.quote}
-            </p>
-            <div className="flex items-center gap-[13px] border-t border-[#f0ece2] pt-[18px]">
-              <div className="flex h-[42px] w-[42px] items-center justify-center rounded-full bg-navy font-playfair text-[18px] font-bold text-gold">
+            </blockquote>
+            <figcaption className="mt-6 flex items-center gap-3 border-t border-ink/10 pt-5">
+              <span className="flex h-11 w-11 items-center justify-center rounded-full bg-clay-tint font-display text-[18px] font-semibold text-clay">
                 {t.initial}
-              </div>
-              <div>
-                <div className="text-[14.5px] font-bold text-navy">{t.name}</div>
-                <div className="text-[12.5px] text-[#8a8a8a]">{t.location}</div>
-              </div>
-            </div>
-          </div>
+              </span>
+              <span>
+                <span className="block text-[15px] font-bold text-ink">{t.name}</span>
+                <span className="block text-[13px] text-ink-soft">{t.location}</span>
+              </span>
+            </figcaption>
+          </figure>
         ))}
       </div>
     </section>

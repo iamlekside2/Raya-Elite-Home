@@ -20,7 +20,6 @@ export default function StatsCounter() {
       if (t < 1) raf = requestAnimationFrame(tick);
     };
 
-    // start when the band scrolls into view
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
@@ -41,18 +40,18 @@ export default function StatsCounter() {
   }, []);
 
   return (
-    <section className="bg-navy">
+    <section className="container-x py-8">
       <div
         ref={ref}
-        className="container-x grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 py-[clamp(48px,6vw,72px)] text-center"
+        className="grid gap-px overflow-hidden rounded-[2.5rem] bg-ink/10 sm:grid-cols-2 lg:grid-cols-4"
       >
         {STAT_DEFS.map((s) => (
-          <div key={s.label}>
-            <div className="font-playfair text-[clamp(38px,5vw,56px)] font-bold leading-none text-gold">
+          <div key={s.label} className="bg-clay px-6 py-12 text-center text-cream">
+            <div className="font-display text-[clamp(38px,5vw,56px)] font-semibold leading-none">
               {(s.target * progress).toFixed(s.decimals)}
               {s.suffix}
             </div>
-            <div className="mt-3 text-[13px] uppercase tracking-[1px] text-white/[0.78]">
+            <div className="mt-3 text-[13px] font-semibold uppercase tracking-[0.15em] text-cream/80">
               {s.label}
             </div>
           </div>

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { QUOTE_HELP_OPTIONS } from "@/lib/data";
 import { SITE } from "@/lib/constants";
+import Sprig from "@/components/ui/Sprig";
 
 type Props = {
   triggerLabel: string;
@@ -12,10 +13,9 @@ type Props = {
 type FormState = { name: string; email: string; phone: string; help: string; space: string };
 const empty: FormState = { name: "", email: "", phone: "", help: "", space: "" };
 
-const labelCls =
-  "flex flex-col gap-[7px] text-[12.5px] font-bold uppercase tracking-[0.5px] text-navy";
+const labelCls = "flex flex-col gap-2 text-[13px] font-bold text-ink";
 const inputCls =
-  "rounded-sm border border-[#d6cfc0] bg-[#fbf9f5] px-[14px] py-[12px] text-[15px] font-normal normal-case tracking-normal text-charcoal outline-none focus:border-gold";
+  "rounded-2xl border border-ink/15 bg-paper px-4 py-3 text-[15px] font-normal text-ink outline-none transition-colors focus:border-clay";
 
 export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
   const [open, setOpen] = useState(false);
@@ -40,6 +40,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
 
   const close = () => {
     setOpen(false);
+    // reset shortly after closing so the modal doesn't flash empty
     setTimeout(() => {
       setForm(empty);
       setStatus("idle");
@@ -82,25 +83,25 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
       {open && (
         <div
           onClick={close}
-          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto bg-[rgba(0,15,32,0.7)] p-4"
+          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto bg-ink/60 p-4 backdrop-blur-sm"
         >
           <div
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Get a free quote"
-            className="my-8 w-full max-w-[560px] animate-fadeUp bg-white p-7 shadow-[0_24px_70px_rgba(0,0,0,0.4)] md:p-9"
+            className="my-8 w-full max-w-[560px] animate-rise rounded-[2rem] bg-cream p-7 shadow-lift md:p-9"
           >
-            <div className="mb-6 flex items-start justify-between gap-4 border-b border-[#eee] pb-5">
+            <div className="mb-6 flex items-start justify-between gap-4">
               <div>
-                <div className="mb-2 inline-flex items-center gap-[9px]">
-                  <span className="diamond h-[7px] w-[7px]" />
-                  <span className="eyebrow">Free Quote</span>
+                <div className="kicker mb-2">
+                  <Sprig className="h-4 w-4 text-sage" />
+                  Free Quote
                 </div>
-                <h2 className="m-0 font-playfair text-[26px] font-bold leading-tight text-navy">
+                <h2 className="font-display text-[26px] font-semibold leading-tight text-ink">
                   Get a Free Quote
                 </h2>
-                <p className="m-0 mt-1 text-[15px] text-[#5a5a5a]">
+                <p className="mt-1 text-[15px] text-ink-soft">
                   Tell us what you need. We&apos;ll get back to you in no time.
                 </p>
               </div>
@@ -108,7 +109,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                 type="button"
                 onClick={close}
                 aria-label="Close"
-                className="-mr-1 -mt-1 flex h-9 w-9 flex-none items-center justify-center text-[26px] leading-none text-[#8a8a8a] hover:text-navy"
+                className="-mr-2 -mt-2 flex h-9 w-9 flex-none items-center justify-center rounded-full text-[24px] text-ink-soft hover:bg-ink/5"
               >
                 ×
               </button>
@@ -116,20 +117,20 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
 
             {status === "success" ? (
               <div className="py-8 text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald text-[32px] text-white">
-                  ✓
+                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage-deep text-cream">
+                  <Sprig className="h-8 w-8" />
                 </div>
-                <p className="mx-auto mt-5 max-w-[360px] text-[16px] font-bold text-navy">
+                <p className="mx-auto mt-5 max-w-[360px] text-[17px] font-semibold text-ink">
                   Thank you. We&apos;ll be in touch within 2 hours.
                 </p>
-                <button type="button" onClick={close} className="btn-outline-navy mt-6 px-7 py-3 text-[14px]">
+                <button type="button" onClick={close} className="btn-outline mt-6 px-7 py-3 text-[14px]">
                   Close
                 </button>
               </div>
             ) : (
               <form onSubmit={onSubmit} className="flex flex-col gap-4">
                 {status === "error" && (
-                  <div className="border-l-[3px] border-[#b3261e] bg-[#fbeaea] px-4 py-3 text-[13.5px] text-[#8a1e18]">
+                  <div className="rounded-2xl border-l-4 border-clay bg-clay-tint px-4 py-3 text-[14px] font-semibold text-clay-deep">
                     Something went wrong. Please try again or call us at {SITE.phone}.
                   </div>
                 )}
@@ -137,7 +138,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                   Full Name *
                   <input type="text" placeholder="Your full name" value={form.name} onChange={set("name")} className={inputCls} />
                 </label>
-                <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+                <div className="grid gap-4 sm:grid-cols-2">
                   <label className={labelCls}>
                     Email Address *
                     <input type="email" placeholder="Your email address" value={form.email} onChange={set("email")} className={inputCls} />
@@ -168,7 +169,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                     className={`${inputCls} resize-y`}
                   />
                 </label>
-                <button type="submit" disabled={status === "sending"} className="btn-primary mt-1 min-h-[52px] py-4 text-[15px] disabled:opacity-70">
+                <button type="submit" disabled={status === "sending"} className="btn-clay mt-1 py-4 text-[16px] disabled:opacity-70">
                   {status === "sending" ? "Sending…" : "Send My Quote Request"}
                 </button>
               </form>

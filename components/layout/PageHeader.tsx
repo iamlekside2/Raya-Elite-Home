@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Sprig from "@/components/ui/Sprig";
 
 type Props = {
   img: string;
@@ -7,9 +8,9 @@ type Props = {
   title: string;
   subtitle?: React.ReactNode;
   tagline?: string;
-  centered?: boolean;
   stars?: boolean;
-  /** decorative rotated outline square position */
+  /** kept for call-site compatibility; no longer used visually */
+  centered?: boolean;
   corner?: "tr" | "bl";
 };
 
@@ -20,46 +21,43 @@ export default function PageHeader({
   title,
   subtitle,
   tagline,
-  centered = false,
   stars = false,
-  corner = "tr",
 }: Props) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-navy-deep via-navy to-navy-light">
-      <Image
-        src={img}
-        alt={imgAlt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover"
-      />
-      <div className="overlay-banner absolute inset-0" />
-      <div
-        className={`pointer-events-none absolute h-[280px] w-[280px] rotate-45 border border-gold/20 ${
-          corner === "tr" ? "-right-10 -top-14" : "-bottom-16 -left-12"
-        }`}
-      />
-      <div
-        className={`container-x relative py-[clamp(52px,6.5vw,88px)] ${
-          centered ? "text-center" : ""
-        }`}
-      >
-        {stars && (
-          <span className="text-[24px] tracking-[5px] text-gold">★★★★★</span>
-        )}
-        {breadcrumb && (
-          <div className="mb-[14px] text-[12px] tracking-[2px] text-white/55">{breadcrumb}</div>
-        )}
-        <h1 className="m-0 font-playfair text-[clamp(34px,5vw,54px)] font-bold leading-[1.08] text-white">
-          {title}
-        </h1>
-        {tagline && (
-          <p className="m-0 mt-3 text-[17px] italic tracking-[1px] text-gold">{tagline}</p>
-        )}
-        {subtitle && (
-          <div className="mt-[14px] text-[16px] leading-[1.6] text-white/[0.78]">{subtitle}</div>
-        )}
+    <section className="paper-grain relative overflow-hidden bg-paper-2">
+      <div className="pointer-events-none absolute -left-24 top-10 h-72 w-72 rounded-full bg-sage-tint/60 blur-3xl" />
+      <div className="container-x relative grid items-center gap-12 py-16 md:py-20 lg:grid-cols-[1.05fr_0.95fr]">
+        {/* Text */}
+        <div className="animate-rise">
+          {breadcrumb && (
+            <div className="mb-4 text-[13px] font-semibold uppercase tracking-[0.18em] text-ink-soft">
+              {breadcrumb}
+            </div>
+          )}
+          {stars && <div className="mb-3 text-[18px] tracking-[4px] text-gold">★★★★★</div>}
+          <h1 className="font-display text-[clamp(36px,5.4vw,58px)] font-semibold leading-[1.05] tracking-[-0.01em] text-ink">
+            {title}
+          </h1>
+          {tagline && (
+            <p className="mt-4 font-display text-[20px] italic text-clay">{tagline}</p>
+          )}
+          {subtitle && (
+            <div className="mt-5 max-w-[520px] text-[17px] leading-relaxed text-ink-soft">
+              {subtitle}
+            </div>
+          )}
+        </div>
+
+        {/* Arched image */}
+        <div className="relative mx-auto w-full max-w-[440px]">
+          <div className="absolute -right-4 -top-4 h-24 w-24 rounded-full border-[6px] border-clay-tint" />
+          <div className="arch relative aspect-[4/5] overflow-hidden shadow-lift">
+            <Image src={img} alt={imgAlt} fill priority sizes="(max-width:1024px) 90vw, 440px" className="object-cover" />
+          </div>
+          <div className="absolute -bottom-5 -left-5 flex h-16 w-16 items-center justify-center rounded-full bg-cream text-sage-deep shadow-soft">
+            <Sprig className="h-8 w-8" />
+          </div>
+        </div>
       </div>
     </section>
   );

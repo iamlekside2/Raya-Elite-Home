@@ -27,22 +27,20 @@ export default function TestimonialsPage() {
       <PageHeader
         img={IMAGES.testimonialsHeader}
         imgAlt="Clean, comfortable home interior"
-        title="Client Testimonials"
+        title="Client testimonials"
         subtitle="Maryland's Most Trusted Cleaning Service"
-        centered
         stars
-        corner="bl"
       />
 
       {/* STATS BAR */}
-      <section className="border-b border-[#eee] bg-white">
-        <div className="container-x grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-6 py-9 text-center">
+      <section className="container-x py-12">
+        <div className="grid gap-5 rounded-[2.5rem] bg-sand px-6 py-10 sm:grid-cols-3">
           {STATS.map((s) => (
-            <div key={s.label}>
-              <div className="font-playfair text-[clamp(34px,4vw,46px)] font-bold text-navy">
+            <div key={s.label} className="text-center">
+              <div className="font-display text-[clamp(34px,4vw,48px)] font-semibold text-clay">
                 {s.num}
               </div>
-              <div className="mt-[6px] text-[13px] font-bold uppercase tracking-[1px] text-gold-text">
+              <div className="mt-1 text-[13px] font-bold uppercase tracking-[0.15em] text-ink-soft">
                 {s.label}
               </div>
             </div>
@@ -50,7 +48,6 @@ export default function TestimonialsPage() {
         </div>
       </section>
 
-      {/* Production review source — renders when Birdeye is configured */}
       <div className="container-x">
         <BirdeyeWidget />
       </div>
@@ -60,15 +57,15 @@ export default function TestimonialsPage() {
       <TestimonialsGrid />
 
       {/* BOTTOM CTA */}
-      <section className="bg-champagne">
-        <div className="mx-auto max-w-[820px] px-6 py-[clamp(50px,6.5vw,80px)] text-center">
-          <h2 className="m-0 mb-[14px] font-playfair text-[clamp(26px,3.6vw,40px)] font-bold text-navy">
-            Loved Your Service?
+      <section className="container-x pb-24">
+        <div className="rounded-[2.5rem] bg-clay-tint px-8 py-16 text-center md:px-14">
+          <h2 className="mx-auto max-w-[640px] font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-tight text-ink">
+            Loved your service?
           </h2>
-          <p className="m-0 mb-[30px] text-[16px] text-[#6b5d3a]">
+          <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-ink-soft">
             Share your experience and help others discover the Raya Elite difference.
           </p>
-          <Link href="/contact" className="btn-primary min-h-[54px] px-10 py-[17px] text-[15px]">
+          <Link href="/contact" className="btn-clay mt-8 px-9 py-4 text-[16px]">
             Leave a Review
           </Link>
         </div>

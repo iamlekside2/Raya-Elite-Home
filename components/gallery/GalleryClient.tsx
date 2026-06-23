@@ -38,40 +38,47 @@ export default function GalleryClient() {
   return (
     <>
       {/* Filters */}
-      <section className="container-x py-[clamp(44px,5.5vw,72px)]">
+      <section className="container-x py-16 md:py-20">
         <div className="mb-10 flex flex-wrap justify-center gap-2">
           {GALLERY_FILTERS.map((f) => (
             <button
               key={f}
               type="button"
               onClick={() => setFilter(f)}
-              className="relative px-[14px] py-[10px] text-[12.5px] font-bold uppercase tracking-[1px] text-navy transition-colors hover:text-gold-text"
+              className={`rounded-full px-5 py-[10px] text-[13px] font-semibold transition-colors ${
+                filter === f
+                  ? "bg-clay text-cream"
+                  : "bg-cream text-ink-soft ring-1 ring-ink/10 hover:text-ink"
+              }`}
             >
               {f}
-              {filter === f && (
-                <span className="absolute inset-x-[10px] bottom-[2px] h-[2px] bg-gold" />
-              )}
             </button>
           ))}
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-[18px]">
+        <div className="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
           {list.map((g, i) => (
             <button
               key={`${g.title}-${i}`}
               type="button"
               onClick={() => open(i)}
-              className="group relative block h-[240px] overflow-hidden bg-navy-img transition-opacity hover:opacity-95"
+              className="group relative block h-[260px] overflow-hidden rounded-3xl bg-sage-deep"
             >
-              <Image src={g.img} alt={g.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover" />
-              <span className="absolute left-[14px] top-[14px] whitespace-nowrap bg-gold/95 px-[11px] py-[5px] text-[10.5px] font-bold uppercase tracking-[0.5px] text-navy">
+              <Image
+                src={g.img}
+                alt={g.title}
+                fill
+                sizes="(max-width:768px) 100vw, 33vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-clay">
                 {g.tag}
               </span>
-              <div className="absolute inset-0 flex items-end bg-gradient-to-b from-transparent via-transparent to-[rgba(0,15,32,0.78)] p-[18px]">
+              <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink/75 via-transparent to-transparent p-5">
                 <div className="text-left">
-                  <div className="font-playfair text-[18px] font-bold text-white">{g.title}</div>
-                  <div className="mt-[3px] text-[12px] text-champagne/75">{g.cat}</div>
+                  <div className="font-display text-[18px] font-semibold text-cream">{g.title}</div>
+                  <div className="mt-[2px] text-[12px] text-cream/75">{g.cat}</div>
                 </div>
               </div>
             </button>
@@ -83,13 +90,13 @@ export default function GalleryClient() {
       {item && (
         <div
           onClick={close}
-          className="fixed inset-0 z-[100] flex animate-fadeIn items-center justify-center bg-[rgba(0,15,32,0.92)] p-8"
+          className="fixed inset-0 z-[100] flex animate-fadeIn items-center justify-center bg-ink/90 p-6"
         >
           <button
             type="button"
             onClick={close}
             aria-label="Close"
-            className="absolute right-7 top-6 text-[34px] leading-none text-white"
+            className="absolute right-6 top-5 text-[36px] leading-none text-cream"
           >
             ×
           </button>
@@ -100,7 +107,7 @@ export default function GalleryClient() {
               step(-1);
             }}
             aria-label="Previous"
-            className="absolute left-6 top-1/2 h-[52px] w-[52px] -translate-y-1/2 border border-gold/50 bg-white/10 text-[24px] text-gold"
+            className="absolute left-5 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/10 text-[24px] text-cream ring-1 ring-cream/30 hover:bg-cream/20"
           >
             ‹
           </button>
@@ -111,16 +118,16 @@ export default function GalleryClient() {
               step(1);
             }}
             aria-label="Next"
-            className="absolute right-6 top-1/2 h-[52px] w-[52px] -translate-y-1/2 border border-gold/50 bg-white/10 text-[24px] text-gold"
+            className="absolute right-5 top-1/2 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-cream/10 text-[24px] text-cream ring-1 ring-cream/30 hover:bg-cream/20"
           >
             ›
           </button>
 
           <div onClick={(e) => e.stopPropagation()} className="w-full max-w-[900px]">
             {!isBA ? (
-              <div className="relative h-[min(70vh,560px)] overflow-hidden border-[6px] border-white bg-navy-img shadow-[0_24px_70px_rgba(0,0,0,0.5)]">
+              <div className="relative h-[min(70vh,560px)] overflow-hidden rounded-3xl border-[6px] border-cream bg-sage-deep shadow-lift">
                 <Image src={item.img} alt={item.title} fill sizes="900px" className="object-cover" />
-                <span className="absolute left-[18px] top-[18px] bg-gold/95 px-[13px] py-[6px] text-[11px] font-bold uppercase tracking-[0.5px] text-navy">
+                <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-clay">
                   {item.tag}
                 </span>
               </div>
@@ -133,7 +140,7 @@ export default function GalleryClient() {
                 onPointerMove={(e) => dragging && updateBA(e)}
                 onPointerUp={() => setDragging(false)}
                 onPointerLeave={() => setDragging(false)}
-                className="relative h-[min(70vh,560px)] touch-none select-none overflow-hidden border-[6px] border-white bg-navy-img shadow-[0_24px_70px_rgba(0,0,0,0.5)] [cursor:ew-resize]"
+                className="relative h-[min(70vh,560px)] touch-none select-none overflow-hidden rounded-3xl border-[6px] border-cream bg-sage-deep shadow-lift [cursor:ew-resize]"
               >
                 {/* AFTER (full color) */}
                 <Image
@@ -143,14 +150,11 @@ export default function GalleryClient() {
                   sizes="900px"
                   className="pointer-events-none object-cover"
                 />
-                <span className="pointer-events-none absolute right-4 top-4 bg-gold/95 px-[13px] py-[6px] text-[11px] font-bold tracking-[1px] text-navy">
+                <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-clay px-3 py-1 text-[11px] font-bold tracking-wider text-cream">
                   AFTER
                 </span>
                 {/* BEFORE (graded) clipped */}
-                <div
-                  className="absolute inset-0"
-                  style={{ clipPath: `inset(0 ${100 - baPos}% 0 0)` }}
-                >
+                <div className="absolute inset-0" style={{ clipPath: `inset(0 ${100 - baPos}% 0 0)` }}>
                   <Image
                     src={item.img}
                     alt={`${item.title} before`}
@@ -159,26 +163,26 @@ export default function GalleryClient() {
                     className="pointer-events-none object-cover [filter:grayscale(0.55)_brightness(0.62)_sepia(0.45)_contrast(0.92)]"
                   />
                   <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-[rgba(40,33,20,0.35)] to-[rgba(0,0,0,0.25)]" />
-                  <span className="pointer-events-none absolute left-4 top-4 bg-white/85 px-[13px] py-[6px] text-[11px] font-bold tracking-[1px] text-[#241f17]">
+                  <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-cream/85 px-3 py-1 text-[11px] font-bold tracking-wider text-ink">
                     BEFORE
                   </span>
                 </div>
                 {/* Handle */}
                 <div
-                  className="pointer-events-none absolute bottom-0 top-0 w-[3px] -translate-x-[1.5px] bg-white shadow-[0_0_14px_rgba(0,0,0,0.4)]"
+                  className="pointer-events-none absolute bottom-0 top-0 w-[3px] -translate-x-[1.5px] bg-cream shadow-[0_0_14px_rgba(0,0,0,0.4)]"
                   style={{ left: `${baPos}%` }}
                 />
                 <div
-                  className="pointer-events-none absolute top-1/2 flex h-[44px] w-[44px] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-white text-[18px] text-navy shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
+                  className="pointer-events-none absolute top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-cream text-[18px] text-clay shadow-[0_4px_14px_rgba(0,0,0,0.4)]"
                   style={{ left: `${baPos}%` }}
                 >
                   ↔
                 </div>
               </div>
             )}
-            <div className="mt-[18px] text-center">
-              <div className="font-playfair text-[22px] font-bold text-white">{item.title}</div>
-              <div className="mt-[5px] text-[13px] text-champagne/70">{item.cat}</div>
+            <div className="mt-5 text-center">
+              <div className="font-display text-[22px] font-semibold text-cream">{item.title}</div>
+              <div className="mt-1 text-[13px] text-cream/70">{item.cat}</div>
             </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
+import Sprig from "@/components/ui/Sprig";
+
 type Props = {
   eyebrow?: string;
-  /** diamond on both sides of the eyebrow (centered style) */
+  /** kept for call-site compatibility */
   flankEyebrow?: boolean;
   title: React.ReactNode;
   subtitle?: React.ReactNode;
@@ -11,7 +13,6 @@ type Props = {
 
 export default function SectionHeading({
   eyebrow,
-  flankEyebrow = false,
   title,
   subtitle,
   stars = false,
@@ -20,20 +21,21 @@ export default function SectionHeading({
 }: Props) {
   return (
     <div className={`${centered ? "text-center" : ""} ${className}`}>
-      {stars && <span className="text-[22px] tracking-[4px] text-gold">★★★★★</span>}
+      {stars && <div className="mb-3 text-[20px] tracking-[4px] text-gold">★★★★★</div>}
       {eyebrow && (
-        <div
-          className={`mb-4 inline-flex items-center gap-[9px] ${stars ? "mt-3" : ""}`}
-        >
-          {flankEyebrow && <span className="diamond h-[7px] w-[7px]" />}
-          <span className="eyebrow">{eyebrow}</span>
-          {flankEyebrow && <span className="diamond h-[7px] w-[7px]" />}
+        <div className={`kicker mb-4 ${centered ? "justify-center" : ""}`}>
+          <Sprig className="h-4 w-4 text-sage" />
+          {eyebrow}
         </div>
       )}
-      <h2 className="m-0 font-playfair text-[clamp(26px,3.6vw,40px)] font-bold leading-[1.12] text-navy">
+      <h2 className="m-0 font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-[1.1] tracking-[-0.01em] text-ink">
         {title}
       </h2>
-      {subtitle && <div className="mt-2 text-[15px] text-charcoal/70">{subtitle}</div>}
+      {subtitle && (
+        <div className={`mt-3 text-[16px] text-ink-soft ${centered ? "mx-auto max-w-[560px]" : ""}`}>
+          {subtitle}
+        </div>
+      )}
     </div>
   );
 }

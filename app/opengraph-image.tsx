@@ -17,8 +17,8 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "linear-gradient(130deg,#00152e 0%,#002147 48%,#0a3262 100%)",
-          color: "#fff",
+          background: "#FAF6EF",
+          color: "#2E2A24",
           fontFamily: "Georgia, serif",
           position: "relative",
         }}
@@ -27,32 +27,60 @@ export default function OpengraphImage() {
           style={{
             position: "absolute",
             right: -120,
-            top: 140,
+            top: 120,
             width: 420,
             height: 420,
-            border: "1px solid rgba(201,168,76,0.25)",
-            transform: "rotate(45deg)",
+            borderRadius: 9999,
+            background: "#F0D9CE",
           }}
         />
-        <div style={{ display: "flex", alignItems: "center", gap: 22, marginBottom: 28 }}>
-          <div style={{ width: 34, height: 34, background: "#C9A84C", transform: "rotate(45deg)" }} />
-          <div style={{ fontSize: 64, fontWeight: 700, letterSpacing: 8 }}>RAYA ELITE</div>
+        <div
+          style={{
+            position: "absolute",
+            left: -90,
+            bottom: -90,
+            width: 320,
+            height: 320,
+            borderRadius: 9999,
+            background: "#DCE2D0",
+          }}
+        />
+        <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 26, position: "relative" }}>
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 9999,
+              background: "#DCE2D0",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              color: "#5C6A4A",
+              fontSize: 34,
+            }}
+          >
+            ❧
+          </div>
+          <div style={{ fontSize: 60, fontWeight: 600, letterSpacing: -1 }}>Raya Elite</div>
         </div>
         <div
           style={{
-            fontSize: 30,
-            color: "#C9A84C",
-            letterSpacing: 3,
+            fontSize: 22,
+            color: "#C0603F",
+            letterSpacing: 6,
             textTransform: "uppercase",
-            marginBottom: 36,
+            marginBottom: 34,
+            position: "relative",
+            fontFamily: "system-ui, sans-serif",
+            fontWeight: 700,
           }}
         >
           Home &amp; Office Cleaning
         </div>
-        <div style={{ fontSize: 40, maxWidth: 880, textAlign: "center", lineHeight: 1.2 }}>
-          Maryland&apos;s Most Trusted Luxury Cleaning Service
+        <div style={{ fontSize: 44, maxWidth: 860, textAlign: "center", lineHeight: 1.15, position: "relative" }}>
+          A home that feels cared for, every time.
         </div>
-        <div style={{ fontSize: 24, color: "rgba(255,255,255,0.8)", marginTop: 30 }}>
+        <div style={{ fontSize: 22, color: "#6B6258", marginTop: 28, position: "relative", fontFamily: "system-ui, sans-serif" }}>
           Maryland &amp; Washington D.C.
         </div>
       </div>
