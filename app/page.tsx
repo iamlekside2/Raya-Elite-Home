@@ -49,68 +49,61 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
-      {/* SECTION 1 — HERO */}
-      <section className="paper-grain relative overflow-hidden">
-        <div className="pointer-events-none absolute -right-32 top-0 h-[460px] w-[460px] rounded-full bg-clay-tint/50 blur-3xl" />
-        <div className="pointer-events-none absolute -left-24 top-40 h-80 w-80 rounded-full bg-sage-tint/50 blur-3xl" />
-        <div className="container-x relative py-16 md:py-20">
-          {/* Headline + CTAs */}
-          <div className="mx-auto max-w-[880px] animate-rise text-center">
-            <div className="kicker mb-5 justify-center">
-              <Sprig className="h-4 w-4 text-sage" />
-              Serving Maryland &amp; Washington D.C.
+      {/* SECTION 1 — HERO (navy/gold, ported from the first design) */}
+      <section
+        className="relative flex min-h-[86vh] items-center overflow-hidden"
+        style={{ background: "linear-gradient(130deg,#00152e 0%,#002147 48%,#0a3262 100%)" }}
+      >
+        <Image
+          src={IMAGES.heroTeam}
+          alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-[60%_22%]"
+        />
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "radial-gradient(circle at 80% 28%, rgba(201,168,76,0.18), transparent 48%), linear-gradient(90deg, rgba(0,12,28,0.94) 0%, rgba(0,24,52,0.82) 42%, rgba(0,33,71,0.42) 75%, rgba(0,33,71,0.25) 100%)",
+          }}
+        />
+        <div className="pointer-events-none absolute -right-[60px] top-1/2 h-[520px] w-[520px] -translate-y-1/2 rotate-45 border border-[#C9A84C]/[0.18]" />
+        <div className="container-x relative py-20">
+          <div className="max-w-[660px] animate-rise">
+            <div className="mb-[30px] inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/50 px-[18px] py-2">
+              <span className="inline-block h-[7px] w-[7px] rotate-45 bg-[#C9A84C]" />
+              <span className="text-[11px] uppercase tracking-[2.5px] text-[#F5E6CA]">
+                Serving Maryland &amp; Washington D.C.
+              </span>
             </div>
-            <h1 className="font-display text-[clamp(40px,6vw,68px)] font-semibold leading-[1.03] tracking-[-0.02em] text-ink">
-              Maryland&apos;s Most Trusted{" "}
-              <span className="underline-sketch text-clay">Luxury Cleaning</span> Service
+            <h1 className="m-0 mb-6 font-playfair text-[clamp(38px,5.4vw,62px)] font-bold leading-[1.07] text-white">
+              Maryland&apos;s Most Trusted Luxury Cleaning Service
             </h1>
-            <p className="mx-auto mt-6 max-w-[620px] text-[18px] leading-relaxed text-ink-soft">
+            <p className="m-0 mb-[38px] max-w-[580px] text-[clamp(16px,1.5vw,19px)] leading-[1.7] text-white/[0.85]">
               Your home or office reflects who you are. We make sure it always looks the part — with
               thorough, professional cleaning that respects your space, your time, and your standards.
             </p>
-            <div className="mt-9 flex flex-wrap justify-center gap-4">
-              <Link href="/book" className="btn-clay px-8 py-4 text-[16px]">
+            <div className="mb-[46px] flex flex-wrap gap-4">
+              <Link
+                href="/book"
+                className="inline-flex min-h-[54px] items-center justify-center rounded-sm bg-[#C9A84C] px-[34px] py-[17px] text-[15px] font-bold text-[#002147] transition-colors hover:bg-white"
+              >
                 Book Your Cleaning
               </Link>
-              <QuoteModal triggerLabel="Get a Free Quote" triggerClassName="btn-outline px-8 py-4 text-[16px]" />
-            </div>
-            <div className="mt-9 flex flex-wrap items-center justify-center gap-x-5 gap-y-3 text-[14px] text-ink-soft">
-              <span className="text-[17px] tracking-[2px] text-gold">★★★★★</span>
-              <span className="font-semibold text-ink">500+ Satisfied Clients</span>
-              <span className="h-1 w-1 rounded-full bg-clay" />
-              <span>Bonded &amp; Insured</span>
-              <span className="h-1 w-1 rounded-full bg-clay" />
-              <span>Same-Day Response Guaranteed</span>
-            </div>
-          </div>
-
-          {/* Wide team photo */}
-          <div className="relative mx-auto mt-14 w-full max-w-[1080px] animate-rise">
-            <div className="relative aspect-[16/10] overflow-hidden rounded-[2.5rem] bg-gradient-to-b from-sage-tint to-clay-tint shadow-lift sm:aspect-[2/1]">
-              <Image
-                src={IMAGES.heroTeam}
-                alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
-                fill
-                priority
-                sizes="(max-width:1100px) 92vw, 1080px"
-                className="object-cover"
+              <QuoteModal
+                triggerLabel="Get a Free Quote"
+                triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-sm border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-colors hover:border-white hover:bg-white hover:text-[#002147]"
               />
             </div>
-            <div className="absolute -left-3 top-8 flex items-center gap-3 rounded-2xl bg-cream px-4 py-3 shadow-soft sm:-left-6">
-              <span className="flex h-9 w-9 items-center justify-center rounded-full bg-sage-tint text-sage-deep">
-                <Sprig className="h-5 w-5" />
-              </span>
-              <span className="text-[13px] font-bold leading-tight text-ink">
-                Eco-friendly
-                <br />
-                products
-              </span>
-            </div>
-            <div className="absolute -bottom-5 right-4 rounded-2xl bg-cream px-5 py-3 text-center shadow-soft sm:right-8">
-              <div className="font-display text-[24px] font-semibold text-clay">5.0</div>
-              <div className="text-[11px] font-semibold uppercase tracking-wider text-ink-soft">
-                Google rating
-              </div>
+            <div className="flex flex-wrap items-center gap-[18px] border-t border-white/10 pt-[30px]">
+              <span className="text-[18px] tracking-[3px] text-[#C9A84C]">★★★★★</span>
+              <span className="text-[14px] text-white/90">500+ Satisfied Clients</span>
+              <span className="text-[#C9A84C]/50">·</span>
+              <span className="text-[14px] text-white/90">Bonded &amp; Insured</span>
+              <span className="text-[#C9A84C]/50">·</span>
+              <span className="text-[14px] text-white/90">Same-Day Response Guaranteed</span>
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Fraunces, Nunito_Sans } from "next/font/google";
+import { Fraunces, Nunito_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -23,6 +23,14 @@ const nunito = Nunito_Sans({
   display: "swap",
 });
 
+// Used only by the navy/gold hero ported from the first design.
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
@@ -42,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${fraunces.variable} ${nunito.variable}`}>
+    <html lang="en" className={`${fraunces.variable} ${nunito.variable} ${playfair.variable}`}>
       <body className="bg-paper font-sans text-ink antialiased">
         <GA4Script />
         <FBPixelScript />

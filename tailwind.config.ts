@@ -23,6 +23,7 @@ const config: Config = {
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],
         sans: ["var(--font-nunito)", "system-ui", "sans-serif"],
+        playfair: ["var(--font-playfair)", "Georgia", "serif"],
       },
       maxWidth: {
         container: "1200px",
