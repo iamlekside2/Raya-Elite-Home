@@ -233,7 +233,7 @@ export default function HomePage() {
             className="mb-14"
           />
           <div className="grid gap-7 md:grid-cols-3">
-            {HOME_REVIEWS.slice(0, 3).map((r) => (
+            {HOME_REVIEWS.map((r) => (
               <figure key={r.name} className="rounded-4xl bg-cream p-8 shadow-soft">
                 <div className="font-display text-[48px] leading-[0.4] text-clay">“</div>
                 <span className="mt-4 inline-block text-[14px] tracking-[2px] text-gold">★★★★★</span>
