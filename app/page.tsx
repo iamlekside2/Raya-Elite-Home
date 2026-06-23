@@ -6,6 +6,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import TrustBadges from "@/components/ui/TrustBadges";
 import BirdeyeWidget from "@/components/reviews/BirdeyeWidget";
 import QuoteModal from "@/components/ui/QuoteModal";
+import LeadForm from "@/components/ui/LeadForm";
 import WhyChooseUs from "@/components/marketing/WhyChooseUs";
 import {
   IMAGES,
@@ -195,37 +196,38 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 5 — HOW IT WORKS */}
-      <section className="container-x py-20 md:py-24">
-        <SectionHeading
-          eyebrow="The Process"
-          title="From first click to squeaky clean"
-          subtitle="We've made booking as simple as possible. No back-and-forth. No uncertainty. Just a clean home or office, on your schedule."
-          className="mb-16"
-        />
-        <div className="relative grid gap-8 md:grid-cols-3">
-          <div className="pointer-events-none absolute left-[16%] right-[16%] top-9 hidden border-t-2 border-dashed border-clay/30 md:block" />
-          {HOW_STEPS.map((s) => (
-            <div
-              key={s.n}
-              className="group relative rounded-3xl border border-ink/[0.08] bg-cream p-8 text-center shadow-soft transition-all duration-300 hover:-translate-y-[6px] hover:border-clay hover:bg-clay hover:shadow-lift"
-            >
-              <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-clay bg-paper font-display text-[28px] font-semibold text-clay transition-colors duration-300 group-hover:border-cream/70 group-hover:bg-cream/10 group-hover:text-cream">
-                {s.n}
+      {/* SECTION 5 — HOW IT WORKS (navy band, white cards) */}
+      <section className="bg-clay py-20 text-cream md:py-24">
+        <div className="container-x">
+          <SectionHeading
+            light
+            eyebrow="The Process"
+            title="From first click to squeaky clean"
+            subtitle="We've made booking as simple as possible. No back-and-forth. No uncertainty. Just a clean home or office, on your schedule."
+            className="mb-16"
+          />
+          <div className="relative grid gap-8 md:grid-cols-3">
+            <div className="pointer-events-none absolute left-[16%] right-[16%] top-9 hidden border-t-2 border-dashed border-cream/25 md:block" />
+            {HOW_STEPS.map((s) => (
+              <div
+                key={s.n}
+                className="relative rounded-3xl bg-cream p-8 text-center shadow-lift transition-transform duration-300 hover:-translate-y-[6px]"
+              >
+                <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full border-2 border-clay bg-paper font-display text-[28px] font-semibold text-clay">
+                  {s.n}
+                </div>
+                <h3 className="mt-6 font-display text-[21px] font-semibold text-ink">{s.title}</h3>
+                <p className="mx-auto mt-2 max-w-[300px] text-[15px] leading-relaxed text-ink-soft">
+                  {s.desc}
+                </p>
               </div>
-              <h3 className="mt-6 font-display text-[21px] font-semibold text-ink transition-colors duration-300 group-hover:text-cream">
-                {s.title}
-              </h3>
-              <p className="mx-auto mt-2 max-w-[300px] text-[15px] leading-relaxed text-ink-soft transition-colors duration-300 group-hover:text-cream/85">
-                {s.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-        <div className="mt-14 text-center">
-          <Link href="/book" className="btn-clay px-9 py-4 text-[16px]">
-            Ready to Get Started? Book Your Cleaning
-          </Link>
+            ))}
+          </div>
+          <div className="mt-14 text-center">
+            <Link href="/book" className="btn-sage px-9 py-4 text-[16px]">
+              Ready to Get Started? Book Your Cleaning
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -289,39 +291,51 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 9 — CTA BANNER */}
+      {/* SECTION 9 — LEAD CAPTURE */}
       <section className="container-x pb-24">
-        <div className="relative grid items-center gap-10 overflow-hidden rounded-[2.5rem] bg-clay px-8 py-14 text-cream md:grid-cols-[1.2fr_0.8fr] md:px-14">
-          <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-cream/10" />
-          <div className="relative">
-            <h2 className="font-display text-[clamp(30px,4vw,46px)] font-semibold leading-tight">
-              Ready for a spotless space?
-            </h2>
-            <p className="mt-4 max-w-[480px] text-[17px] text-cream/85">
-              Book online in under two minutes. No payment required today. Our team will confirm your
-              appointment the same day.
-            </p>
-            <div className="mt-8 flex flex-wrap items-center gap-4">
-              <Link href="/book" className="btn-outline-light px-9 py-4 text-[16px]">
-                Book Now
-              </Link>
-              <QuoteModal
-                triggerLabel="Get a Free Quote"
-                triggerClassName="rounded-full bg-cream/15 px-7 py-4 text-[16px] font-bold text-cream transition-all duration-200 hover:-translate-y-[3px] hover:bg-cream/25 hover:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.45)] active:translate-y-0"
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-clay px-7 py-12 text-cream md:px-12 md:py-14">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-0"
+            style={{
+              background:
+                "radial-gradient(80% 60% at 12% 0%, rgba(201,168,76,0.16), transparent 60%)",
+            }}
+          />
+          <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+            {/* Left — pitch + cleaner */}
+            <div className="flex flex-col">
+              <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
+                Book In Minutes
+              </span>
+              <h2 className="mt-4 font-display text-[clamp(30px,4vw,46px)] font-semibold leading-tight text-cream">
+                Ready for a spotless space?
+              </h2>
+              <p className="mt-4 max-w-[460px] text-[17px] leading-relaxed text-cream/85">
+                Fill in the form and our team will confirm your appointment the same day. No payment
+                required today.
+              </p>
+              <p className="mt-4 text-[14px] text-cream/75">
+                Prefer to talk first?{" "}
+                <a
+                  href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`}
+                  className="font-semibold text-gold underline underline-offset-2"
+                >
+                  Call us
+                </a>
+                .
+              </p>
+              <Image
+                src="/images/form-lady.png"
+                alt="A friendly Raya Elite cleaner"
+                width={942}
+                height={1572}
+                className="mt-6 hidden w-[300px] max-w-full self-start md:block"
               />
             </div>
-            <p className="mt-5 text-[14px] text-cream/75">
-              Prefer to talk first?{" "}
-              <a href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`} className="font-semibold underline underline-offset-2">
-                Call us
-              </a>
-              .
-            </p>
-          </div>
-          <div className="relative mx-auto hidden w-full max-w-[280px] md:block">
-            <div className="arch-sm relative aspect-[3/4] overflow-hidden shadow-lift">
-              <Image src={IMAGES.ctaKitchen} alt="Spotless bright kitchen cleaned by Raya Elite" fill sizes="280px" className="object-cover" />
-            </div>
+
+            {/* Right — full lead-capture form */}
+            <LeadForm />
           </div>
         </div>
       </section>
