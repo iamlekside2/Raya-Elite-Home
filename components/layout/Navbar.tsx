@@ -18,23 +18,15 @@ export default function Navbar() {
       <header className="sticky top-0 z-[60] border-b border-ink/10 bg-paper/85 backdrop-blur-md">
         <div className="container-x flex h-[78px] items-center justify-between gap-6">
           {/* Wordmark */}
-          <Link href="/" className="flex items-center gap-3" aria-label="Raya Elite home">
+          <Link href="/" className="flex items-center" aria-label="Raya Elite home">
             <Image
-              src="/images/raya-crest.png"
-              alt="Raya Elite crest"
-              width={584}
-              height={448}
+              src="/images/raya-logo.png"
+              alt="Raya Elite — Home & Office Cleaning"
+              width={684}
+              height={751}
               priority
-              className="h-11 w-auto"
+              className="h-[58px] w-auto"
             />
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-[20px] font-semibold uppercase tracking-[0.16em] text-ink">
-                Raya Elite
-              </span>
-              <span className="mt-[5px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
-                Home &amp; Office Cleaning
-              </span>
-            </span>
           </Link>
 
           {/* Desktop nav */}

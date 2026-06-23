@@ -5,20 +5,22 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Warm boutique palette — paper, clay, sage, ink
+        // Brand palette — navy + gold (from the Raya Elite logo), cream neutrals.
+        // NB: token names kept (clay/sage) to avoid churn; clay now = brand navy,
+        // sage now = brand gold.
         paper: "#FAF6EF", // primary cream background
         "paper-2": "#F3ECE0", // alt warm section background
-        sand: "#EFE5D5", // deeper sand band
+        sand: "#F1E9DA", // deeper sand band
         cream: "#FFFDF9", // card surface
-        ink: "#2E2A24", // warm near-black text
-        "ink-soft": "#6B6258", // muted body text
-        clay: "#C0603F", // primary accent (terracotta)
-        "clay-deep": "#A04E33",
-        "clay-tint": "#F0D9CE",
-        sage: "#7A8867", // secondary accent (sage green)
-        "sage-deep": "#5C6A4A",
-        "sage-tint": "#DCE2D0",
-        gold: "#D8A24A", // small warm highlight (stars only)
+        ink: "#11233B", // deep navy-ink text
+        "ink-soft": "#5A6472", // muted slate body text
+        clay: "#002147", // primary accent — brand NAVY
+        "clay-deep": "#0A3262",
+        "clay-tint": "#DEE5EF",
+        sage: "#C9A84C", // secondary accent — brand GOLD
+        "sage-deep": "#9A7D2E",
+        "sage-tint": "#F5E6CA",
+        gold: "#C9A84C", // brand gold highlight (stars)
       },
       fontFamily: {
         display: ["var(--font-fraunces)", "Georgia", "serif"],

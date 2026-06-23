@@ -6,28 +6,20 @@ export default function Footer() {
   return (
     <footer className="relative overflow-hidden bg-ink text-paper">
       {/* soft arch glow */}
-      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-clay/15 blur-2xl" />
+      <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-sage/15 blur-2xl" />
       <div className="pointer-events-none absolute -bottom-24 left-10 h-64 w-64 rounded-full bg-sage/15 blur-2xl" />
 
       <div className="container-x relative grid grid-cols-[repeat(auto-fit,minmax(210px,1fr))] gap-12 pt-20">
         {/* Brand */}
         <div>
-          <div className="mb-5 flex items-center gap-3">
+          <div className="mb-6">
             <Image
-              src="/images/raya-crest.png"
-              alt="Raya Elite crest"
-              width={584}
-              height={448}
-              className="h-12 w-auto"
+              src="/images/raya-logo-light.png"
+              alt="Raya Elite — Home & Office Cleaning"
+              width={684}
+              height={751}
+              className="h-[104px] w-auto"
             />
-            <span className="flex flex-col leading-none">
-              <span className="font-display text-[22px] font-semibold uppercase tracking-[0.18em]">
-                Raya Elite
-              </span>
-              <span className="mt-[6px] text-[9px] font-bold uppercase tracking-[0.3em] text-clay">
-                Home &amp; Office Cleaning
-              </span>
-            </span>
           </div>
           <p className="mb-6 max-w-[260px] text-[15px] leading-relaxed text-paper/65">
             An elite standard of clean — for homes, offices, and the spaces that matter most.

@@ -18,7 +18,7 @@ export default function OpengraphImage() {
           alignItems: "center",
           justifyContent: "center",
           background: "#FAF6EF",
-          color: "#2E2A24",
+          color: "#11233B",
           fontFamily: "Georgia, serif",
           position: "relative",
         }}
@@ -31,7 +31,7 @@ export default function OpengraphImage() {
             width: 420,
             height: 420,
             borderRadius: 9999,
-            background: "#F0D9CE",
+            background: "#DEE5EF",
           }}
         />
         <div
@@ -42,7 +42,7 @@ export default function OpengraphImage() {
             width: 320,
             height: 320,
             borderRadius: 9999,
-            background: "#DCE2D0",
+            background: "#F5E6CA",
           }}
         />
         <div style={{ display: "flex", alignItems: "center", gap: 18, marginBottom: 26, position: "relative" }}>
@@ -51,11 +51,11 @@ export default function OpengraphImage() {
               width: 56,
               height: 56,
               borderRadius: 9999,
-              background: "#DCE2D0",
+              background: "#F5E6CA",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#5C6A4A",
+              color: "#9A7D2E",
               fontSize: 34,
             }}
           >
@@ -66,7 +66,7 @@ export default function OpengraphImage() {
         <div
           style={{
             fontSize: 22,
-            color: "#C0603F",
+            color: "#002147",
             letterSpacing: 6,
             textTransform: "uppercase",
             marginBottom: 34,
