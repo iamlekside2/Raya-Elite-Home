@@ -16,7 +16,7 @@ export default function Navbar() {
   return (
     <>
       <header className="sticky top-0 z-[60] border-b border-ink/10 bg-paper/85 backdrop-blur-md">
-        <div className="container-x flex h-[92px] items-center justify-between gap-6">
+        <div className="container-x flex h-[92px] items-center gap-6">
           {/* Wordmark */}
           <Link href="/" className="flex items-center" aria-label="Raya Elite home">
             <Image
@@ -29,8 +29,8 @@ export default function Navbar() {
             />
           </Link>
 
-          {/* Desktop nav */}
-          <nav className="hidden items-center gap-7 min-[900px]:flex">
+          {/* Desktop nav — centered */}
+          <nav className="hidden flex-1 items-center justify-center gap-7 min-[900px]:flex">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.href}
@@ -44,10 +44,14 @@ export default function Navbar() {
                 {item.label}
               </Link>
             ))}
+          </nav>
+
+          {/* Book Now — right */}
+          <div className="hidden min-[900px]:block">
             <Link href="/book" className="btn-clay px-6 py-[11px] text-[14px]">
               Book Now
             </Link>
-          </nav>
+          </div>
 
           {/* Hamburger */}
           <button

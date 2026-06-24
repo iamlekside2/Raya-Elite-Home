@@ -367,16 +367,16 @@ export default function HomePage() {
             title="Straight Answers to the Questions We Hear Most"
             className="mb-12"
           />
-          <div className="mx-auto max-w-[820px] divide-y divide-ink/10">
+          <div className="mx-auto max-w-[820px] flex flex-col gap-3">
             {HOMEPAGE_FAQS.map((faq) => (
-              <details key={faq.q} className="group py-5">
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[16px] font-semibold text-ink marker:hidden [&::-webkit-details-marker]:hidden">
+              <details key={faq.q} className="group overflow-hidden rounded-2xl border border-ink/10">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 bg-[#002147] px-6 py-5 text-[15px] font-bold text-cream marker:hidden [&::-webkit-details-marker]:hidden">
                   {faq.q}
-                  <span className="mt-[2px] flex h-6 w-6 flex-none items-center justify-center rounded-full bg-clay text-cream text-[18px] font-light transition-transform duration-200 group-open:rotate-45">
+                  <span className="flex h-7 w-7 flex-none items-center justify-center rounded-full bg-white/10 text-[20px] font-light text-cream transition-transform duration-200 group-open:rotate-45">
                     +
                   </span>
                 </summary>
-                <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{faq.a}</p>
+                <p className="bg-cream px-6 py-5 text-[15px] leading-relaxed text-ink-soft">{faq.a}</p>
               </details>
             ))}
           </div>
