@@ -240,7 +240,7 @@ export default function HomePage() {
       {/* PARALLAX DIVIDER */}
       <section className="relative flex min-h-[460px] items-center justify-center bg-[url('/images/team-cleaning.jpeg')] bg-fixed bg-cover bg-center">
         <div className="absolute inset-0 bg-ink/55" />
-        <p className="relative z-10 max-w-[960px] px-6 text-center font-display text-[clamp(20px,2.4vw,30px)] font-semibold leading-snug text-cream">
+        <p className="relative z-10 max-w-[1180px] px-6 text-center font-display text-[clamp(26px,3.4vw,40px)] font-semibold leading-snug text-cream">
           <span className="block">At Raya Elite…</span>
           <span className="block md:whitespace-nowrap">
             We take absolute pride in making your space shine!
