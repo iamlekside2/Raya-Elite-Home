@@ -10,17 +10,17 @@ import SectionHeading from "@/components/ui/SectionHeading";
 const VIDEOS = [
   {
     title: "The Thompson Family",
-    poster: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&q=75&auto=format&fit=crop",
+    poster: "/images/cleaning-lady.jpeg",
     embed: "",
   },
   {
     title: "Regional Bank — Bethesda",
-    poster: "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=900&q=75&auto=format&fit=crop",
+    poster: "/images/office-cleaning.jpeg",
     embed: "",
   },
   {
     title: "Move-Out, Rockville",
-    poster: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=900&q=75&auto=format&fit=crop",
+    poster: "/images/team-cleaning.jpeg",
     embed: "",
   },
 ];

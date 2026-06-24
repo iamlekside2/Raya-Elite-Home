@@ -8,13 +8,13 @@ export const IMAGES = {
   heroCleaner: "/images/cleaner-hero.jpeg",
   heroTeam: "/images/newHero.jpeg",
   ctaKitchen: U("1556911220-bff31c812dba", 2000, 80),
-  servicesHeader: U("1502672260266-1c1ef2d93688", 2000, 80),
-  aboutHeader: U("1505693416388-ac5ce068fe85", 2000, 80),
-  aboutStory: U("1581578731548-c64695cc6952", 1100, 78),
-  bookHeader: U("1586023492125-27b2c045efd7", 2000, 80),
-  testimonialsHeader: U("1493809842364-78817add7ffb", 2000, 80),
-  galleryHeader: U("1620626011761-996317b8d101", 2000, 80),
-  contactHeader: U("1497215728101-856f4ea42174", 2000, 80),
+  servicesHeader: "/images/office-cleaning.jpeg",
+  aboutHeader: "/images/team-cleaning.jpeg",
+  aboutStory: "/images/cleaning-lady.jpeg",
+  bookHeader: "/images/cleaner-hero.jpeg",
+  testimonialsHeader: "/images/team-cleaning.jpeg",
+  galleryHeader: "/images/van.jpeg",
+  contactHeader: "/images/office-cleaning.jpeg",
 };
 
 export const WHY_CARDS = [
@@ -158,7 +158,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     name: "Standard Clean",
     price: "From $129",
     badge: "Great for Regular Upkeep",
-    img: U("1493809842364-78817add7ffb", 900, 75),
+    img: "/images/service-residential.png",
     desc: "We cover the surfaces you see every day — kitchens, bathrooms, living areas, and bedrooms — wiped down, vacuumed, and mopped to a consistent standard. This is the service most of our recurring clients start with, and keep coming back to.",
     items: [
       "Kitchen surfaces, appliance exteriors, and sink",
@@ -175,7 +175,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     name: "Deep Clean",
     price: "From $189",
     badge: "Most Popular",
-    img: U("1556911220-bff31c812dba", 900, 75),
+    img: "/images/cleaning-lady.jpeg",
     desc: "This is what your space needs when a standard clean won't cut it — after a long winter, before a big occasion, or simply when it's been a while and you want it done properly. We go further, stay longer, and leave nothing untouched.",
     items: [
       "Everything in the Standard Clean",
@@ -194,7 +194,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     name: "Move-In / Move-Out Clean",
     price: "From $279",
     badge: "Best Value",
-    img: U("1505693416388-ac5ce068fe85", 900, 75),
+    img: "/images/service-moveinout.png",
     desc: "Moving is stressful enough without worrying about the state of the space you're leaving or walking into. We handle the cleaning thoroughly and on your timeline — so you can focus on the transition, not the to-do list.",
     items: [
       "Full deep clean of entire property",
@@ -211,7 +211,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
   {
     name: "Office & Commercial Cleaning",
     price: "Custom Pricing",
-    img: U("1497366811353-6870744d04b2", 900, 75),
+    img: "/images/service-office.png",
     desc: "A well-maintained office tells people something before anyone opens their mouth. We keep your workspace clean, presentable, and consistently serviced — on a schedule that fits around your team, not the other way around.",
     items: [
       "Workstations and desks wiped down",
@@ -229,7 +229,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
   {
     name: "Post-Construction Clean",
     price: "From $399",
-    img: U("1600585154340-be6161a56a0c", 900, 75),
+    img: "/images/office-cleaning.jpeg",
     desc: "Construction dust settles everywhere — on surfaces you can see and plenty you can't. Our post-construction clean removes debris, dust, and residue from every corner so the finished space looks the way it was meant to, not the way it was left.",
     items: [
       "Removal of construction dust from all surfaces",
@@ -247,7 +247,7 @@ export const SERVICE_PACKAGES: ServicePackage[] = [
     name: "Government, Embassy & Diplomatic Cleaning",
     price: "Custom Proposal",
     badge: "Specialized Service",
-    img: U("1497215728101-856f4ea42174", 900, 75),
+    img: "/images/team-cleaning.jpeg",
     desc: "These environments carry a higher expectation — and they should. We work with government agencies and diplomatic residences that require reliability, discretion, and a standard of cleanliness that reflects the weight of the space. Our team is background-checked, fully insured, and experienced in regulated and sensitive environments.",
     items: [
       "Full-facility cleaning to agency or mission standards",
@@ -386,18 +386,18 @@ export type GalleryItem = {
 };
 
 export const GALLERY: GalleryItem[] = [
-  { title: "Kitchen Deep Clean", cat: "Deep Clean", tag: "Before / After", img: U("1556911220-bff31c812dba") },
-  { title: "Master Bath Restoration", cat: "Residential", tag: "Before / After", img: U("1620626011761-996317b8d101") },
-  { title: "Corporate Lobby", cat: "Office & Commercial", tag: "Completed", img: U("1497366216548-37526070297c") },
-  { title: "Move-Out Apartment", cat: "Move-In/Out", tag: "Before / After", img: U("1493809842364-78817add7ffb") },
-  { title: "Living Room Detail", cat: "Residential", tag: "Completed", img: U("1502672260266-1c1ef2d93688") },
-  { title: "Post-Construction Suite", cat: "Post-Construction", tag: "Before / After", img: U("1600585154340-be6161a56a0c") },
-  { title: "Executive Office", cat: "Office & Commercial", tag: "Completed", img: U("1497366811353-6870744d04b2") },
-  { title: "Hardwood Floor Polish", cat: "Deep Clean", tag: "Completed", img: U("1586023492125-27b2c045efd7") },
-  { title: "Embassy Residence", cat: "Office & Commercial", tag: "Completed", img: U("1505693416388-ac5ce068fe85") },
-  { title: "Family Home Refresh", cat: "Residential", tag: "Completed", img: U("1567767292278-a4f21aa2d36e") },
-  { title: "Studio Move-In", cat: "Move-In/Out", tag: "Before / After", img: U("1524758631624-e2822e304c36") },
-  { title: "Bank Branch Floor", cat: "Office & Commercial", tag: "Completed", img: U("1497215728101-856f4ea42174") },
+  { title: "Kitchen Deep Clean", cat: "Deep Clean", tag: "Before / After", img: "/images/cleaning-lady.jpeg" },
+  { title: "Master Bath Restoration", cat: "Residential", tag: "Before / After", img: "/images/service-residential.png" },
+  { title: "Corporate Lobby", cat: "Office & Commercial", tag: "Completed", img: "/images/office-cleaning.jpeg" },
+  { title: "Move-Out Apartment", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.png" },
+  { title: "Living Room Detail", cat: "Residential", tag: "Completed", img: "/images/cleaning-lady.jpeg" },
+  { title: "Post-Construction Suite", cat: "Post-Construction", tag: "Before / After", img: "/images/office-cleaning.jpeg" },
+  { title: "Executive Office", cat: "Office & Commercial", tag: "Completed", img: "/images/service-office.png" },
+  { title: "Hardwood Floor Polish", cat: "Deep Clean", tag: "Completed", img: "/images/cleaner-hero.jpeg" },
+  { title: "Embassy Residence", cat: "Office & Commercial", tag: "Completed", img: "/images/team-cleaning.jpeg" },
+  { title: "Family Home Refresh", cat: "Residential", tag: "Completed", img: "/images/cleaning-lady.jpeg" },
+  { title: "Studio Move-In", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.png" },
+  { title: "Bank Branch Floor", cat: "Office & Commercial", tag: "Completed", img: "/images/van.jpeg" },
 ];
 
 export const GALLERY_FILTERS = [
