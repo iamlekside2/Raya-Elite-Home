@@ -345,6 +345,15 @@ export default function HomePage() {
                     Read the Guide <span aria-hidden>→</span>
                   </Link>
                 </div>
+                <div className="relative h-48 overflow-hidden">
+                  <Image
+                    src={post.img}
+                    alt={post.title}
+                    fill
+                    sizes="(max-width:768px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                </div>
               </article>
             ))}
           </div>
