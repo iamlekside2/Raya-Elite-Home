@@ -437,10 +437,10 @@ export default function HomePage() {
               </div>
               {/* Image — mt-auto pushes it to the very bottom of the card (pb-0) */}
               <Image
-                src="/images/form-lady.png"
+                src="/images/form-lady-new.png"
                 alt="A friendly Raya Elite cleaner"
-                width={942}
-                height={1572}
+                width={1088}
+                height={1446}
                 className="mt-auto hidden w-[300px] max-w-full mx-auto md:block"
               />
             </div>
