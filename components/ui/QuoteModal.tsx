@@ -169,7 +169,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                     className={`${inputCls} resize-y`}
                   />
                 </label>
-                <button type="submit" disabled={status === "sending"} className="btn-gold mt-1 py-4 text-[16px] disabled:opacity-70">
+                <button type="submit" disabled={status === "sending"} className="btn-clay mt-1 py-4 text-[16px] disabled:opacity-70">
                   {status === "sending" ? "Sending…" : "Send My Quote Request"}
                 </button>
               </form>
