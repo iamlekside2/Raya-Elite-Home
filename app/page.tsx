@@ -412,7 +412,7 @@ export default function HomePage() {
                   Ready for a spotless space?
                 </h2>
                 <p className="mt-4 max-w-[460px] text-[17px] leading-relaxed text-cream/85">
-                  Fill in the form and our team will confirm your appointment the same day. No payment
+                  Fill in the form and our team will confirm and reach out the same day. No payment
                   required today.
                 </p>
                 <p className="mt-4 text-[14px] text-cream/75">
