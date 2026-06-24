@@ -6,5 +6,5 @@ export default function TidioScript() {
   const KEY = process.env.NEXT_PUBLIC_TIDIO_KEY;
   if (!KEY) return null;
 
-  return <Script src={`//code.tidio.co/${KEY}.js`} strategy="lazyOnload" />;
+  return <Script src={`https://code.tidio.co/${KEY}.js`} strategy="lazyOnload" />;
 }
