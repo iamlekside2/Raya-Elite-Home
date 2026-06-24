@@ -131,9 +131,6 @@ export default function HomePage() {
               >
                 <div className="relative h-56 overflow-hidden">
                   <Image src={s.img} alt={s.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                  <span className="absolute left-4 top-4 rounded-full bg-cream/90 px-3 py-1 text-[12px] font-bold text-clay">
-                    {s.price}
-                  </span>
                 </div>
                 <div className="flex flex-1 flex-col p-7">
                   <h3 className="font-display text-[22px] font-semibold text-ink">{s.title}</h3>
