@@ -50,7 +50,6 @@ export default function WhyChooseUs() {
       return;
     }
 
-    // Single spaced column + reveal as each card scrolls up => one at a time.
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
@@ -60,7 +59,7 @@ export default function WhyChooseUs() {
           }
         });
       },
-      { threshold: 0.3, rootMargin: "0px 0px -22% 0px" },
+      { threshold: 0.15, rootMargin: "0px 0px -5% 0px" },
     );
     cards.forEach((c) => io.observe(c));
     return () => io.disconnect();

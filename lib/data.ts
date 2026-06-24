@@ -6,7 +6,7 @@ const U = (id: string, w = 1200, q = 78) =>
 export const IMAGES = {
   hero: U("1567767292278-a4f21aa2d36e", 2000, 80),
   heroCleaner: "/images/cleaner-hero.jpeg",
-  heroTeam: "/images/team-cleaning.jpeg",
+  heroTeam: "/images/hero-team.jpeg",
   ctaKitchen: U("1556911220-bff31c812dba", 2000, 80),
   servicesHeader: U("1502672260266-1c1ef2d93688", 2000, 80),
   aboutHeader: U("1505693416388-ac5ce068fe85", 2000, 80),
@@ -41,19 +41,19 @@ export const SERVICES_PREVIEW = [
     title: "Residential Deep Clean",
     price: "Starting at $189",
     desc: "Your home deserves more than a surface wipe-down. Our residential deep clean covers every room, corner, and surface — from baseboards to ceiling fans — so you can walk in and actually breathe easy.",
-    img: U("1586023492125-27b2c045efd7", 1100, 75),
+    img: "/images/service-residential.png",
   },
   {
     title: "Office & Commercial Cleaning",
     price: "Custom Pricing",
     desc: "A clean workspace isn't just about appearances. It reduces sick days, improves focus, and tells your clients you run a tight operation. We work around your schedule — including evenings and weekends.",
-    img: U("1497366811353-6870744d04b2", 1100, 75),
+    img: "/images/service-office.png",
   },
   {
     title: "Move-In / Move-Out Cleaning",
     price: "Starting at $279",
     desc: "One less thing to worry about during one of the most stressful transitions you'll make. We get the space spotless for when you're handing over keys or walking into your new beginning.",
-    img: U("1505693416388-ac5ce068fe85", 1100, 75),
+    img: "/images/service-moveinout.png",
   },
 ];
 
@@ -284,3 +284,55 @@ export const GALLERY_FILTERS = [
 
 export const SERVICE_OPTIONS = ["Residential", "Commercial", "Government", "Embassy", "Other"];
 export const HEAR_OPTIONS = ["Google Search", "Referral", "Social Media", "Drove By One of Our Teams", "Other"];
+
+export const BLOG_PREVIEW = [
+  {
+    cat: "Residential",
+    title: "What to Expect From a White-Glove Cleaning Service",
+    desc: "Most cleaning services wipe down the obvious surfaces and call it done. A white-glove service works differently. It's methodical, detail-oriented, and held to a standard most people only experience once before they refuse to go back to anything less.",
+    href: "/blog",
+  },
+  {
+    cat: "Deep Cleaning",
+    title: "How Often Should You Deep Clean Your Home?",
+    desc: "A regular clean maintains your home. A deep clean restores it. If you've never had one — or it's been longer than you'd like to admit — this guide tells you exactly what to expect, what gets covered, and how to know when it's time.",
+    href: "/blog",
+  },
+  {
+    cat: "Moving",
+    title: "Move-In Cleaning Checklist: What Gets Missed — And How We Fix It",
+    desc: "There are corners in every property that the previous occupant never thought about and the next one will notice immediately. This checklist covers the areas that consistently get overlooked, and exactly how our team handles each one.",
+    href: "/blog",
+  },
+];
+
+export const HOMEPAGE_FAQS = [
+  {
+    q: "Do I need to be home when your team arrives?",
+    a: "No. Many of our clients give us a key or access code and return to a clean home. Every member of our team is background-checked, bonded, and insured. Your space is in safe hands whether you're there or not.",
+  },
+  {
+    q: "How much does a cleaning cost?",
+    a: "It depends on the size of your space, the type of clean, and how often you need us. We don't believe in quoting blind — which is why we ask a few quick questions before giving you a number. Every quote we send is accurate, itemized, and comes with no hidden fees.",
+  },
+  {
+    q: "What if I'm not happy with the results?",
+    a: "We come back and fix it — simple as that. If anything was missed or didn't meet your standard, let us know within 24 hours and we'll return at no additional charge. Our satisfaction guarantee isn't a slogan. It's our policy.",
+  },
+  {
+    q: "Do you offer discounts for regular cleaning?",
+    a: "Yes. Clients who book recurring service — weekly, biweekly, or monthly — receive preferred pricing and priority scheduling. It's our way of rewarding the clients who trust us with their space on an ongoing basis.",
+  },
+  {
+    q: "Are your cleaning products safe for children and pets?",
+    a: "Yes. We use EPA-recognized, non-toxic products across all of our residential jobs. If you have specific sensitivities or allergies, let us know when you book and we'll make sure the right products are used in your home.",
+  },
+  {
+    q: "Do you bring your own supplies and equipment?",
+    a: "We bring everything. Our team arrives fully equipped — cleaning products, tools, and materials included. You don't need to provide a single thing. Just tell us what needs doing and we'll handle the rest.",
+  },
+  {
+    q: "Can you handle large commercial facilities, government offices, or embassy properties?",
+    a: "Yes. We work with commercial offices, government agencies, and diplomatic residences across Maryland and the DC metro area. For larger contracts or specialized environments, we provide a formal proposal and capability statement. Reach out through our contact page and we'll take it from there.",
+  },
+];

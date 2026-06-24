@@ -65,7 +65,7 @@ export default function TestimonialsPage() {
           <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-ink-soft">
             Share your experience and help others discover the Raya Elite difference.
           </p>
-          <Link href="/contact" className="btn-clay mt-8 px-9 py-4 text-[16px]">
+          <Link href="/contact" className="btn-gold mt-8 px-9 py-4 text-[16px]">
             Leave a Review
           </Link>
         </div>

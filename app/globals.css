@@ -60,6 +60,9 @@ body {
   .btn-outline-light {
     @apply btn border-2 border-cream/50 bg-transparent text-cream hover:bg-cream hover:text-clay hover:shadow-[0_14px_28px_-12px_rgba(0,0,0,0.4)];
   }
+  .btn-gold {
+    @apply btn bg-[#C9A84C] text-[#002147] shadow-[0_8px_20px_-10px_rgba(201,168,76,0.55)] hover:bg-[#b89438] hover:shadow-[0_16px_30px_-12px_rgba(201,168,76,0.65)];
+  }
   .btn-link {
     @apply inline-flex items-center gap-2 text-[14px] font-bold text-clay transition-colors hover:text-clay-deep;
   }

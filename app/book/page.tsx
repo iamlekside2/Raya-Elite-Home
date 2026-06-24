@@ -53,7 +53,7 @@ export default function BookPage() {
             <p className="mt-2 text-[14px] leading-relaxed text-ink-soft">
               For enterprise, embassy, or government work, request a formal proposal.
             </p>
-            <Link href="/contact" className="btn-clay mt-5 w-full py-[13px] text-[14px]">
+            <Link href="/contact" className="btn-gold mt-5 w-full py-[13px] text-[14px]">
               Request a Quote
             </Link>
           </div>

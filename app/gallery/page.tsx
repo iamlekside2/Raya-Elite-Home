@@ -29,7 +29,7 @@ export default function GalleryPage() {
           <h2 className="mx-auto max-w-[640px] font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-tight">
             Ready for your own transformation?
           </h2>
-          <Link href="/book" className="btn-clay mt-8 px-9 py-4 text-[16px]">
+          <Link href="/book" className="btn-gold mt-8 px-9 py-4 text-[16px]">
             Book Now
           </Link>
         </div>

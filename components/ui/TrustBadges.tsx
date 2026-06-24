@@ -70,6 +70,54 @@ export default function TrustBadges({ py = "py-16" }: { py?: string }) {
             "radial-gradient(120% 92% at 50% 0%, rgba(201,168,76,0.16), transparent 62%)",
         }}
       />
+
+      {/* Heading word-badges */}
+      <div className="container-x relative pt-16 pb-8 text-center">
+        <div className="mb-8 flex items-center justify-center gap-2 text-[11px] font-bold uppercase tracking-[0.22em] text-gold">
+          <span className="inline-block h-[6px] w-[6px] rotate-45 bg-[#C9A84C]" />
+          Our Credentials
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-4">
+          {[
+            {
+              label: "Trusted",
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="h-[15px] w-[15px]">
+                  <path d="M12 3l7 2.6v5.1c0 4.3-2.9 7.4-7 8.8-4.1-1.4-7-4.5-7-8.8V5.6L12 3z" />
+                  <path d="M9 12l2 2 4-4.2" />
+                </svg>
+              ),
+            },
+            {
+              label: "Verified",
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="h-[15px] w-[15px]">
+                  <path d="M12 2.6l2.3 1.7 2.8-.2.9 2.7 2.3 1.6-1 2.7 1 2.7-2.3 1.6-.9 2.7-2.8-.2L12 21.4l-2.3-1.7-2.8.2-.9-2.7-2.3-1.6 1-2.7-1-2.7 2.3-1.6.9-2.7 2.8.2L12 2.6z" />
+                  <path d="M9 12l2 2 4-4" />
+                </svg>
+              ),
+            },
+            {
+              label: "Accountable",
+              icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={1.7} strokeLinecap="round" strokeLinejoin="round" className="h-[15px] w-[15px]">
+                  <circle cx="12" cy="8" r="4" />
+                  <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+                  <path d="M15 14.5l1.5 1.5 3-3" />
+                </svg>
+              ),
+            },
+          ].map(({ label, icon }) => (
+            <span
+              key={label}
+              className="inline-flex items-center rounded-full bg-cream px-6 py-[9px] text-[15px] font-semibold text-ink shadow-[0_6px_20px_rgba(0,0,0,0.28)] transition-all duration-300 hover:-translate-y-[3px] hover:shadow-[0_12px_28px_rgba(0,0,0,0.35)]"
+            >
+              {label}
+            </span>
+          ))}
+        </div>
+      </div>
+
       <div
         className={`container-x relative flex flex-wrap items-center justify-center gap-3.5 ${py}`}
       >

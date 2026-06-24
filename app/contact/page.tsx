@@ -80,7 +80,7 @@ export default function ContactPage({
             </p>
           </div>
           <div className="lg:text-right">
-            <Link href="/contact?service=Government" className="btn-clay px-9 py-4 text-[16px]">
+            <Link href="/contact?service=Government" className="btn-gold px-9 py-4 text-[16px]">
               Request a Proposal
             </Link>
           </div>

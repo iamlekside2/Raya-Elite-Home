@@ -57,7 +57,7 @@ export default function ServicesPage() {
                       </div>
                     ))}
                   </div>
-                  <Link href="/book" className="btn-clay mt-6 py-[14px] text-[15px]">
+                  <Link href="/book" className="btn-gold mt-6 py-[14px] text-[15px]">
                     Book This Service
                   </Link>
                 </div>
@@ -173,7 +173,7 @@ export default function ServicesPage() {
           <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-cream/85">
             Tell us about your space and we&apos;ll recommend the perfect fit — and a custom quote.
           </p>
-          <Link href="/contact" className="btn-clay mt-8 px-9 py-4 text-[16px]">
+          <Link href="/contact" className="btn-gold mt-8 px-9 py-4 text-[16px]">
             Get a Custom Quote
           </Link>
         </div>

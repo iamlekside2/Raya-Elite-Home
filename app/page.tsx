@@ -15,6 +15,8 @@ import {
   HOME_REVIEWS,
   CLIENTS_SERVE,
   LOCATIONS,
+  BLOG_PREVIEW,
+  HOMEPAGE_FAQS,
 } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
@@ -144,7 +146,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link href="/services" className="btn-outline px-8 py-[14px] text-[15px]">
+            <Link href="/services" className="btn-gold px-8 py-[14px] text-[15px]">
               View All Services &amp; Pricing
             </Link>
           </div>
@@ -225,7 +227,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="mt-14 text-center">
-            <Link href="/book" className="btn-sage px-9 py-4 text-[16px]">
+            <Link href="/book" className="btn-gold px-9 py-4 text-[16px]">
               Ready to Get Started? Book Your Cleaning
             </Link>
           </div>
@@ -233,9 +235,6 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 6 — TRUST BADGES */}
-      <section className="container-x pb-10 text-center">
-        <SectionHeading eyebrow="Our Credentials" title="Trusted, verified, and accountable" />
-      </section>
       <TrustBadges />
 
       {/* SECTION 7 — CLIENTS WE SERVE (picture cards) */}
@@ -264,37 +263,127 @@ export default function HomePage() {
       {/* SECTION 8 — LOCATIONS WE COVER */}
       <section className="bg-sage-tint/50">
         <div className="container-x py-20 md:py-24">
+          <div className="grid items-center gap-12 lg:grid-cols-2">
+            {/* A — Locations */}
+            <div>
+              <SectionHeading
+                eyebrow="Service Areas"
+                title="We serve Maryland & Washington DC"
+                subtitle="Based in Maryland, we cover a wide reach across the metro area — from the suburbs to the District. If you're not sure whether we serve your area, just ask."
+                className="mb-10"
+                centered={false}
+              />
+              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                {LOCATIONS.map((loc) => (
+                  <div
+                    key={loc}
+                    className="group flex cursor-default items-center gap-2 rounded-2xl bg-cream px-4 py-4 text-[14px] font-semibold text-ink shadow-soft transition-all duration-300 hover:-translate-y-[5px] hover:bg-clay hover:text-cream hover:shadow-lift"
+                  >
+                    <span className="h-[6px] w-[6px] flex-none rounded-full bg-clay transition-colors duration-300 group-hover:bg-gold" />
+                    {loc}
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8">
+                <p className="text-[15px] text-ink-soft">
+                  Don&apos;t see your area listed? We may still be able to help.
+                </p>
+                <Link href="/contact" className="btn-gold mt-4 px-8 py-[14px] text-[15px]">
+                  Check Your Area
+                </Link>
+              </div>
+            </div>
+
+            {/* B — Van image */}
+            <div className="relative h-[420px] overflow-hidden rounded-4xl shadow-lift lg:h-[540px]">
+              <Image
+                src="/images/van.jpeg"
+                alt="Raya Elite branded cleaning van"
+                fill
+                sizes="(max-width:1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9 — BLOG PREVIEW */}
+      <section className="bg-sand">
+        <div className="container-x py-20 md:py-24">
           <SectionHeading
-            eyebrow="Service Areas"
-            title="We serve Maryland & Washington DC"
-            subtitle="Based in Maryland, we cover a wide reach across the metro area — from the suburbs to the District. If you're not sure whether we serve your area, just ask."
+            eyebrow="From the Blog"
+            title="Cleaning Advice Worth Reading"
+            subtitle="Practical guides for homeowners and businesses who want to make better decisions about their space. Written by people who clean for a living."
             className="mb-12"
           />
-          <div className="mx-auto grid max-w-[920px] grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-            {LOCATIONS.map((loc) => (
-              <div
-                key={loc}
-                className="group flex cursor-default items-center justify-center gap-2 rounded-2xl bg-cream px-4 py-4 text-center text-[14px] font-semibold text-ink shadow-soft transition-all duration-300 hover:-translate-y-[5px] hover:bg-clay hover:text-cream hover:shadow-lift"
+          <div className="grid gap-7 md:grid-cols-3">
+            {BLOG_PREVIEW.map((post) => (
+              <article
+                key={post.title}
+                className="group flex flex-col overflow-hidden rounded-4xl bg-cream shadow-soft transition-transform duration-300 hover:-translate-y-2"
               >
-                <span className="h-[6px] w-[6px] flex-none rounded-full bg-clay transition-colors duration-300 group-hover:bg-gold" />
-                {loc}
-              </div>
+                <div className="flex flex-1 flex-col p-7">
+                  <span className="inline-block self-start rounded-full bg-sage-tint px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-clay">
+                    {post.cat}
+                  </span>
+                  <h3 className="mt-4 font-display text-[20px] font-semibold leading-snug text-ink">
+                    {post.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-ink-soft">
+                    {post.desc}
+                  </p>
+                  <Link href={post.href} className="btn-link mt-6">
+                    Read the Guide <span aria-hidden>→</span>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
-          <div className="mt-10 text-center">
+          <div className="mt-12 text-center">
             <p className="text-[15px] text-ink-soft">
-              Don&apos;t see your area listed? We may still be able to help.
+              For more articles on home care, office maintenance, and professional cleaning…
             </p>
-            <Link href="/contact" className="btn-outline mt-5 px-8 py-[14px] text-[15px]">
-              Check Your Area
+            <Link href="/blog" className="btn-gold mt-5 px-8 py-[14px] text-[15px]">
+              See Our Full Blog
             </Link>
           </div>
         </div>
       </section>
 
-      {/* SECTION 9 — LEAD CAPTURE */}
-      <section className="container-x pb-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-clay px-7 py-12 text-cream md:px-12 md:py-14">
+      {/* SECTION 10 — FAQ */}
+      <section className="bg-clay-tint">
+        <div className="container-x py-20 md:py-24">
+          <SectionHeading
+            eyebrow="Common Questions"
+            title="Straight Answers to the Questions We Hear Most"
+            className="mb-12"
+          />
+          <div className="mx-auto max-w-[820px] divide-y divide-ink/10">
+            {HOMEPAGE_FAQS.map((faq) => (
+              <details key={faq.q} className="group py-5">
+                <summary className="flex cursor-pointer list-none items-start justify-between gap-6 text-[16px] font-semibold text-ink marker:hidden [&::-webkit-details-marker]:hidden">
+                  {faq.q}
+                  <span className="mt-[2px] flex h-6 w-6 flex-none items-center justify-center rounded-full bg-clay text-cream text-[18px] font-light transition-transform duration-200 group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <p className="mt-4 text-[15px] leading-relaxed text-ink-soft">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+          <div className="mt-12 text-center">
+            <p className="text-[15px] text-ink-soft">Have a question we didn&apos;t answer here?</p>
+            <Link href="/contact" className="btn-gold mt-5 px-8 py-[14px] text-[15px]">
+              Get in Touch
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 11 — LEAD CAPTURE */}
+      <section className="container-x py-20 md:py-24">
+        <div className="relative overflow-hidden rounded-[2.5rem] bg-clay px-7 pt-12 pb-0 text-cream md:px-12 md:pt-14">
           <div
             aria-hidden
             className="pointer-events-none absolute inset-0"
@@ -303,40 +392,46 @@ export default function HomePage() {
                 "radial-gradient(80% 60% at 12% 0%, rgba(201,168,76,0.16), transparent 60%)",
             }}
           />
-          <div className="relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr]">
             {/* Left — pitch + cleaner */}
-            <div className="flex flex-col">
-              <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
-                Book In Minutes
-              </span>
-              <h2 className="mt-4 font-display text-[clamp(30px,4vw,46px)] font-semibold leading-tight text-cream">
-                Ready for a spotless space?
-              </h2>
-              <p className="mt-4 max-w-[460px] text-[17px] leading-relaxed text-cream/85">
-                Fill in the form and our team will confirm your appointment the same day. No payment
-                required today.
-              </p>
-              <p className="mt-4 text-[14px] text-cream/75">
-                Prefer to talk first?{" "}
-                <a
-                  href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`}
-                  className="font-semibold text-gold underline underline-offset-2"
-                >
-                  Call us
-                </a>
-                .
-              </p>
+            <div className="flex h-full flex-col">
+              {/* Text block — has its own bottom padding */}
+              <div className="pb-8 pt-0">
+                <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
+                  Book In Minutes
+                </span>
+                <h2 className="mt-4 font-display text-[clamp(30px,4vw,46px)] font-semibold leading-tight text-cream">
+                  Ready for a spotless space?
+                </h2>
+                <p className="mt-4 max-w-[460px] text-[17px] leading-relaxed text-cream/85">
+                  Fill in the form and our team will confirm your appointment the same day. No payment
+                  required today.
+                </p>
+                <p className="mt-4 text-[14px] text-cream/75">
+                  Prefer to talk first?{" "}
+                  <a
+                    href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`}
+                    className="font-semibold text-gold underline underline-offset-2"
+                  >
+                    Call us
+                  </a>
+                  .
+                </p>
+              </div>
+              {/* Image — mt-auto pushes it to the very bottom of the card (pb-0) */}
               <Image
                 src="/images/form-lady.png"
                 alt="A friendly Raya Elite cleaner"
                 width={942}
                 height={1572}
-                className="mt-6 hidden w-[300px] max-w-full self-start md:block"
+                className="mt-auto hidden w-[300px] max-w-full mx-auto md:block"
               />
             </div>
 
             {/* Right — full lead-capture form */}
-            <LeadForm />
+            <div className="self-start py-12 md:py-14">
+              <LeadForm />
+            </div>
           </div>
         </div>
       </section>
