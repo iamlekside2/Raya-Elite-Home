@@ -237,6 +237,14 @@ export default function HomePage() {
       {/* SECTION 6 — TRUST BADGES */}
       <TrustBadges />
 
+      {/* PARALLAX DIVIDER */}
+      <section className="relative flex min-h-[460px] items-center justify-center bg-[url('/images/team-cleaning.jpeg')] bg-fixed bg-cover bg-center">
+        <div className="absolute inset-0 bg-ink/55" />
+        <p className="relative z-10 max-w-[720px] px-6 text-center font-display text-[clamp(24px,3.8vw,46px)] font-semibold italic leading-snug text-cream">
+          At Raya Elite… We take absolute pride in making your space shine!
+        </p>
+      </section>
+
       {/* SECTION 7 — CLIENTS WE SERVE (picture cards) */}
       <section className="container-x py-20 md:py-24">
         <SectionHeading
