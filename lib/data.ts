@@ -136,7 +136,7 @@ export const QUOTE_HELP_OPTIONS = [
 export const HOME_REVIEWS = [
   { quote: "Raya Elite transformed our home before a family event. Immaculate, on time, and so professional.", name: "Patricia M.", location: "Bethesda, MD", initial: "P" },
   { quote: "Our firm's offices have never looked better. Reliable, discreet, and meticulous every single week.", name: "Daniel R.", location: "Washington, D.C.", initial: "D" },
-  { quote: "Got my full deposit back. The move-out clean was flawless from top to bottom. Highly recommend.", name: "Sofia L.", location: "Silver Spring, MD", initial: "S" },
+  { quote: "Great value and more. The move-out clean was flawless from top to bottom. Highly recommend.", name: "Sofia L.", location: "Silver Spring, MD", initial: "S" },
   { quote: "Eco-friendly products that are safe for our kids, and a team that genuinely cares. We book monthly now.", name: "James & Aisha T.", location: "Potomac, MD", initial: "J" },
   { quote: "Spotless lobbies and meticulous detail throughout. Our clients notice the difference the moment they arrive.", name: "Branch Manager", location: "Regional Bank, MD", initial: "B" },
   { quote: "An elite standard, truly. They treat your home as if it were their own. We recommend them to everyone.", name: "Grace N.", location: "Chevy Chase, MD", initial: "G" },
@@ -240,7 +240,7 @@ export type Testimonial = {
 export const TESTIMONIALS: Testimonial[] = [
   { cat: "Residential", quote: "Raya Elite transformed our home before a family event. Immaculate, on time, and wonderfully professional.", name: "Patricia M.", location: "Bethesda, MD", initial: "P" },
   { cat: "Commercial", quote: "Our firm's offices have never looked better. Reliable, discreet, and meticulous every single week.", name: "Daniel R.", location: "Office Manager, D.C.", initial: "D" },
-  { cat: "Move-In/Out", quote: "Got my full deposit back. The move-out clean was flawless from top to bottom. Highly recommend them.", name: "Sofia L.", location: "Silver Spring, MD", initial: "S" },
+  { cat: "Move-In/Out", quote: "Great value and more. The move-out clean was flawless from top to bottom. Highly recommend.", name: "Sofia L.", location: "Silver Spring, MD", initial: "S" },
   { cat: "Government", quote: "Vetted, punctual, and fully compliant. Exactly the standard our facility required. A trusted partner.", name: "Procurement Lead", location: "Federal Agency, D.C.", initial: "G" },
   { cat: "Residential", quote: "Eco-friendly products that are safe for our kids, and a team that genuinely cares. We book monthly now.", name: "James & Aisha T.", location: "Potomac, MD", initial: "J" },
   { cat: "Commercial", quote: "Spotless lobbies and meticulous detail throughout. Our clients notice the difference the moment they arrive.", name: "Branch Manager", location: "Regional Bank, MD", initial: "B" },
