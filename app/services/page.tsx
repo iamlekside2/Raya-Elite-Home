@@ -6,11 +6,12 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import Accordion from "@/components/services/Accordion";
 import Sprig from "@/components/ui/Sprig";
 import { IMAGES, SERVICE_PACKAGES, RES_PRICING, COM_PRICING, ADDONS, FAQS } from "@/lib/data";
+import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
-  title: "Cleaning Services & Pricing | Raya Elite Cleaning Maryland",
+  title: "Cleaning Services & Pricing | Raya Elite Home & Office Cleaning — Maryland & DC",
   description:
-    "View all Raya Elite cleaning packages — residential deep clean, office cleaning, move-in/out, post-construction, and government/commercial services. Transparent pricing.",
+    "Residential deep cleans, office cleaning, move-in/out, post-construction, and government or embassy services across Maryland and Washington DC. Straightforward pricing. No hidden fees. Book online today.",
   alternates: { canonical: "/services" },
 };
 
@@ -23,13 +24,19 @@ export default function ServicesPage() {
         img={IMAGES.servicesHeader}
         imgAlt="Bright, spotless living room"
         breadcrumb="Home / Services"
-        title="Our cleaning services"
-        subtitle="Transparent pricing and meticulous detail for homes, offices, and institutions across Maryland and D.C."
+        title="Our Cleaning Services"
+        tagline="Every space is different. But the standard is always the same."
       />
 
       {/* PACKAGES */}
       <section className="bg-cream">
         <div className="container-x py-20 md:py-24">
+          <SectionHeading
+            eyebrow="What We Offer"
+            title="Find the Right Clean for Your Space"
+            subtitle="Whether you need a one-time deep clean or a recurring service contract, every package is built on the same foundation — trained staff, reliable scheduling, and results you can actually see."
+            className="mb-14"
+          />
           <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
             {SERVICE_PACKAGES.map((p) => (
               <article
@@ -45,20 +52,24 @@ export default function ServicesPage() {
                   )}
                 </div>
                 <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-[23px] font-semibold text-ink">{p.name}</h3>
+                  <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">{p.name}</h3>
                   <div className="mt-1 text-[14px] font-bold uppercase tracking-wider text-clay">
                     {p.price}
                   </div>
-                  <div className="mt-5 flex-1 space-y-[10px]">
+                  <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">{p.desc}</p>
+                  <div className="mt-5 mb-1 text-[12px] font-bold uppercase tracking-wider text-ink/70">
+                    What&apos;s included
+                  </div>
+                  <div className="flex-1 space-y-[9px]">
                     {p.items.map((it) => (
-                      <div key={it} className="flex items-start gap-3 text-[15px] text-ink-soft">
+                      <div key={it} className="flex items-start gap-3 text-[14.5px] text-ink-soft">
                         <Sprig className="mt-[2px] h-[18px] w-[18px] flex-none text-sage" />
                         <span>{it}</span>
                       </div>
                     ))}
                   </div>
-                  <Link href="/book" className="btn-gold mt-6 py-[14px] text-[15px]">
-                    Book This Service
+                  <Link href={p.ctaHref} className="btn-gold mt-6 py-[14px] text-[15px]">
+                    {p.cta}
                   </Link>
                 </div>
               </article>
@@ -70,7 +81,12 @@ export default function ServicesPage() {
       {/* TRANSPARENT PRICING */}
       <section className="bg-sand">
         <div className="container-x py-20 md:py-24">
-          <SectionHeading eyebrow="No Surprises" title="Transparent pricing" className="mb-12" />
+          <SectionHeading
+            eyebrow="Pricing"
+            title="Transparent Pricing. No Surprises."
+            subtitle="We don't believe in vague quotes or after-the-fact charges. The pricing below gives you a clear starting point. Your final quote is confirmed before we show up — always."
+            className="mb-12"
+          />
           <div className="grid gap-8 lg:grid-cols-2">
             {/* Residential */}
             <div className="overflow-hidden rounded-4xl bg-cream shadow-soft">
@@ -121,7 +137,12 @@ export default function ServicesPage() {
       {/* ADD-ONS */}
       <section className="container-x py-20 md:py-24">
         <div className="mx-auto max-w-[820px]">
-          <SectionHeading eyebrow="Add-On Services" title="Customize your clean" className="mb-10" />
+          <SectionHeading
+            eyebrow="Add-Ons"
+            title="Need a Little More? We've Got You."
+            subtitle="Our add-on services let you customize your clean without paying for what you don't need. Select any of the following when booking or mention them on your quote request."
+            className="mb-10"
+          />
           <Accordion
             variant="addon"
             items={ADDONS.map((a) => ({ title: a.name, price: a.price, body: a.desc }))}
@@ -129,14 +150,50 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* HOW WE PRICE */}
+      <section className="bg-cream">
+        <div className="container-x py-20 md:py-24">
+          <div className="mx-auto max-w-[820px]">
+            <SectionHeading
+              eyebrow="Our Approach"
+              title="We Quote Based on Your Actual Space — Not a Generic Formula"
+              className="mb-8"
+            />
+            <p className="text-[17px] leading-relaxed text-ink-soft">
+              Every home and office is different. Square footage, current condition, number of rooms,
+              and how long it&apos;s been since the last professional clean all factor into what your
+              job actually costs. We&apos;d rather give you an accurate number upfront than pad a low
+              quote and surprise you afterward.
+            </p>
+            <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
+              Here&apos;s how it works: (1) you tell us about your space, (2) we give you a clear
+              price before booking is confirmed, and (3) you make your payment. No add-on fees after
+              the fact. No minimum visit charges buried in the fine print.
+            </p>
+            <p className="mt-4 text-[17px] leading-relaxed text-ink-soft">
+              If you have questions about pricing before you book,{" "}
+              <a href={`tel:${SITE.phone.replace(/[^0-9]/g, "")}`} className="font-bold text-clay underline underline-offset-2">
+                call us
+              </a>
+              .
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* SERVICE AREAS */}
       <section className="bg-sage-tint/50">
         <div className="container-x grid items-center gap-12 py-20 md:py-24 lg:grid-cols-2">
           <div>
-            <SectionHeading centered={false} eyebrow="Where We Clean" title="Service areas" />
+            <SectionHeading
+              centered={false}
+              eyebrow="Where We Work"
+              title="We Cover Maryland and the Washington DC Metro Area"
+            />
             <p className="mt-5 max-w-[460px] text-[16px] leading-relaxed text-ink-soft">
-              Proudly serving the greater Maryland and Washington D.C. metropolitan area — including
-              Bethesda, Silver Spring, Rockville, Potomac, Chevy Chase, and the District.
+              From Bethesda to Annapolis, Silver Spring to the District — we service a wide reach
+              across the Maryland metro. If your area isn&apos;t listed on the homepage, get in touch
+              and we&apos;ll confirm coverage directly.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               {["Montgomery County", "Washington D.C.", "Prince George's County"].map((p) => (
@@ -159,7 +216,11 @@ export default function ServicesPage() {
       {/* FAQ */}
       <section className="container-x py-20 md:py-24">
         <div className="mx-auto max-w-[820px]">
-          <SectionHeading eyebrow="Good To Know" title="Frequently asked questions" className="mb-10" />
+          <SectionHeading
+            eyebrow="Common Questions"
+            title="Questions We Hear Before Every First Booking"
+            className="mb-10"
+          />
           <Accordion variant="faq" defaultOpen={0} items={FAQS.map((f) => ({ title: f.q, body: f.a }))} />
         </div>
       </section>
@@ -168,14 +229,20 @@ export default function ServicesPage() {
       <section className="container-x pb-24">
         <div className="rounded-[2.5rem] bg-sage-deep px-8 py-16 text-center text-cream md:px-14">
           <h2 className="mx-auto max-w-[640px] font-display text-[clamp(28px,3.8vw,42px)] font-semibold leading-tight">
-            Not sure which package?
+            Not Sure Which Service Fits?
           </h2>
-          <p className="mx-auto mt-4 max-w-[520px] text-[17px] text-cream/85">
-            Tell us about your space and we&apos;ll recommend the perfect fit — and a custom quote.
+          <p className="mx-auto mt-4 max-w-[560px] text-[17px] text-cream/85">
+            Tell us about your space and we&apos;ll point you in the right direction — with a clear
+            quote before anything is confirmed.
           </p>
-          <Link href="/contact" className="btn-gold mt-8 px-9 py-4 text-[16px]">
-            Get a Custom Quote
-          </Link>
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+            <Link href="/contact" className="btn-gold px-9 py-4 text-[16px]">
+              Get a Custom Quote
+            </Link>
+            <Link href="/book" className="text-[15px] font-semibold text-cream/90 underline underline-offset-4 hover:text-cream">
+              Or browse our booking page →
+            </Link>
+          </div>
         </div>
       </section>
     </>

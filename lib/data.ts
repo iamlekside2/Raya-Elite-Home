@@ -147,16 +147,119 @@ export type ServicePackage = {
   price: string;
   badge?: string;
   img: string;
+  desc: string;
   items: string[];
+  cta: string;
+  ctaHref: string;
 };
 
 export const SERVICE_PACKAGES: ServicePackage[] = [
-  { name: "Standard Clean", price: "From $129", img: U("1493809842364-78817add7ffb", 900, 75), items: ["Dusting & all surfaces", "Floors vacuumed & mopped", "Kitchen & bath sanitized", "Trash removal"] },
-  { name: "Deep Clean", price: "From $189", badge: "Most Popular", img: U("1556911220-bff31c812dba", 900, 75), items: ["Everything in Standard", "Baseboards & detail work", "Inside cabinet fronts", "Scale & grout treatment"] },
-  { name: "Move-In / Move-Out", price: "From $279", img: U("1505693416388-ac5ce068fe85", 900, 75), items: ["Full empty-home clean", "Inside cabinets & drawers", "Appliance interiors", "Walls & fixtures wiped"] },
-  { name: "Office & Commercial", price: "Custom", img: U("1497366811353-6870744d04b2", 900, 75), items: ["Recurring scheduling", "Restrooms & breakrooms", "Lobbies & common areas", "After-hours available"] },
-  { name: "Post-Construction", price: "From $399", img: U("1600585154340-be6161a56a0c", 900, 75), items: ["Dust & debris removal", "Paint & adhesive spots", "Window & fixture detail", "Final white-glove polish"] },
-  { name: "Government & Embassy", price: "By Quote", badge: "By Quote", img: U("1497215728101-856f4ea42174", 900, 75), items: ["Cleared, vetted personnel", "Compliance documentation", "Flexible secure access", "Capability statement"] },
+  {
+    name: "Standard Clean",
+    price: "From $129",
+    badge: "Great for Regular Upkeep",
+    img: U("1493809842364-78817add7ffb", 900, 75),
+    desc: "We cover the surfaces you see every day — kitchens, bathrooms, living areas, and bedrooms — wiped down, vacuumed, and mopped to a consistent standard. This is the service most of our recurring clients start with, and keep coming back to.",
+    items: [
+      "Kitchen surfaces, appliance exteriors, and sink",
+      "Bathroom fixtures, mirrors, and floors",
+      "Vacuuming and mopping throughout",
+      "Dusting furniture and accessible surfaces",
+      "Emptying trash bins",
+      "Making beds (linens provided by client)",
+    ],
+    cta: "Book This Service",
+    ctaHref: "/book",
+  },
+  {
+    name: "Deep Clean",
+    price: "From $189",
+    badge: "Most Popular",
+    img: U("1556911220-bff31c812dba", 900, 75),
+    desc: "This is what your space needs when a standard clean won't cut it — after a long winter, before a big occasion, or simply when it's been a while and you want it done properly. We go further, stay longer, and leave nothing untouched.",
+    items: [
+      "Everything in the Standard Clean",
+      "Inside oven and microwave",
+      "Inside refrigerator",
+      "Baseboards, door frames, and light switches",
+      "Ceiling fans and vents",
+      "Window sills and tracks",
+      "Cabinet exteriors and handles",
+      "Grout scrubbing in bathrooms and kitchen",
+    ],
+    cta: "Book This Service",
+    ctaHref: "/book",
+  },
+  {
+    name: "Move-In / Move-Out Clean",
+    price: "From $279",
+    badge: "Best Value",
+    img: U("1505693416388-ac5ce068fe85", 900, 75),
+    desc: "Moving is stressful enough without worrying about the state of the space you're leaving or walking into. We handle the cleaning thoroughly and on your timeline — so you can focus on the transition, not the to-do list.",
+    items: [
+      "Full deep clean of entire property",
+      "Inside all cabinets and drawers",
+      "Inside all appliances",
+      "Walls spot-cleaned",
+      "Window interiors",
+      "Garage sweep (where applicable)",
+      "All floors cleaned to move-ready standard",
+    ],
+    cta: "Book This Service",
+    ctaHref: "/book",
+  },
+  {
+    name: "Office & Commercial Cleaning",
+    price: "Custom Pricing",
+    img: U("1497366811353-6870744d04b2", 900, 75),
+    desc: "A well-maintained office tells people something before anyone opens their mouth. We keep your workspace clean, presentable, and consistently serviced — on a schedule that fits around your team, not the other way around.",
+    items: [
+      "Workstations and desks wiped down",
+      "Reception and common areas cleaned",
+      "Restroom sanitation",
+      "Kitchen and break room",
+      "Trash removal and liner replacement",
+      "Floors vacuumed and mopped",
+      "Glass and partition surfaces cleaned",
+      "Evening and weekend scheduling available",
+    ],
+    cta: "Book This Service",
+    ctaHref: "/book",
+  },
+  {
+    name: "Post-Construction Clean",
+    price: "From $399",
+    img: U("1600585154340-be6161a56a0c", 900, 75),
+    desc: "Construction dust settles everywhere — on surfaces you can see and plenty you can't. Our post-construction clean removes debris, dust, and residue from every corner so the finished space looks the way it was meant to, not the way it was left.",
+    items: [
+      "Removal of construction dust from all surfaces",
+      "Window cleaning inside and out",
+      "Floor scrubbing and polishing",
+      "Paint overspray and adhesive removal (standard)",
+      "Fixtures and fittings wiped down",
+      "Sanitization of bathrooms and kitchen",
+      "Final walkthrough inspection before handoff",
+    ],
+    cta: "Get a Quote",
+    ctaHref: "/contact",
+  },
+  {
+    name: "Government, Embassy & Diplomatic Cleaning",
+    price: "Custom Proposal",
+    badge: "Specialized Service",
+    img: U("1497215728101-856f4ea42174", 900, 75),
+    desc: "These environments carry a higher expectation — and they should. We work with government agencies and diplomatic residences that require reliability, discretion, and a standard of cleanliness that reflects the weight of the space. Our team is background-checked, fully insured, and experienced in regulated and sensitive environments.",
+    items: [
+      "Full-facility cleaning to agency or mission standards",
+      "Background-checked, vetted cleaning personnel",
+      "Flexible scheduling including off-hours and weekends",
+      "Capability statement available on request",
+      "SAM.gov and compliance documentation (in progress)",
+      "Formal proposal provided for all government contracts",
+    ],
+    cta: "Request a Proposal",
+    ctaHref: "/contact",
+  },
 ];
 
 export const RES_PRICING = [
@@ -176,43 +279,67 @@ export const COM_PRICING = [
 ];
 
 export const ADDONS = [
-  { name: "Inside Oven", price: "$35", desc: "Full degrease and detail of the oven interior, racks, and door glass." },
-  { name: "Inside Refrigerator", price: "$30", desc: "Empty, wipe, and sanitize all shelves, drawers, and surfaces." },
-  { name: "Interior Windows", price: "$45", desc: "Streak-free cleaning of reachable interior window glass and sills." },
-  { name: "Laundry Service", price: "$25", desc: "Wash, dry, and fold one standard load while we clean." },
-  { name: "Carpet Shampoo", price: "$60", desc: "Deep hot-water extraction for high-traffic carpeted areas." },
-  { name: "Home Organization", price: "$50 / hr", desc: "Closets, pantries, and spaces tidied and neatly arranged." },
-  { name: "Post-Event Cleanup", price: "From $99", desc: "Rapid reset after gatherings, parties, and corporate events." },
+  { name: "Inside Oven", price: "$35", desc: "Full interior clean, including racks and door glass. Grease, baked-on residue, and odors removed." },
+  { name: "Inside Refrigerator", price: "$30", desc: "Shelves, drawers, and door compartments emptied, cleaned, and sanitized." },
+  { name: "Interior Windows", price: "$45 / window", desc: "Glass, frames, and sills cleaned from the inside. Streak-free finish." },
+  { name: "Laundry", price: "$25", desc: "Wash and transfer (client provides detergent). Folding available on request." },
+  { name: "Carpet Shampooing", price: "$60 / room", desc: "Hot water extraction for a deeper clean than vacuuming alone provides." },
+  { name: "Home Organization", price: "$50 / hr", desc: "Decluttering, organizing, and staging for rooms that need more than just cleaning." },
+  { name: "Post-Event Cleanup", price: "From $99", desc: "After a gathering, dinner, or event — we bring the space back to exactly how it was before your guests arrived." },
 ];
 
 export const FAQS = [
-  { q: "Do I need to be home during the cleaning?", a: "Not at all. Many clients provide secure entry instructions and return to a spotless space. Our teams are fully background-checked and insured." },
-  { q: "Are your products safe for children and pets?", a: "Yes. We use EPA Safer Choice, eco-friendly products that are safe for children, pets, and sensitive households." },
-  { q: "How long does a typical clean take?", a: "A standard clean takes 2–4 hours depending on home size; deep cleans and move-outs take longer. We confirm an estimate when you book." },
-  { q: "Are you licensed and insured?", a: "Absolutely. Raya Elite is Maryland licensed, bonded, and fully insured. Documentation is available on request for commercial clients." },
-  { q: "Do you bring your own supplies?", a: "Yes. Our teams arrive fully equipped with professional-grade equipment and eco-friendly supplies at no extra charge." },
-  { q: "What if I'm not satisfied?", a: "Your satisfaction is guaranteed. If anything is not right, let us know within 24 hours and we return to re-clean at no cost." },
-  { q: "How do I book a cleaning?", a: "Book online in under two minutes on our booking page, or request a custom quote for commercial and government work." },
-  { q: "Do you offer recurring service discounts?", a: "Yes. Weekly, bi-weekly, and monthly plans receive preferred pricing. Ask about recurring rates when you book." },
+  { q: "Do I need to be home during the cleaning?", a: "No — and most of our regular clients aren't. Many leave a key or access code and come back to a clean space. Every member of our team is background-checked, bonded, and insured. Your home is in good hands either way." },
+  { q: "Are your cleaning products safe for children and pets?", a: "Yes. We use EPA-recognized, non-toxic products across all residential jobs. If you or someone in your household has specific sensitivities or allergies, tell us when you book and we'll make the right substitutions." },
+  { q: "How long does a cleaning typically take?", a: "It depends on the size and condition of your space. A standard clean for a two-bedroom home usually takes two to three hours. A deep clean or move-out job will take longer. We'll give you an estimated timeframe when we confirm your booking." },
+  { q: "Are you licensed and insured?", a: "Yes. Raya Elite is a licensed Maryland business, fully bonded, and carries liability insurance on every job. You're covered — and so are we." },
+  { q: "Do you bring your own supplies and equipment?", a: "We bring everything — cleaning products, tools, and materials. You don't need to have a single thing waiting for us. Just tell us when you need us and what needs doing." },
+  { q: "What if I'm not satisfied with the results?", a: "Let us know within 24 hours and we'll come back and address it at no additional charge." },
+  { q: "How do I book a recurring service?", a: "The easiest way is through our online booking page. Select your preferred frequency — weekly, biweekly, or monthly — and we'll set up a recurring schedule from there. Recurring clients receive priority scheduling and preferred pricing." },
+  { q: "Can you handle large commercial facilities, government offices, or embassies?", a: "Yes. For larger commercial contracts, government facilities, and embassy or diplomatic properties, we provide a formal proposal and capability statement. Use the contact page to reach us and we'll take it from there." },
 ];
 
 export const VALUES = [
-  { title: "Integrity", desc: "We treat your home and workplace with the same respect we'd give our own." },
-  { title: "Excellence", desc: "We don't leave until it's right. Detail is the difference, and we obsess over it." },
-  { title: "Trust", desc: "Bonded, insured, and background-checked. A partner you can rely on, every visit." },
+  {
+    title: "Integrity",
+    desc: "We treat your home or office the way we'd want someone to treat ours. That means being honest about what a job entails, showing up when we say we will, and never cutting corners because we think you won't notice. You hired us because you have standards. We hold ourselves to them too.",
+  },
+  {
+    title: "Excellence",
+    desc: "We don't leave until it's right. Every cleaner on our team works from a detailed checklist — not because we don't trust their judgment, but because consistency is what separates a good clean from a great one. Excellence isn't an accident. It's a system.",
+  },
+  {
+    title: "Trust",
+    desc: "You're letting people into your space. That's not something we take lightly. Every member of our team is background-checked, bonded, and insured before they step through your door. And when something doesn't meet your expectations, we make it right.",
+  },
 ];
 
 export const LEADERSHIP = [
-  { name: "King Aguguo", role: "Managing Partner", bio: "Leads Raya Elite with a relentless focus on service quality and client trust across the DMV region.", initial: "KA" },
-  { name: "Yaidio Diakite", role: "Operations Director", bio: "Oversees field operations and team training, ensuring an elite standard on every single job.", initial: "YD" },
+  {
+    name: "King Aguguo",
+    role: "Managing Partner",
+    bio: "King brings the vision, the standards, and the drive that define what Raya Elite is at its core. His focus has always been simple: build a company that clients can genuinely rely on — and keep earning that trust on every visit. Under his leadership, Raya Elite has grown into one of Maryland's most trusted cleaning services for residential, commercial, and government clients.",
+    initial: "KA",
+  },
+  {
+    name: "Yaidio Diakite",
+    role: "Operations Director",
+    bio: "Yaidio keeps everything running with the precision the work demands. From team scheduling and quality control to supply management and client satisfaction follow-through — the operational backbone of Raya Elite runs through her. Her commitment to consistency is a large part of why clients keep coming back.",
+    initial: "YD",
+  },
 ];
 
-export const CERTS = [
-  "Maryland Business License",
-  "Bonded & Insured",
-  "EPA Safer Choice Products",
-  "Background-Checked Team",
-  "Google 5-Star Rated",
+export type Cert = { label: string; desc: string; status: string };
+
+export const CERTS: Cert[] = [
+  { label: "Maryland Licensed Business", desc: "Registered and licensed to operate in the state of Maryland.", status: "Active" },
+  { label: "Bonded & Fully Insured", desc: "Full liability coverage on every job. You're protected — and so is your property.", status: "Active" },
+  { label: "EPA Safer Choice Products", desc: "We use cleaning products recognized by the EPA for safety and environmental responsibility.", status: "Active" },
+  { label: "Background-Checked Team", desc: "Every cleaner undergoes a thorough background check before joining our team.", status: "Active — all staff" },
+  { label: "Google 5-Star Rated", desc: "Our rating reflects the standard we hold ourselves to on every visit.", status: "Verified" },
+  { label: "SAM.gov Registration", desc: "Federal registration enabling us to work with government agencies and pursue public contracts.", status: "In Progress" },
+  { label: "MBE Certification", desc: "Minority Business Enterprise designation — currently in application.", status: "In Progress" },
+  { label: "WOSB Certification", desc: "Women-Owned Small Business federal certification — currently in application.", status: "In Progress" },
 ];
 
 export const STAT_DEFS = [
