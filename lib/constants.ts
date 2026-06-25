@@ -18,6 +18,7 @@ export const NAV_ITEMS: NavItem[] = [
   { label: "Book", href: "/book" },
   { label: "Testimonials", href: "/testimonials" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -47,3 +48,8 @@ export const FOOTER_COMPANY: { label: string; href: string }[] = [
 ];
 
 export const SOCIALS = ["Instagram", "Facebook", "LinkedIn", "TikTok"];
+
+// Tidio live-chat public key. Paste the key here (the xxxx in
+// //code.tidio.co/xxxx.js) OR set NEXT_PUBLIC_TIDIO_KEY in the env.
+// The chat widget appears automatically once either is filled in.
+export const TIDIO_PUBLIC_KEY = "";

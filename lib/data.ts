@@ -417,22 +417,22 @@ export const BLOG_PREVIEW = [
     cat: "Residential",
     title: "What to Expect From a White-Glove Cleaning Service",
     desc: "Most cleaning services wipe down the obvious surfaces and call it done. A white-glove service works differently. It's methodical, detail-oriented, and held to a standard most people only experience once before they refuse to go back to anything less.",
-    href: "/blog",
-    img: U("1586023492125-27b2c045efd7", 900, 75),
+    href: "/blog/what-to-expect-from-a-white-glove-cleaning-service",
+    img: "/images/cleaning-lady.jpeg",
   },
   {
     cat: "Deep Cleaning",
     title: "How Often Should You Deep Clean Your Home?",
     desc: "A regular clean maintains your home. A deep clean restores it. If you've never had one — or it's been longer than you'd like to admit — this guide tells you exactly what to expect, what gets covered, and how to know when it's time.",
-    href: "/blog",
-    img: U("1556911220-bff31c812dba", 900, 75),
+    href: "/blog/how-often-should-you-deep-clean-your-home",
+    img: "/images/service-residential.png",
   },
   {
     cat: "Moving",
     title: "Move-In Cleaning Checklist: What Gets Missed — And How We Fix It",
     desc: "There are corners in every property that the previous occupant never thought about and the next one will notice immediately. This checklist covers the areas that consistently get overlooked, and exactly how our team handles each one.",
-    href: "/blog",
-    img: U("1505693416388-ac5ce068fe85", 900, 75),
+    href: "/blog/move-in-cleaning-checklist-what-gets-missed",
+    img: "/images/service-moveinout.png",
   },
 ];
 
