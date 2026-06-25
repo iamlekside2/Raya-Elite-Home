@@ -46,7 +46,8 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <div className="mt-5 flex items-center gap-3 text-[14px] text-cream/75">
             <Sprig className="h-5 w-5 text-[#C9A84C]" />
             <span>
-              {post.date} · {post.read}
+              {post.date}
+              {post.read ? ` · ${post.read}` : ""}
             </span>
           </div>
         </div>

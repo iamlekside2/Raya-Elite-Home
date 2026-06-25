@@ -44,7 +44,8 @@ export default function BlogPage() {
               </Link>
               <div className="flex flex-1 flex-col p-7">
                 <div className="text-[12px] font-semibold uppercase tracking-wider text-ink-soft">
-                  {post.date} · {post.read}
+                  {post.date}
+                  {post.read ? ` · ${post.read}` : ""}
                 </div>
                 <h2 className="mt-3 font-display text-[21px] font-semibold leading-snug text-ink">
                   {post.title}
