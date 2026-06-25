@@ -146,6 +146,7 @@ export default function QuoteForm({
   const scrollRef = useRef<HTMLDivElement>(null);
   const successRef = useRef<HTMLDivElement>(null);
   const tel = `tel:${SITE.phone.replace(/[^0-9]/g, "")}`;
+  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   // Reset the form's scroll position to the top whenever the step changes.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
@@ -156,7 +157,6 @@ export default function QuoteForm({
       successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [status]);
-  const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [f, setF] = useState({
     name: "",
     email: "",
