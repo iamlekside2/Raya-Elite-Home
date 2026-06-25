@@ -445,9 +445,11 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Right — full lead-capture form */}
-            <div className="self-start py-12 md:py-14">
-              <LeadForm />
+            {/* Right — full lead-capture form, vertically centred against the image */}
+            <div className="flex items-center self-stretch py-12 md:py-14">
+              <div className="w-full">
+                <LeadForm />
+              </div>
             </div>
           </div>
         </div>
