@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
-import JobberWidget from "@/components/booking/JobberWidget";
+import QuoteForm from "@/components/contact/QuoteForm";
 import TrustBadges from "@/components/ui/TrustBadges";
 import Sprig from "@/components/ui/Sprig";
 import { BOOK_REASSURANCE, IMAGES } from "@/lib/data";
@@ -66,7 +66,7 @@ export default function BookPage() {
           className="mb-12"
         />
         <div className="grid grid-cols-1 items-start gap-9 lg:grid-cols-[1fr_320px]">
-          <JobberWidget />
+          <QuoteForm mode="book" />
 
           <aside className="flex flex-col gap-5 lg:sticky lg:top-28">
             <div className="rounded-4xl bg-sage-deep px-7 py-8 text-cream">

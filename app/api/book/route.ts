@@ -3,8 +3,8 @@ import {
   sendEmail,
   writeSheet,
   intakeEmail,
-  quoteClientEmail,
-  quoteIntakeEmail,
+  bookingClientEmail,
+  bookingIntakeEmail,
   dash,
   type QuotePayload,
 } from "@/lib/intake";
@@ -20,15 +20,20 @@ export async function POST(req: NextRequest) {
   const s = (k: string) => String(body[k] ?? "").trim();
   const name = s("name");
   const email = s("email");
-  if (!name || !email) {
-    return NextResponse.json({ error: "Please complete the required fields." }, { status: 422 });
+  const phone = s("phone");
+  // Booking requires a direct line to confirm the appointment.
+  if (!name || !email || !phone) {
+    return NextResponse.json(
+      { error: "Name, email, and phone are required to confirm a booking." },
+      { status: 422 }
+    );
   }
 
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
   const d: QuotePayload = {
     name,
     email,
-    phone: s("phone"),
+    phone,
     spaceType: s("spaceType") || s("service"),
     bedrooms: s("bedrooms"),
     bathrooms: s("bathrooms"),
@@ -45,17 +50,17 @@ export async function POST(req: NextRequest) {
     timestamp,
   };
 
-  const ce = quoteClientEmail(d);
+  const ce = bookingClientEmail(d);
   await sendEmail(email, ce.subject, ce.text);
 
-  const ie = quoteIntakeEmail(d);
+  const ie = bookingIntakeEmail(d);
   await sendEmail(intakeEmail, ie.subject, ie.text);
 
-  await writeSheet("contact", {
+  await writeSheet("book", {
     timestamp,
     fullName: d.name,
     email: d.email,
-    phone: dash(d.phone, ""),
+    phone: d.phone,
     spaceType: d.spaceType,
     bedrooms: dash(d.bedrooms, ""),
     bathrooms: dash(d.bathrooms, ""),
@@ -66,9 +71,9 @@ export async function POST(req: NextRequest) {
     spaceDescription: dash(d.spaceNotes, ""),
     cleanType: dash(d.cleanType, ""),
     frequency: dash(d.frequency, ""),
-    whenToStart: dash(d.startWhen, ""),
+    preferredStart: dash(d.startWhen, ""),
     preferredTime: dash(d.timeOfDay, ""),
-    additionalNotes: dash(d.notes, ""),
+    accessInstructions: dash(d.notes, ""),
     status: "New",
   });
 

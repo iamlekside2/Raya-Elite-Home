@@ -133,7 +133,14 @@ const STEP_LABELS = [
   "Anything else?",
 ];
 
-export default function QuoteForm({ initialType = "" }: { initialType?: string }) {
+export default function QuoteForm({
+  initialType = "",
+  mode = "contact",
+}: {
+  initialType?: string;
+  mode?: "contact" | "book";
+}) {
+  const isBooking = mode === "book";
   const [step, setStep] = useState(0);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [f, setF] = useState({
@@ -163,7 +170,7 @@ export default function QuoteForm({ initialType = "" }: { initialType?: string }
   const isCommercial = COMMERCIAL.has(f.spaceType);
 
   const canNext = () => {
-    if (step === 0) return !!f.name && !!f.email;
+    if (step === 0) return !!f.name && !!f.email && (!isBooking || !!f.phone);
     if (step === 1) return !!f.spaceType;
     return true;
   };
@@ -183,16 +190,28 @@ export default function QuoteForm({ initialType = "" }: { initialType?: string }
       .join("\n");
 
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch(isBooking ? "/api/book" : "/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           name: f.name,
           email: f.email,
           phone: f.phone,
-          service: f.spaceType,
+          spaceType: f.spaceType,
+          bedrooms: isResidential ? String(f.bedrooms) : "",
+          bathrooms: isResidential ? String(f.bathrooms) : "",
+          pets: isResidential ? (f.pets === "Yes" ? `Yes — ${f.petsDetail || "unspecified"}` : f.pets) : "",
+          sqft: isResidential ? f.sqft : isCommercial ? f.sqftRange : "",
+          restrooms: isCommercial ? String(f.restrooms) : "",
+          levels: String(f.levels),
+          spaceNotes: isCommercial ? f.spaceNotes : "",
+          cleanType: f.cleanType === "Other" ? `Other — ${f.cleanOther || "unspecified"}` : f.cleanType,
+          frequency: f.frequency,
+          startWhen: f.startWhen,
+          timeOfDay: f.timeOfDay,
+          notes: f.notes,
           message: summary,
-          source: "contact-quote-form",
+          source: isBooking ? "booking-form" : "contact-quote-form",
         }),
       });
       if (!res.ok) throw new Error("failed");
@@ -211,8 +230,10 @@ export default function QuoteForm({ initialType = "" }: { initialType?: string }
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage-deep text-[30px] text-cream">
           ✓
         </div>
-        <p className="mx-auto mt-5 max-w-[400px] text-[17px] font-semibold text-ink">
-          Thank you. We&apos;ve received your request and will be in touch shortly with your quote.
+        <p className="mx-auto mt-5 max-w-[420px] text-[17px] font-semibold text-ink">
+          {isBooking
+            ? "Booking request received. We'll confirm your appointment within 2 business hours. Check your email for a summary."
+            : "Thank you. We've received your request and will be in touch shortly with your quote."}
         </p>
       </div>
     );
@@ -220,12 +241,14 @@ export default function QuoteForm({ initialType = "" }: { initialType?: string }
 
   return (
     <div className="rounded-[2rem] bg-cream p-7 shadow-soft md:p-9">
-      <div className="kicker mb-2">Get a Free Quote</div>
+      <div className="kicker mb-2">{isBooking ? "Book Your Cleaning" : "Get a Free Quote"}</div>
       <h2 className="font-display text-[26px] font-semibold leading-tight text-ink">
         Tell us about your space
       </h2>
       <p className="mt-1 text-[15px] text-ink-soft">
-        We&apos;ll come back with an accurate price — no guesswork, no obligation.
+        {isBooking
+          ? "Pick what fits — we'll confirm your appointment within 2 business hours."
+          : "We'll come back with an accurate price — no guesswork, no obligation."}
       </p>
 
       {/* progress */}
@@ -375,7 +398,7 @@ export default function QuoteForm({ initialType = "" }: { initialType?: string }
           </button>
         ) : (
           <button type="button" disabled={status === "sending"} onClick={submit} className="btn-clay px-7 py-3 text-[15px] disabled:opacity-60">
-            {status === "sending" ? "Sending…" : "Send My Quote Request"}
+            {status === "sending" ? "Sending…" : isBooking ? "Send My Booking Request" : "Send My Quote Request"}
           </button>
         )}
       </div>

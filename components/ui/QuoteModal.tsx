@@ -55,7 +55,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
     }
     setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/homepage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -63,8 +63,8 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
           email: form.email,
           phone: form.phone,
           service: form.help,
-          message: form.space || `Quote request: ${form.help || "General enquiry"}`,
-          source: "quote-modal",
+          notes: form.space,
+          source: "homepage-quick-form",
         }),
       });
       if (!res.ok) throw new Error("failed");
