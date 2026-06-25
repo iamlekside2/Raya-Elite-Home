@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { SITE } from "@/lib/constants";
 
 const SPACE_TYPES = [
   { key: "Residential home or apartment", icon: "🏠" },
@@ -143,10 +144,18 @@ export default function QuoteForm({
   const isBooking = mode === "book";
   const [step, setStep] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const successRef = useRef<HTMLDivElement>(null);
+  const tel = `tel:${SITE.phone.replace(/[^0-9]/g, "")}`;
   // Reset the form's scroll position to the top whenever the step changes.
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
   }, [step]);
+  // Bring the confirmation into view (centered) once submitted.
+  useEffect(() => {
+    if (status === "success") {
+      successRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [status]);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [f, setF] = useState({
     name: "",
@@ -221,9 +230,6 @@ export default function QuoteForm({
       });
       if (!res.ok) throw new Error("failed");
       setStatus("success");
-      try {
-        window.scrollTo({ top: 0 });
-      } catch {}
     } catch {
       setStatus("error");
     }
@@ -231,15 +237,24 @@ export default function QuoteForm({
 
   if (status === "success") {
     return (
-      <div className="rounded-[2rem] bg-cream p-10 text-center shadow-soft">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-sage-deep text-[30px] text-cream">
+      <div
+        ref={successRef}
+        className="flex flex-col items-center rounded-[2rem] bg-cream px-8 py-14 text-center shadow-soft md:px-12"
+      >
+        <div className="flex h-20 w-20 items-center justify-center rounded-full bg-sage-deep text-[36px] text-cream shadow-soft">
           ✓
         </div>
-        <p className="mx-auto mt-5 max-w-[420px] text-[17px] font-semibold text-ink">
+        <h3 className="mt-6 font-display text-[26px] font-semibold text-ink">
+          {isBooking ? "Booking request received" : "Request received"}
+        </h3>
+        <p className="mx-auto mt-3 max-w-[440px] text-[16px] leading-relaxed text-ink-soft">
           {isBooking
-            ? "Booking request received. We'll confirm your appointment within 2 business hours. Check your email for a summary."
+            ? "We'll confirm your appointment within 2 business hours. Check your email for a summary."
             : "Thank you. We've received your request and will be in touch shortly with your quote."}
         </p>
+        <a href={tel} className="btn-outline mt-7 px-7 py-3 text-[14px]">
+          Prefer to talk? Call us
+        </a>
       </div>
     );
   }
