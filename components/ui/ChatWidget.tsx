@@ -3,17 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { QUOTE_HELP_OPTIONS } from "@/lib/data";
 
-// Lightweight automated chat: greets the visitor, asks them to fill a short
-// form, and logs the lead to the Homepage tab of the Google Sheet, flagged as
-// coming from the chat widget. No live agent / third-party service needed.
+// Automated chat (Tidio-style): greets, waits for the visitor to type, replies,
+// then collects a short form and logs the lead to the Homepage tab of the
+// Google Sheet — flagged as coming from the chat widget.
 
+type Msg = { from: "bot" | "user"; text: string };
 type Form = { name: string; email: string; phone: string; help: string };
 const empty: Form = { name: "", email: "", phone: "", help: "" };
 
 const inputCls =
   "w-full rounded-xl border border-ink/15 bg-paper px-3 py-2 text-[14px] text-ink outline-none transition-colors focus:border-clay";
 
-function Bubble({ children }: { children: React.ReactNode }) {
+function BotRow({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-start gap-2">
       <span className="mt-[2px] flex h-7 w-7 flex-none items-center justify-center rounded-full bg-sage-tint text-sage-deep">
@@ -29,27 +30,57 @@ function Bubble({ children }: { children: React.ReactNode }) {
   );
 }
 
+function UserRow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex justify-end">
+      <div className="max-w-[80%] rounded-2xl rounded-tr-sm bg-clay px-3.5 py-2.5 text-[14px] leading-relaxed text-cream">
+        {children}
+      </div>
+    </div>
+  );
+}
+
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
-  const [showForm, setShowForm] = useState(false);
-  const [sent, setSent] = useState(false);
-  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const [messages, setMessages] = useState<Msg[]>([
+    { from: "bot", text: "👋 Hi there! How can we help you today?" },
+  ]);
+  const [input, setInput] = useState("");
+  const [typing, setTyping] = useState(false);
+  const [step, setStep] = useState<"chat" | "form" | "done">("chat");
   const [form, setForm] = useState<Form>(empty);
+  const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
+  const firstMessage = useRef("");
   const bodyRef = useRef<HTMLDivElement>(null);
-
-  // reveal the form a beat after opening (automated "typing" feel)
-  useEffect(() => {
-    if (!open) return;
-    const t = setTimeout(() => setShowForm(true), 700);
-    return () => clearTimeout(t);
-  }, [open]);
 
   useEffect(() => {
     bodyRef.current?.scrollTo({ top: bodyRef.current.scrollHeight, behavior: "smooth" });
-  }, [showForm, sent, status]);
+  }, [messages, typing, step, status]);
 
   const set = (k: keyof Form) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const sendMessage = (e: React.FormEvent) => {
+    e.preventDefault();
+    const msg = input.trim();
+    if (!msg) return;
+    if (!firstMessage.current) firstMessage.current = msg;
+    setMessages((m) => [...m, { from: "user", text: msg }]);
+    setInput("");
+    setTyping(true);
+    setTimeout(() => {
+      setTyping(false);
+      setMessages((m) => [
+        ...m,
+        {
+          from: "bot",
+          text:
+            "Thanks for reaching out! Let's get you a fast, accurate quote — drop your details below and our team will reach out the same day.",
+        },
+      ]);
+      setStep("form");
+    }, 900);
+  };
 
   const submit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -67,12 +98,19 @@ export default function ChatWidget() {
           email: form.email,
           phone: form.phone,
           service: form.help,
-          notes: "💬 Submitted via website chat widget",
+          notes: `💬 Via website chat${firstMessage.current ? ` — "${firstMessage.current}"` : ""}`,
           source: "chat-widget",
         }),
       });
       if (!res.ok) throw new Error("failed");
-      setSent(true);
+      setStep("done");
+      setMessages((m) => [
+        ...m,
+        {
+          from: "bot",
+          text: `Thank you${form.name ? `, ${form.name.split(" ")[0]}` : ""}! ✅ We've got your details and a Raya Elite team member will reach out shortly.`,
+        },
+      ]);
     } catch {
       setStatus("error");
     }
@@ -110,16 +148,22 @@ export default function ChatWidget() {
             </div>
           </div>
 
-          {/* Body */}
+          {/* Messages */}
           <div ref={bodyRef} className="flex-1 space-y-3 overflow-y-auto overscroll-contain p-4">
-            <Bubble>Hi! 👋 Welcome to Raya Elite — your space deserves an elite clean.</Bubble>
-            {showForm && !sent && (
-              <Bubble>
-                Tell us a little about you and our team will reach out the same day with a quote.
-              </Bubble>
+            {messages.map((m, i) =>
+              m.from === "bot" ? <BotRow key={i}>{m.text}</BotRow> : <UserRow key={i}>{m.text}</UserRow>
+            )}
+            {typing && (
+              <BotRow>
+                <span className="inline-flex gap-1">
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-soft [animation-delay:-0.2s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-soft [animation-delay:-0.1s]" />
+                  <span className="h-1.5 w-1.5 animate-bounce rounded-full bg-ink-soft" />
+                </span>
+              </BotRow>
             )}
 
-            {showForm && !sent && (
+            {step === "form" && (
               <form onSubmit={submit} className="ml-9 space-y-2.5 rounded-2xl bg-paper-2 p-3.5">
                 {status === "error" && (
                   <div className="rounded-lg bg-clay-tint px-3 py-2 text-[12.5px] font-semibold text-clay-deep">
@@ -137,23 +181,33 @@ export default function ChatWidget() {
                     </option>
                   ))}
                 </select>
-                <button
-                  type="submit"
-                  disabled={status === "sending"}
-                  className="btn-clay w-full py-2.5 text-[14px] disabled:opacity-70"
-                >
+                <button type="submit" disabled={status === "sending"} className="btn-clay w-full py-2.5 text-[14px] disabled:opacity-70">
                   {status === "sending" ? "Sending…" : "Send My Request"}
                 </button>
               </form>
             )}
-
-            {sent && (
-              <Bubble>
-                Thank you{form.name ? `, ${form.name.split(" ")[0]}` : ""}! ✅ We&apos;ve got your
-                details and a Raya Elite team member will reach out shortly.
-              </Bubble>
-            )}
           </div>
+
+          {/* Composer — visible while chatting */}
+          {step === "chat" && (
+            <form onSubmit={sendMessage} className="flex items-center gap-2 border-t border-ink/10 p-3">
+              <input
+                className={inputCls}
+                placeholder="Type your message…"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <button
+                type="submit"
+                aria-label="Send"
+                className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-clay text-cream transition-colors hover:bg-clay-deep"
+              >
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+                  <path d="M4 12l16-7-7 16-2.5-6.5L4 12Z" strokeLinejoin="round" />
+                </svg>
+              </button>
+            </form>
+          )}
         </div>
       )}
     </>

@@ -83,7 +83,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
       {open && (
         <div
           onClick={close}
-          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto bg-ink/50 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto p-4"
         >
           <div
             onClick={(e) => e.stopPropagation()}
