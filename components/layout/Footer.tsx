@@ -104,9 +104,9 @@ export default function Footer() {
           © {new Date().getFullYear()} {SITE.name} · All Rights Reserved
         </span>
         <span className="flex gap-3">
-          <Link href="#" className="transition-colors hover:text-[#C9A84C]">Privacy Policy</Link>
+          <Link href="/privacy" className="transition-colors hover:text-[#C9A84C]">Privacy Policy</Link>
           <span aria-hidden>·</span>
-          <Link href="#" className="transition-colors hover:text-[#C9A84C]">Terms of Service</Link>
+          <Link href="/terms" className="transition-colors hover:text-[#C9A84C]">Terms of Service</Link>
         </span>
       </div>
     </footer>
