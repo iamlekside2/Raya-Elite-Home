@@ -6,6 +6,7 @@ import Footer from "@/components/layout/Footer";
 import GA4Script from "@/components/analytics/GA4Script";
 import FBPixelScript from "@/components/analytics/FBPixelScript";
 import TidioScript from "@/components/analytics/TidioScript";
+import ChatWidget from "@/components/ui/ChatWidget";
 import { SITE } from "@/lib/constants";
 
 const fraunces = Fraunces({
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );
