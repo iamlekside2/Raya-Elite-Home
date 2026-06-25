@@ -441,7 +441,7 @@ export default function HomePage() {
                 alt="A friendly Raya Elite cleaner"
                 width={1088}
                 height={1446}
-                className="mt-auto hidden w-[300px] max-w-full mx-auto md:block"
+                className="mx-auto mt-2 hidden w-[460px] max-w-full self-end md:block"
               />
             </div>
 
