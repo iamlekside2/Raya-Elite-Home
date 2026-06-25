@@ -90,7 +90,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label="Get a free quote"
-            className="max-h-[88vh] w-full max-w-[440px] animate-rise overflow-y-auto overscroll-contain rounded-[1.5rem] bg-cream p-6 shadow-lift"
+            className="w-full max-w-[440px] animate-rise rounded-[1.5rem] bg-cream p-6 shadow-lift"
           >
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
