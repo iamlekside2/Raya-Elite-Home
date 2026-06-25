@@ -170,7 +170,7 @@ export default function QuoteForm({
   const isCommercial = COMMERCIAL.has(f.spaceType);
 
   const canNext = () => {
-    if (step === 0) return !!f.name && !!f.email && (!isBooking || !!f.phone);
+    if (step === 0) return !!f.name && !!f.email && !!f.phone;
     if (step === 1) return !!f.spaceType;
     return true;
   };

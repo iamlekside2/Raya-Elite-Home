@@ -49,7 +49,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.name || !form.email) {
+    if (!form.name || !form.email || !form.phone) {
       setStatus("error");
       return;
     }
