@@ -75,7 +75,7 @@ export default function ChatWidget() {
         {
           from: "bot",
           text:
-            "Thanks for reaching out! Let's get you a fast, accurate quote — drop your details below and our team will reach out the same day.",
+            "Thanks for reaching out! Let's get you started quickly — drop your details below and we'll take care of the rest for you.",
         },
       ]);
       setStep("form");
