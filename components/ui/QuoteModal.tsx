@@ -90,18 +90,18 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
             role="dialog"
             aria-modal="true"
             aria-label="Get a free quote"
-            className="my-8 w-full max-w-[560px] animate-rise rounded-[2rem] bg-cream p-7 shadow-lift md:p-9"
+            className="max-h-[88vh] w-full max-w-[440px] animate-rise overflow-y-auto overscroll-contain rounded-[1.5rem] bg-cream p-6 shadow-lift"
           >
-            <div className="mb-6 flex items-start justify-between gap-4">
+            <div className="mb-4 flex items-start justify-between gap-4">
               <div>
-                <div className="kicker mb-2">
+                <div className="kicker mb-1.5">
                   <Sprig className="h-4 w-4 text-sage" />
                   Free Quote
                 </div>
-                <h2 className="font-display text-[26px] font-semibold leading-tight text-ink">
+                <h2 className="font-display text-[21px] font-semibold leading-tight text-ink">
                   Get a Free Quote
                 </h2>
-                <p className="mt-1 text-[15px] text-ink-soft">
+                <p className="mt-1 text-[13.5px] text-ink-soft">
                   Tell us what you need. We&apos;ll get back to you in no time.
                 </p>
               </div>
@@ -128,7 +128,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="flex flex-col gap-4">
+              <form onSubmit={onSubmit} className="flex flex-col gap-3">
                 {status === "error" && (
                   <div className="rounded-2xl border-l-4 border-clay bg-clay-tint px-4 py-3 text-[14px] font-semibold text-clay-deep">
                     Something went wrong. Please try again or call us at {SITE.phone}.
@@ -138,7 +138,7 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                   Full Name *
                   <input type="text" placeholder="Your full name" value={form.name} onChange={set("name")} className={inputCls} />
                 </label>
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <label className={labelCls}>
                     Email Address *
                     <input type="email" placeholder="Your email address" value={form.email} onChange={set("email")} className={inputCls} />
@@ -162,14 +162,14 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
                 <label className={labelCls}>
                   Tell Us About Your Space (Optional)
                   <textarea
-                    rows={3}
+                    rows={2}
                     placeholder="Briefly describe your space and what you need"
                     value={form.space}
                     onChange={set("space")}
                     className={`${inputCls} resize-y`}
                   />
                 </label>
-                <button type="submit" disabled={status === "sending"} className="btn-clay mt-1 py-4 text-[16px] disabled:opacity-70">
+                <button type="submit" disabled={status === "sending"} className="btn-clay mt-1 py-3.5 text-[15px] disabled:opacity-70">
                   {status === "sending" ? "Sending…" : "Send My Quote Request"}
                 </button>
               </form>
