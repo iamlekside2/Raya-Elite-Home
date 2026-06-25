@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const SPACE_TYPES = [
   { key: "Residential home or apartment", icon: "🏠" },
@@ -142,6 +142,11 @@ export default function QuoteForm({
 }) {
   const isBooking = mode === "book";
   const [step, setStep] = useState(0);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  // Reset the form's scroll position to the top whenever the step changes.
+  useEffect(() => {
+    scrollRef.current?.scrollTo({ top: 0, behavior: "auto" });
+  }, [step]);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
   const [f, setF] = useState({
     name: "",
@@ -240,7 +245,10 @@ export default function QuoteForm({
   }
 
   return (
-    <div className="rounded-[2rem] bg-cream p-7 shadow-soft md:p-9">
+    <div
+      ref={scrollRef}
+      className="max-h-[80vh] overflow-y-auto overscroll-contain rounded-[2rem] bg-cream p-7 shadow-soft md:p-9"
+    >
       <div className="kicker mb-2">{isBooking ? "Book Your Cleaning" : "Get a Free Quote"}</div>
       <h2 className="font-display text-[26px] font-semibold leading-tight text-ink">
         Tell us about your space
