@@ -163,12 +163,12 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
     table: {
       columns: ["Home Size", "Floor Area", "One-Time", "Weekly / Bi-Weekly", "Monthly"],
       rows: [
-        ["Studio / 1BR / 1BA", "Up to 75 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
-        ["2BR / 1-2BA", "Up to 130 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
-        ["3BR / 2BA", "Up to 205 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
-        ["4BR / 3BA", "Up to 300 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
-        ["5BR / 4BA", "Up to 420 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
-        ["6BR+ / Estate", "420+ m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["Studio / 1BR / 1BA", "Up to 50 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["2BR / 1-2BA", "50 – 100 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["3BR / 2BA", "100 – 150 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["4BR / 3BA", "150 – 200 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["5BR / 4BA", "200 – 300 m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["6BR+ / Estate", "300+ m²", PRICE_TBD, PRICE_TBD, PRICE_TBD],
       ],
     },
     cta: "Enquire or Book",
@@ -183,12 +183,12 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
     table: {
       columns: ["Home Size", "Floor Area", "One-Time", "Weekly / Bi-Weekly"],
       rows: [
-        ["Studio / 1BR / 1BA", "Up to 75 m²", PRICE_TBD, PRICE_TBD],
-        ["2BR / 1-2BA", "Up to 130 m²", PRICE_TBD, PRICE_TBD],
-        ["3BR / 2BA", "Up to 205 m²", PRICE_TBD, PRICE_TBD],
-        ["4BR / 3BA", "Up to 300 m²", PRICE_TBD, PRICE_TBD],
-        ["5BR / 4BA", "Up to 420 m²", PRICE_TBD, PRICE_TBD],
-        ["6BR+ / Estate", "420+ m²", PRICE_TBD, PRICE_TBD],
+        ["Studio / 1BR / 1BA", "Up to 50 m²", PRICE_TBD, PRICE_TBD],
+        ["2BR / 1-2BA", "50 – 100 m²", PRICE_TBD, PRICE_TBD],
+        ["3BR / 2BA", "100 – 150 m²", PRICE_TBD, PRICE_TBD],
+        ["4BR / 3BA", "150 – 200 m²", PRICE_TBD, PRICE_TBD],
+        ["5BR / 4BA", "200 – 300 m²", PRICE_TBD, PRICE_TBD],
+        ["6BR+ / Estate", "300+ m²", PRICE_TBD, PRICE_TBD],
       ],
     },
     cta: "Enquire or Book",
@@ -204,11 +204,11 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
     table: {
       columns: ["Home Size", "One-Time", "Weekly / Bi-Weekly"],
       rows: [
-        ["Up to 230 m²", PRICE_TBD, PRICE_TBD],
-        ["230 – 325 m²", PRICE_TBD, PRICE_TBD],
-        ["325 – 465 m²", PRICE_TBD, PRICE_TBD],
-        ["465 – 650 m²", PRICE_TBD, PRICE_TBD],
-        ["Estate 650+ m²", PRICE_TBD, PRICE_TBD],
+        ["Up to 250 m²", PRICE_TBD, PRICE_TBD],
+        ["250 – 400 m²", PRICE_TBD, PRICE_TBD],
+        ["400 – 550 m²", PRICE_TBD, PRICE_TBD],
+        ["550 – 750 m²", PRICE_TBD, PRICE_TBD],
+        ["Estate 750+ m²", PRICE_TBD, PRICE_TBD],
       ],
     },
     cta: "Enquire or Book",
@@ -219,11 +219,11 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
 export const MOVE_IN_OUT: PriceTable = {
   columns: ["Property Size", "Floor Area", "Price"],
   rows: [
-    ["1BR / 1BA", "Up to 75 m²", PRICE_TBD],
-    ["2BR / 2BA", "Up to 130 m²", PRICE_TBD],
-    ["3BR / 2-3BA", "Up to 205 m²", PRICE_TBD],
-    ["4BR / 3-4BA", "Up to 300 m²", PRICE_TBD],
-    ["5BR+ / Estate", "420+ m²", PRICE_TBD],
+    ["1BR / 1BA", "Up to 50 m²", PRICE_TBD],
+    ["2BR / 2BA", "50 – 100 m²", PRICE_TBD],
+    ["3BR / 2-3BA", "100 – 150 m²", PRICE_TBD],
+    ["4BR / 3-4BA", "150 – 200 m²", PRICE_TBD],
+    ["5BR+ / Estate", "300+ m²", PRICE_TBD],
   ],
 };
 
@@ -262,10 +262,10 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
     table: {
       columns: ["Facility Size", "1x / Week", "2x / Week"],
       rows: [
-        ["Up to 185 m²", PRICE_TBD, PRICE_TBD],
-        ["185 – 465 m²", PRICE_TBD, PRICE_TBD],
-        ["465 – 930 m²", PRICE_TBD, PRICE_TBD],
-        ["930 – 1,860 m²", PRICE_TBD, PRICE_TBD],
+        ["Up to 200 m²", PRICE_TBD, PRICE_TBD],
+        ["200 – 500 m²", PRICE_TBD, PRICE_TBD],
+        ["500 – 1,000 m²", PRICE_TBD, PRICE_TBD],
+        ["1,000 – 2,000 m²", PRICE_TBD, PRICE_TBD],
       ],
     },
     cta: "Request a Commercial Quote",
@@ -280,10 +280,10 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
     table: {
       columns: ["Facility Size", "3x / Week", "5x / Week"],
       rows: [
-        ["Up to 465 m²", PRICE_TBD, PRICE_TBD],
-        ["465 – 1,395 m²", PRICE_TBD, PRICE_TBD],
-        ["1,395 – 2,790 m²", PRICE_TBD, PRICE_TBD],
-        ["2,790+ m²", PRICE_TBD, PRICE_TBD],
+        ["Up to 500 m²", PRICE_TBD, PRICE_TBD],
+        ["500 – 1,500 m²", PRICE_TBD, PRICE_TBD],
+        ["1,500 – 3,000 m²", PRICE_TBD, PRICE_TBD],
+        ["3,000+ m²", PRICE_TBD, PRICE_TBD],
       ],
     },
     cta: "Request a Commercial Quote",
@@ -299,10 +299,10 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
     table: {
       columns: ["Facility Size", "Service Frequency", "Monthly Rate"],
       rows: [
-        ["Small Embassy / Gov Office (under 465 m²)", "Daily", PRICE_TBD],
-        ["Mid-Size Facility (465 – 1,860 m²)", "Daily", PRICE_TBD],
-        ["Large Facility / Embassy Complex (1,860 – 4,645 m²)", "Daily", PRICE_TBD],
-        ["Major Embassy / Federal Campus (4,645+ m²)", "Daily + On-call", PRICE_TBD],
+        ["Small Embassy / Gov Office (under 500 m²)", "Daily", PRICE_TBD],
+        ["Mid-Size Facility (500 – 2,000 m²)", "Daily", PRICE_TBD],
+        ["Large Facility / Embassy Complex (2,000 – 5,000 m²)", "Daily", PRICE_TBD],
+        ["Major Embassy / Federal Campus (5,000+ m²)", "Daily + On-call", PRICE_TBD],
       ],
     },
     cta: "Request a Proposal",
