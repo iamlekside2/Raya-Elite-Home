@@ -202,7 +202,7 @@ export default function ServicesPage() {
               className="mb-8"
             />
             <p className="text-[17px] leading-relaxed text-ink-soft">
-              Every home and office is different. Square footage, current condition, number of rooms,
+              Every home and office is different. Floor area, current condition, number of rooms,
               and how long it&apos;s been since the last professional clean all factor into what your
               job actually costs. We&apos;d rather give you an accurate number upfront than pad a low
               quote and surprise you afterward.
