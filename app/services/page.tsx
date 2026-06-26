@@ -1,21 +1,123 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Accordion from "@/components/services/Accordion";
 import Sprig from "@/components/ui/Sprig";
-import { IMAGES, SERVICE_PACKAGES, RES_PRICING, COM_PRICING, ADDONS, FAQS } from "@/lib/data";
+import {
+  IMAGES,
+  RESIDENTIAL_TIERS,
+  MOVE_IN_OUT,
+  AIRBNB_TURNOVER,
+  RESIDENTIAL_ADDONS,
+  COMMERCIAL_PLANS,
+  FAQS,
+  type PriceTable as PriceTableType,
+  type ServiceTier,
+} from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
 export const metadata: Metadata = {
   title: "Cleaning Services & Pricing | Raya Elite Home & Office Cleaning — Maryland & DC",
   description:
-    "Residential deep cleans, office cleaning, move-in/out, post-construction, and government or embassy services across Maryland and Washington DC. Straightforward pricing. No hidden fees. Book online today.",
+    "Residential white-glove cleaning, deep cleans, move-in/out, Airbnb turnovers, and commercial, embassy & government services across Maryland and Washington DC. Full transparent pricing. Book online today.",
   alternates: { canonical: "/services" },
 };
 
 export const revalidate = 86400;
+
+/* Shared pricing table — maps any column/row shape from the blueprint. */
+function PriceTable({ table, accent }: { table: PriceTableType; accent: "navy" | "sage" }) {
+  const headBg = accent === "navy" ? "bg-[#002147]" : "bg-sage-deep";
+  return (
+    <div className="overflow-x-auto rounded-3xl border border-ink/10">
+      <table className="w-full min-w-[560px] border-collapse text-left">
+        <thead>
+          <tr className={`${headBg} text-cream`}>
+            {table.columns.map((c, i) => (
+              <th
+                key={c}
+                className={`px-5 py-3.5 text-[12.5px] font-bold uppercase tracking-wider ${
+                  i === 0 ? "" : "text-center"
+                }`}
+              >
+                {c}
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {table.rows.map((row, ri) => (
+            <tr
+              key={ri}
+              className="border-t border-ink/8 bg-paper transition-colors hover:bg-paper-2"
+            >
+              {row.map((cell, ci) => (
+                <td
+                  key={ci}
+                  className={`px-5 py-[14px] align-top text-[14.5px] ${
+                    ci === 0
+                      ? "font-bold text-ink"
+                      : "text-center text-ink-soft"
+                  }`}
+                >
+                  {cell}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+/* One package = one bordered card: name + badge, ideal-for, inclusions, table, CTA. */
+function TierCard({ tier, accent }: { tier: ServiceTier; accent: "navy" | "sage" }) {
+  const inclusions = tier.includes.split(/,\s*(?![^()]*\))/).map((s) => s.trim());
+  return (
+    <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+      <div className="p-7 md:p-9">
+        <div className="flex flex-wrap items-center gap-3">
+          <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
+            {tier.name}
+          </h3>
+          {tier.badge && (
+            <span className="rounded-full bg-clay px-3 py-1 text-[11.5px] font-bold uppercase tracking-wider text-cream">
+              {tier.badge}
+            </span>
+          )}
+        </div>
+        <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
+          <span className="font-bold text-ink">Ideal for:</span> {tier.idealFor}
+        </p>
+
+        <div className="mb-2 mt-6 text-[12px] font-bold uppercase tracking-wider text-ink/70">
+          What&apos;s included
+        </div>
+        <div className="grid gap-x-7 gap-y-[9px] sm:grid-cols-2">
+          {inclusions.map((it) => (
+            <div key={it} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-ink-soft">
+              <Sprig className="mt-[3px] h-[17px] w-[17px] flex-none text-sage" />
+              <span>{it}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-7">
+          <PriceTable table={tier.table} accent={accent} />
+        </div>
+
+        <Link
+          href={tier.ctaHref}
+          className={`${accent === "navy" ? "btn-gold" : "btn-clay"} mt-7 inline-flex px-8 py-[14px] text-[15px]`}
+        >
+          {tier.cta}
+        </Link>
+      </div>
+    </article>
+  );
+}
 
 export default function ServicesPage() {
   return (
@@ -28,125 +130,98 @@ export default function ServicesPage() {
         tagline="Every space is different. But the standard is always the same."
       />
 
-      {/* PACKAGES */}
+      {/* RESIDENTIAL */}
       <section className="bg-cream">
         <div className="container-x py-20 md:py-24">
           <SectionHeading
-            eyebrow="What We Offer"
-            title="Find the Right Clean for Your Space"
-            subtitle="Whether you need a one-time deep clean or a recurring service contract, every package is built on the same foundation — trained staff, reliable scheduling, and results you can actually see."
+            eyebrow="Residential Cleaning"
+            title="Your Home. Our Masterpiece."
+            subtitle="Life is too short for ordinary cleaning. Raya Elite delivers white-glove residential cleaning services that transform your home into the sanctuary it deserves to be."
             className="mb-14"
           />
-          <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-            {SERVICE_PACKAGES.map((p) => (
-              <article
-                key={p.name}
-                className="group flex flex-col overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft transition-transform duration-300 hover:-translate-y-2"
-              >
-                <div className="relative h-44 overflow-hidden">
-                  <Image src={p.img} alt={p.name} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-                  {p.badge && (
-                    <span className="absolute right-4 top-4 rounded-full bg-clay px-3 py-1 text-[12px] font-bold text-cream">
-                      {p.badge}
-                    </span>
-                  )}
-                </div>
-                <div className="flex flex-1 flex-col p-7">
-                  <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">{p.name}</h3>
-                  <div className="mt-1 text-[14px] font-bold uppercase tracking-wider text-clay">
-                    {p.price}
-                  </div>
-                  <p className="mt-3 text-[14.5px] leading-relaxed text-ink-soft">{p.desc}</p>
-                  <div className="mt-5 mb-1 text-[12px] font-bold uppercase tracking-wider text-ink/70">
-                    What&apos;s included
-                  </div>
-                  <div className="flex-1 space-y-[9px]">
-                    {p.items.map((it) => (
-                      <div key={it} className="flex items-start gap-3 text-[14.5px] text-ink-soft">
-                        <Sprig className="mt-[2px] h-[18px] w-[18px] flex-none text-sage" />
-                        <span>{it}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <Link href={p.ctaHref} className="btn-gold mt-6 py-[14px] text-[15px]">
-                    {p.cta}
-                  </Link>
-                </div>
-              </article>
+
+          <div className="space-y-8">
+            {RESIDENTIAL_TIERS.map((tier) => (
+              <TierCard key={tier.name} tier={tier} accent="sage" />
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* TRANSPARENT PRICING */}
-      <section className="bg-sand">
-        <div className="container-x py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Pricing"
-            title="Transparent Pricing. No Surprises."
-            subtitle="We don't believe in vague quotes or after-the-fact charges. The pricing below gives you a clear starting point. Your final quote is confirmed before we show up — always."
-            className="mb-12"
-          />
-          <div className="grid gap-8 lg:grid-cols-2">
-            {/* Residential */}
-            <div className="overflow-hidden rounded-4xl bg-cream shadow-soft">
-              <div className="bg-sage-deep px-7 py-5 font-display text-[18px] font-semibold text-cream">
-                Residential — by bedroom
-              </div>
-              <div className="grid grid-cols-[2fr_1fr_1fr] px-7 py-3 text-[12px] font-bold uppercase tracking-wider text-ink-soft">
-                <div>Home Size</div>
-                <div className="text-center">Standard</div>
-                <div className="text-center">Deep</div>
-              </div>
-              {RES_PRICING.map((r) => (
-                <div
-                  key={r.home}
-                  className="grid grid-cols-[2fr_1fr_1fr] items-center border-t border-ink/5 px-7 py-[14px] transition-colors hover:bg-paper-2"
-                >
-                  <div className="text-[15px] font-bold text-ink">{r.home}</div>
-                  <div className="text-center text-[15px] text-ink-soft">{r.std}</div>
-                  <div className="text-center text-[15px] font-bold text-clay">{r.deep}</div>
+          {/* Sub-services */}
+          <div className="mt-8 grid gap-8 lg:grid-cols-2">
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+              <div className="p-7 md:p-8">
+                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+                  Move-In / Move-Out Cleaning
+                </h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
+                  A complete, move-ready deep clean for an empty home — inside cabinets, appliances,
+                  and every surface, on your timeline.
+                </p>
+                <div className="mt-6">
+                  <PriceTable table={MOVE_IN_OUT} accent="sage" />
                 </div>
-              ))}
-            </div>
-            {/* Commercial */}
-            <div>
-              <div className="overflow-hidden rounded-4xl bg-cream shadow-soft">
-                <div className="bg-clay px-7 py-5 font-display text-[18px] font-semibold text-cream">
-                  Commercial — by square footage
+              </div>
+            </article>
+
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+              <div className="p-7 md:p-8">
+                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+                  Airbnb &amp; Short-Term Rental Turnover
+                </h3>
+                <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
+                  Fast, reliable, guest-ready turnovers with a guaranteed service-level turnaround
+                  between bookings.
+                </p>
+                <div className="mt-6">
+                  <PriceTable table={AIRBNB_TURNOVER} accent="sage" />
                 </div>
-                {COM_PRICING.map((c) => (
+              </div>
+            </article>
+          </div>
+
+          {/* Add-on menu */}
+          <article className="mt-8 overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+            <div className="p-7 md:p-9">
+              <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+                Residential Add-On Menu
+              </h3>
+              <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
+                Customize any clean. Add any of the following when you book or mention them on your
+                quote request.
+              </p>
+              <div className="mt-6 grid gap-x-10 gap-y-1 sm:grid-cols-2">
+                {RESIDENTIAL_ADDONS.map((a) => (
                   <div
-                    key={c.size}
-                    className="flex items-center justify-between gap-4 border-t border-ink/5 px-7 py-[18px] transition-colors hover:bg-paper-2 first:border-t-0"
+                    key={a.name}
+                    className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
                   >
-                    <div className="text-[15px] font-bold text-ink">{c.size}</div>
-                    <div className="text-right text-[15px] font-bold text-clay">{c.rate}</div>
+                    <span className="text-[15px] font-semibold text-ink">{a.name}</span>
+                    <span className="flex-none text-right text-[14.5px] font-bold text-clay">
+                      {a.price}
+                    </span>
                   </div>
                 ))}
               </div>
-              <p className="mt-4 px-2 text-[14px] leading-relaxed text-ink-soft">
-                No hidden fees. Final quote confirmed after a brief walkthrough. Recurring service
-                discounts available.
-              </p>
             </div>
-          </div>
+          </article>
         </div>
       </section>
 
-      {/* ADD-ONS */}
-      <section className="container-x py-20 md:py-24">
-        <div className="mx-auto max-w-[820px]">
+      {/* COMMERCIAL */}
+      <section className="bg-sand">
+        <div className="container-x py-20 md:py-24">
           <SectionHeading
-            eyebrow="Add-Ons"
-            title="Need a Little More? We've Got You."
-            subtitle="Our add-on services let you customize your clean without paying for what you don't need. Select any of the following when booking or mention them on your quote request."
-            className="mb-10"
+            eyebrow="Commercial Cleaning"
+            title="Your Office Speaks Before You Do. Make It Speak Volumes."
+            subtitle="A clean, professionally maintained office signals to clients, employees, and stakeholders that you operate at the highest standard. Raya Elite delivers commercial cleaning services that reflect the level of excellence your organization represents."
+            className="mb-14"
           />
-          <Accordion
-            variant="addon"
-            items={ADDONS.map((a) => ({ title: a.name, price: a.price, body: a.desc }))}
-          />
+
+          <div className="space-y-8">
+            {COMMERCIAL_PLANS.map((plan) => (
+              <TierCard key={plan.name} tier={plan} accent="navy" />
+            ))}
+          </div>
         </div>
       </section>
 

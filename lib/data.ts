@@ -142,150 +142,173 @@ export const HOME_REVIEWS = [
   { quote: "An elite standard, truly. They treat your home as if it were their own. We recommend them to everyone.", name: "Grace N.", location: "Chevy Chase, MD", initial: "G" },
 ];
 
-export type ServicePackage = {
+// ---- Services & Pricing Model (from RAYA Complete Blueprint, Section 3) -----
+export type PriceTable = { columns: string[]; rows: string[][] };
+export type ServiceTier = {
   name: string;
-  price: string;
   badge?: string;
-  img: string;
-  desc: string;
-  items: string[];
+  idealFor: string;
+  includes: string;
+  table: PriceTable;
   cta: string;
   ctaHref: string;
 };
 
-export const SERVICE_PACKAGES: ServicePackage[] = [
+export const RESIDENTIAL_TIERS: ServiceTier[] = [
   {
-    name: "Standard Clean",
-    price: "From $129",
-    badge: "Great for Regular Upkeep",
-    img: "/images/service-residential.png",
-    desc: "We cover the surfaces you see every day — kitchens, bathrooms, living areas, and bedrooms — wiped down, vacuumed, and mopped to a consistent standard. This is the service most of our recurring clients start with, and keep coming back to.",
-    items: [
-      "Kitchen surfaces, appliance exteriors, and sink",
-      "Bathroom fixtures, mirrors, and floors",
-      "Vacuuming and mopping throughout",
-      "Dusting furniture and accessible surfaces",
-      "Emptying trash bins",
-      "Making beds (linens provided by client)",
-    ],
+    name: "Elite Essential Clean",
+    badge: "Maintenance",
+    idealFor: "Regular recurring maintenance clients who want a consistently clean home.",
+    includes:
+      "All living areas, bedrooms, bathrooms, kitchen surfaces, floors, dusting, trash removal, mirrors, and baseboards.",
+    table: {
+      columns: ["Home Size", "Square Footage", "One-Time", "Recurring Weekly / Bi-Weekly", "Recurring Monthly"],
+      rows: [
+        ["Studio / 1BR / 1BA", "Up to 800 sq ft", "$149", "$119 wkly / $132 bi-wkly", "$142 monthly"],
+        ["2BR / 1-2BA", "Up to 1,400 sq ft", "$199", "$159 wkly / $175 bi-wkly", "$189 monthly"],
+        ["3BR / 2BA", "Up to 2,200 sq ft", "$265", "$212 wkly / $235 bi-wkly", "$252 monthly"],
+        ["4BR / 3BA", "Up to 3,200 sq ft", "$345", "$276 wkly / $311 bi-wkly", "$328 monthly"],
+        ["5BR / 4BA", "Up to 4,500 sq ft", "$445", "$356 wkly / $400 bi-wkly", "$423 monthly"],
+        ["6BR+ / Estate", "4,500+ sq ft", "Custom from $595", "Custom discount", "Custom discount"],
+      ],
+    },
     cta: "Book This Service",
     ctaHref: "/book",
   },
   {
-    name: "Deep Clean",
-    price: "From $189",
+    name: "Elite Signature Deep Clean",
     badge: "Most Popular",
-    img: "/images/cleaning-lady.jpeg",
-    desc: "This is what your space needs when a standard clean won't cut it — after a long winter, before a big occasion, or simply when it's been a while and you want it done properly. We go further, stay longer, and leave nothing untouched.",
-    items: [
-      "Everything in the Standard Clean",
-      "Inside oven and microwave",
-      "Inside refrigerator",
-      "Baseboards, door frames, and light switches",
-      "Ceiling fans and vents",
-      "Window sills and tracks",
-      "Cabinet exteriors and handles",
-      "Grout scrubbing in bathrooms and kitchen",
-    ],
+    idealFor: "First-time clients, seasonal deep cleans, post-party/event cleans. A comprehensive top-to-bottom service.",
+    includes:
+      "Everything in the Elite Essential Clean, PLUS inside appliances (microwave, oven exterior), detailed grout scrubbing, inside window sills, ceiling fans, baseboards detail, light fixtures, and inside cabinets on request.",
+    table: {
+      columns: ["Home Size", "Square Footage", "One-Time", "Recurring (Weekly / Bi-Weekly)"],
+      rows: [
+        ["Studio / 1BR / 1BA", "Up to 800 sq ft", "$285", "$228 wkly / $256 bi-wkly"],
+        ["2BR / 1-2BA", "Up to 1,400 sq ft", "$385", "$308 wkly / $347 bi-wkly"],
+        ["3BR / 2BA", "Up to 2,200 sq ft", "$495", "$396 wkly / $446 bi-wkly"],
+        ["4BR / 3BA", "Up to 3,200 sq ft", "$645", "$516 wkly / $581 bi-wkly"],
+        ["5BR / 4BA", "Up to 4,500 sq ft", "$825", "$660 wkly / $742 bi-wkly"],
+        ["6BR+ / Estate", "4,500+ sq ft", "Custom from $1,050", "Custom discount"],
+      ],
+    },
     cta: "Book This Service",
     ctaHref: "/book",
   },
   {
-    name: "Move-In / Move-Out Clean",
-    price: "From $279",
-    badge: "Best Value",
-    img: "/images/service-moveinout.png",
-    desc: "Moving is stressful enough without worrying about the state of the space you're leaving or walking into. We handle the cleaning thoroughly and on your timeline — so you can focus on the transition, not the to-do list.",
-    items: [
-      "Full deep clean of entire property",
-      "Inside all cabinets and drawers",
-      "Inside all appliances",
-      "Walls spot-cleaned",
-      "Window interiors",
-      "Garage sweep (where applicable)",
-      "All floors cleaned to move-ready standard",
-    ],
-    cta: "Book This Service",
-    ctaHref: "/book",
+    name: "Elite Presidential White-Glove Clean",
+    badge: "Most Premium",
+    idealFor:
+      "Estate homes, diplomatic residences, pre/post-event luxury spaces, homes preparing for photography or sale, and ultra-high-net-worth clientele.",
+    includes:
+      "Everything in the Essential & Signature cleans, PLUS hand-polished surfaces, sterling silver and antique-safe dusting, linen refresh and bed-making with hospital corners, hand-cleaned baseboards, art-safe dusting, inside all cabinets, crystal polishing on request, premium eco-luxury products, a white-gloved finishing inspection, and a written service report upon completion.",
+    table: {
+      columns: ["Home Size", "One-Time", "Recurring (Weekly / Bi-Weekly)"],
+      rows: [
+        ["Up to 2,500 sq ft", "$795", "$636 wkly / $716 bi-wkly"],
+        ["2,500 – 3,500 sq ft", "$1,050", "$840 wkly / $945 bi-wkly"],
+        ["3,500 – 5,000 sq ft", "$1,395", "$1,116 wkly / $1,256 bi-wkly"],
+        ["5,000 – 7,000 sq ft", "$1,795", "$1,436 wkly / $1,616 bi-wkly"],
+        ["Estate 7,000+ sq ft", "Custom from $2,200", "Custom — dedicated supervisor assigned"],
+      ],
+    },
+    cta: "Request a Quote",
+    ctaHref: "/contact",
   },
+];
+
+export const MOVE_IN_OUT: PriceTable = {
+  columns: ["Property Size", "Price Range"],
+  rows: [
+    ["1BR / 1BA", "$295 – $350"],
+    ["2BR / 2BA", "$395 – $475"],
+    ["3BR / 2-3BA", "$525 – $650"],
+    ["4BR / 3-4BA", "$695 – $895"],
+    ["5BR+ / Estate", "Custom from $1,095"],
+  ],
+};
+
+export const AIRBNB_TURNOVER: PriceTable = {
+  columns: ["Property", "Price", "Service Level"],
+  rows: [
+    ["Studio / 1BR", "$95 – $135", "4-hr turnaround SLA"],
+    ["2BR", "$155 – $195", "5-hr turnaround SLA"],
+    ["3BR", "$205 – $265", "6-hr turnaround SLA"],
+    ["4BR+", "$275 – $395", "Custom"],
+  ],
+};
+
+export const RESIDENTIAL_ADDONS: { name: string; price: string }[] = [
+  { name: "Interior Refrigerator Deep Clean", price: "$55" },
+  { name: "Interior Oven Deep Clean", price: "$55" },
+  { name: "Interior Windows (per window)", price: "$14" },
+  { name: "Interior Window Blinds (per blind)", price: "$9" },
+  { name: "Laundry — Wash, Dry & Fold (per load)", price: "$42" },
+  { name: "Inside Kitchen Cabinets", price: "$89" },
+  { name: "Garage Cleaning", price: "$135" },
+  { name: "Basement Cleaning", price: "$165" },
+  { name: "Carpet Shampooing (per room)", price: "$95" },
+  { name: "Eco-Premium Product Upgrade", price: "Included in Presidential / +$35 on Essential & Signature" },
+  { name: "Post-Construction Clean-Up", price: "Custom — from $450" },
+  { name: "Event Prep / Post-Event Clean", price: "Custom — from $350" },
+];
+
+export const COMMERCIAL_PLANS: ServiceTier[] = [
   {
-    name: "Office & Commercial Cleaning",
-    price: "Custom Pricing",
-    img: "/images/service-office.png",
-    desc: "A well-maintained office tells people something before anyone opens their mouth. We keep your workspace clean, presentable, and consistently serviced — on a schedule that fits around your team, not the other way around.",
-    items: [
-      "Workstations and desks wiped down",
-      "Reception and common areas cleaned",
-      "Restroom sanitation",
-      "Kitchen and break room",
-      "Trash removal and liner replacement",
-      "Floors vacuumed and mopped",
-      "Glass and partition surfaces cleaned",
-      "Evening and weekend scheduling available",
-    ],
-    cta: "Book This Service",
-    ctaHref: "/book",
-  },
-  {
-    name: "Post-Construction Clean",
-    price: "From $399",
-    img: "/images/office-cleaning.jpeg",
-    desc: "Construction dust settles everywhere — on surfaces you can see and plenty you can't. Our post-construction clean removes debris, dust, and residue from every corner so the finished space looks the way it was meant to, not the way it was left.",
-    items: [
-      "Removal of construction dust from all surfaces",
-      "Window cleaning inside and out",
-      "Floor scrubbing and polishing",
-      "Paint overspray and adhesive removal (standard)",
-      "Fixtures and fittings wiped down",
-      "Sanitization of bathrooms and kitchen",
-      "Final walkthrough inspection before handoff",
-    ],
-    cta: "Get a Quote",
+    name: "Executive Office Maintenance Plan",
+    idealFor:
+      "Small professional offices, law firms, dental/medical practices, executive suites, and insurance agencies.",
+    includes:
+      "All office areas, conference rooms, bathrooms, kitchen/break room, trash removal, vacuuming/mopping, and surface sanitizing. Frequency: 1–2x per week.",
+    table: {
+      columns: ["Facility Size", "1x / Week", "2x / Week"],
+      rows: [
+        ["Up to 2,000 sq ft", "$750 / month", "$1,300 / month"],
+        ["2,001 – 5,000 sq ft", "$1,350 / month", "$2,400 / month"],
+        ["5,001 – 10,000 sq ft", "$2,200 / month", "$3,800 / month"],
+        ["10,001 – 20,000 sq ft", "$3,800 / month", "$6,500 / month"],
+      ],
+    },
+    cta: "Request a Commercial Quote",
     ctaHref: "/contact",
   },
   {
-    name: "Government, Embassy & Diplomatic Cleaning",
-    price: "Custom Proposal",
-    badge: "Specialized Service",
-    img: "/images/team-cleaning.jpeg",
-    desc: "These environments carry a higher expectation — and they should. We work with government agencies and diplomatic residences that require reliability, discretion, and a standard of cleanliness that reflects the weight of the space. Our team is background-checked, fully insured, and experienced in regulated and sensitive environments.",
-    items: [
-      "Full-facility cleaning to agency or mission standards",
-      "Background-checked, vetted cleaning personnel",
-      "Flexible scheduling including off-hours and weekends",
-      "Capability statement available on request",
-      "SAM.gov and compliance documentation (in progress)",
-      "Formal proposal provided for all government contracts",
-    ],
+    name: "Corporate Elite Facility Plan",
+    idealFor:
+      "Corporate headquarters, large medical centers, property management portfolios, luxury apartment lobbies, banks, and mid-size government offices.",
+    includes:
+      "All areas of the Executive Office plan, PLUS daily consumable restocking (soap, paper, trash liners), a dedicated supervisor per visit, monthly written inspection reports, emergency spot-clean response within 4 hours, OSHA-compliant procedures, and all supplies provided.",
+    table: {
+      columns: ["Facility Size", "3x / Week", "5x / Week"],
+      rows: [
+        ["Up to 5,000 sq ft", "$3,500 / month", "$5,800 / month"],
+        ["5,001 – 15,000 sq ft", "$5,500 / month", "$8,500 / month"],
+        ["15,001 – 30,000 sq ft", "$8,500 / month", "$13,500 / month"],
+        ["30,000+ sq ft", "Custom from $14,000 / mo", "Custom"],
+      ],
+    },
+    cta: "Request a Commercial Quote",
+    ctaHref: "/contact",
+  },
+  {
+    name: "Embassy & Government Prestige Plan",
+    badge: "Specialized",
+    idealFor:
+      "Foreign embassies, diplomatic missions, consulates, federal government offices, military facilities, non-profit institutions, and religious organizations.",
+    includes:
+      "Everything in the Executive & Corporate plans, PLUS NDA-signed staff, background-check documentation provided, a dedicated named supervisor, 24/7 emergency response availability, security-protocol compliance, written chain-of-custody for access credentials, monthly compliance reports, bilingual service capability (English/French), and customized service frequency to meet facility requirements.",
+    table: {
+      columns: ["Facility Size", "Service Frequency", "Monthly Rate"],
+      rows: [
+        ["Small Embassy / Gov Office (under 5,000 sq ft)", "Daily", "$6,500 / month"],
+        ["Mid-Size Facility (5,000 – 20,000 sq ft)", "Daily", "$11,500 / month"],
+        ["Large Facility / Embassy Complex (20,000 – 50,000 sq ft)", "Daily", "$19,500 / month"],
+        ["Major Embassy / Federal Campus (50,000+ sq ft)", "Daily + On-call", "Custom from $28,000 / month"],
+      ],
+    },
     cta: "Request a Proposal",
     ctaHref: "/contact",
   },
-];
-
-export const RES_PRICING = [
-  { home: "Studio", std: "$119", deep: "$169" },
-  { home: "1 Bedroom", std: "$139", deep: "$189" },
-  { home: "2 Bedroom", std: "$169", deep: "$229" },
-  { home: "3 Bedroom", std: "$209", deep: "$279" },
-  { home: "4 Bedroom", std: "$259", deep: "$339" },
-  { home: "5 Bedroom +", std: "$309", deep: "$409" },
-];
-
-export const COM_PRICING = [
-  { size: "Small Office (under 2,000 sq ft)", rate: "From $149 / visit" },
-  { size: "Medium (2,000 – 5,000 sq ft)", rate: "From $0.09 / sq ft" },
-  { size: "Large (5,000 – 10,000 sq ft)", rate: "Custom Quote" },
-  { size: "Institutional (10,000+ sq ft)", rate: "Custom Quote" },
-];
-
-export const ADDONS = [
-  { name: "Inside Oven", price: "$35", desc: "Full interior clean, including racks and door glass. Grease, baked-on residue, and odors removed." },
-  { name: "Inside Refrigerator", price: "$30", desc: "Shelves, drawers, and door compartments emptied, cleaned, and sanitized." },
-  { name: "Interior Windows", price: "$45 / window", desc: "Glass, frames, and sills cleaned from the inside. Streak-free finish." },
-  { name: "Laundry", price: "$25", desc: "Wash and transfer (client provides detergent). Folding available on request." },
-  { name: "Carpet Shampooing", price: "$60 / room", desc: "Hot water extraction for a deeper clean than vacuuming alone provides." },
-  { name: "Home Organization", price: "$50 / hr", desc: "Decluttering, organizing, and staging for rooms that need more than just cleaning." },
-  { name: "Post-Event Cleanup", price: "From $99", desc: "After a gathering, dinner, or event — we bring the space back to exactly how it was before your guests arrived." },
 ];
 
 export const FAQS = [
