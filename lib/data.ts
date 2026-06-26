@@ -38,22 +38,16 @@ export const WHY_CARDS = [
 
 export const SERVICES_PREVIEW = [
   {
-    title: "Residential Deep Clean",
-    price: "Starting at $189",
-    desc: "Your home deserves more than a surface wipe-down. Our residential deep clean covers every room, corner, and surface — from baseboards to ceiling fans — so you can walk in and actually breathe easy.",
+    title: "Residential Cleaning",
+    price: "Starting at $149",
+    desc: "From recurring upkeep to our white-glove Presidential service — plus move-in/move-out and Airbnb turnovers. Three packages built around your home, your schedule, and the standard it deserves.",
     img: "/images/service-residential.png",
   },
   {
-    title: "Office & Commercial Cleaning",
-    price: "Custom Pricing",
-    desc: "A clean workspace isn't just about appearances. It reduces sick days, improves focus, and tells your clients you run a tight operation. We work around your schedule — including evenings and weekends.",
+    title: "Commercial Cleaning",
+    price: "From $750 / month",
+    desc: "Offices, corporate facilities, embassies, and government missions. Professionally maintained spaces with dedicated supervisors, compliance documentation, and schedules that work around your operation.",
     img: "/images/service-office.png",
-  },
-  {
-    title: "Move-In / Move-Out Cleaning",
-    price: "Starting at $279",
-    desc: "One less thing to worry about during one of the most stressful transitions you'll make. We get the space spotless for when you're handing over keys or walking into your new beginning.",
-    img: "/images/service-moveinout.png",
   },
 ];
 
@@ -125,9 +119,9 @@ export const LOCATIONS = [
 
 export const QUOTE_HELP_OPTIONS = [
   "Residential Cleaning",
-  "Office & Commercial Cleaning",
+  "Commercial Cleaning",
   "Move-In / Move-Out Cleaning",
-  "Post-Construction Cleaning",
+  "Airbnb / Short-Term Rental Turnover",
   "Government or Agency Facility",
   "Embassy or Diplomatic Residence",
   "Not Sure Yet",

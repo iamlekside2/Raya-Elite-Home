@@ -32,11 +32,11 @@ export const TRUST_BADGES = [
 ];
 
 export const FOOTER_SERVICES = [
-  "Residential Deep Clean",
-  "Office & Commercial Cleaning",
+  "Residential Cleaning",
+  "Commercial Cleaning",
   "Move-In / Move-Out",
-  "Post-Construction Cleaning",
-  "Government & Embassy",
+  "Airbnb Turnover",
+  "Embassy & Government",
 ];
 
 export const FOOTER_COMPANY: { label: string; href: string }[] = [

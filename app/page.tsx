@@ -121,13 +121,11 @@ export default function HomePage() {
             subtitle="We bring the same level of care and attention to every job — whether it's your family home, your office, or a property you're moving in or out of."
             className="mb-12"
           />
-          <div className="grid gap-7 md:grid-cols-3">
-            {SERVICES_PREVIEW.map((s, i) => (
+          <div className="mx-auto grid max-w-[880px] gap-7 md:grid-cols-2">
+            {SERVICES_PREVIEW.map((s) => (
               <article
                 key={s.title}
-                className={`group flex flex-col overflow-hidden rounded-4xl bg-cream shadow-soft transition-transform duration-300 hover:-translate-y-2 ${
-                  i === 1 ? "md:-translate-y-6" : ""
-                }`}
+                className="group flex flex-col overflow-hidden rounded-4xl bg-cream shadow-soft transition-transform duration-300 hover:-translate-y-2"
               >
                 <div className="relative h-56 overflow-hidden">
                   <Image src={s.img} alt={s.title} fill sizes="(max-width:768px) 100vw, 33vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
