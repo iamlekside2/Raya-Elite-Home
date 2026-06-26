@@ -4,10 +4,12 @@ import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Accordion from "@/components/services/Accordion";
 import TierCard from "@/components/services/TierCard";
+import PriceTable from "@/components/services/PriceTable";
 import {
   IMAGES,
   RESIDENTIAL_TIERS,
-  RESIDENTIAL_SUBSERVICES,
+  MOVE_IN_OUT,
+  AIRBNB_TURNOVER,
   RESIDENTIAL_ADDONS,
   COMMERCIAL_PLANS,
   FAQS,
@@ -104,35 +106,38 @@ export default function ServicesPage() {
 
           {/* Additional services under Residential */}
           <GroupLabel className="mt-16">Additional Residential Services</GroupLabel>
-          <div className="grid gap-8 lg:grid-cols-2">
-            {RESIDENTIAL_SUBSERVICES.map((s) => (
-              <article
-                key={s.name}
-                className="flex flex-col overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft"
-              >
-                <div className="flex flex-1 flex-col p-7 md:p-8">
-                  <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
-                    {s.name}
-                  </h3>
-                  <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-ink-soft">
-                    <span className="font-bold text-ink">Ideal for:</span> {s.idealFor}
-                  </p>
-                  <div className="mt-6 flex flex-wrap items-end justify-between gap-4 rounded-2xl border border-ink/10 bg-paper-2 px-5 py-4">
-                    <div>
-                      <div className="font-display text-[24px] font-semibold leading-none text-ink">
-                        {s.range}
-                      </div>
-                      <div className="mt-1.5 text-[12.5px] leading-relaxed text-ink-soft">
-                        {s.rangeNote}
-                      </div>
-                    </div>
-                    <Link href="/contact" className="btn-clay px-6 py-3 text-[14px]">
-                      Enquire
-                    </Link>
-                  </div>
+          <div className="space-y-8">
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+              <div className="p-7 md:p-9">
+                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+                  Move-In / Move-Out Cleaning
+                </h3>
+                <p className="mt-3 max-w-[680px] text-[14.5px] leading-relaxed text-ink-soft">
+                  <span className="font-bold text-ink">Ideal for:</span> tenants, homeowners, and
+                  property managers needing a complete, move-ready deep clean of an empty home —
+                  inside cabinets, appliances, and every surface, on your timeline.
+                </p>
+                <div className="mt-6">
+                  <PriceTable table={MOVE_IN_OUT} accent="sage" />
                 </div>
-              </article>
-            ))}
+              </div>
+            </article>
+
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+              <div className="p-7 md:p-9">
+                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+                  Airbnb &amp; Short-Term Rental Turnover
+                </h3>
+                <p className="mt-3 max-w-[680px] text-[14.5px] leading-relaxed text-ink-soft">
+                  <span className="font-bold text-ink">Ideal for:</span> short-term rental hosts who
+                  need fast, reliable, guest-ready turnovers with a guaranteed service-level
+                  turnaround between bookings.
+                </p>
+                <div className="mt-6">
+                  <PriceTable table={AIRBNB_TURNOVER} accent="sage" />
+                </div>
+              </div>
+            </article>
           </div>
 
           {/* Add-ons under Residential */}
@@ -143,14 +148,17 @@ export default function ServicesPage() {
                 Customize any clean with optional extras. Mention any of these when you reach out and
                 we&apos;ll include them in your quote.
               </p>
-              <div className="mt-6 flex flex-wrap gap-2.5">
-                {RESIDENTIAL_ADDONS.map((name) => (
-                  <span
-                    key={name}
-                    className="rounded-full border border-ink/12 bg-paper-2 px-4 py-2 text-[14px] font-semibold text-ink"
+              <div className="mt-6 grid gap-x-10 gap-y-1 sm:grid-cols-2">
+                {RESIDENTIAL_ADDONS.map((a) => (
+                  <div
+                    key={a.name}
+                    className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
                   >
-                    {name}
-                  </span>
+                    <span className="text-[15px] font-semibold text-ink">{a.name}</span>
+                    <span className="flex-none text-right text-[14px] font-bold text-clay">
+                      {a.price}
+                    </span>
+                  </div>
                 ))}
               </div>
             </div>

@@ -137,15 +137,18 @@ export const HOME_REVIEWS = [
 ];
 
 // ---- Services & Pricing Model (from RAYA Complete Blueprint, Section 3) -----
-// Public pages show an indicative price RANGE only — exact quotes are given when
-// the client reaches out, so detailed per-size pricing is intentionally not published.
+// The pricing STRUCTURE is shown publicly (home size, frequency, rate type) but the
+// real figures are masked as "$0 – $0" placeholders — clients reach out for an exact
+// quote. Swap the PRICE_TBD values for real numbers when you're ready to publish them.
+const PRICE_TBD = "$0 – $0";
+
+export type PriceTable = { columns: string[]; rows: string[][] };
 export type ServiceTier = {
   name: string;
   badge?: string;
   idealFor: string;
   includes: string;
-  range: string;
-  rangeNote: string;
+  table: PriceTable;
   cta: string;
   ctaHref: string;
 };
@@ -157,8 +160,17 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
     idealFor: "Regular recurring maintenance clients who want a consistently clean home.",
     includes:
       "All living areas, bedrooms, bathrooms, kitchen surfaces, floors, dusting, trash removal, mirrors, and baseboards.",
-    range: "$149 – $595",
-    rangeNote: "Per clean, by home size · weekly, bi-weekly & monthly rates available",
+    table: {
+      columns: ["Home Size", "Square Footage", "One-Time", "Weekly / Bi-Weekly", "Monthly"],
+      rows: [
+        ["Studio / 1BR / 1BA", "Up to 800 sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["2BR / 1-2BA", "Up to 1,400 sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["3BR / 2BA", "Up to 2,200 sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["4BR / 3BA", "Up to 3,200 sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["5BR / 4BA", "Up to 4,500 sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+        ["6BR+ / Estate", "4,500+ sq ft", PRICE_TBD, PRICE_TBD, PRICE_TBD],
+      ],
+    },
     cta: "Enquire or Book",
     ctaHref: "/contact",
   },
@@ -168,8 +180,17 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
     idealFor: "First-time clients, seasonal deep cleans, post-party/event cleans. A comprehensive top-to-bottom service.",
     includes:
       "Everything in the Elite Essential Clean, PLUS inside appliances (microwave, oven exterior), detailed grout scrubbing, inside window sills, ceiling fans, baseboards detail, light fixtures, and inside cabinets on request.",
-    range: "$285 – $1,050",
-    rangeNote: "Per clean, by home size · recurring rates available",
+    table: {
+      columns: ["Home Size", "Square Footage", "One-Time", "Weekly / Bi-Weekly"],
+      rows: [
+        ["Studio / 1BR / 1BA", "Up to 800 sq ft", PRICE_TBD, PRICE_TBD],
+        ["2BR / 1-2BA", "Up to 1,400 sq ft", PRICE_TBD, PRICE_TBD],
+        ["3BR / 2BA", "Up to 2,200 sq ft", PRICE_TBD, PRICE_TBD],
+        ["4BR / 3BA", "Up to 3,200 sq ft", PRICE_TBD, PRICE_TBD],
+        ["5BR / 4BA", "Up to 4,500 sq ft", PRICE_TBD, PRICE_TBD],
+        ["6BR+ / Estate", "4,500+ sq ft", PRICE_TBD, PRICE_TBD],
+      ],
+    },
     cta: "Enquire or Book",
     ctaHref: "/contact",
   },
@@ -180,50 +201,55 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
       "Estate homes, diplomatic residences, pre/post-event luxury spaces, homes preparing for photography or sale, and ultra-high-net-worth clientele.",
     includes:
       "Everything in the Essential & Signature cleans, PLUS hand-polished surfaces, sterling silver and antique-safe dusting, linen refresh and bed-making with hospital corners, hand-cleaned baseboards, art-safe dusting, inside all cabinets, crystal polishing on request, premium eco-luxury products, a white-gloved finishing inspection, and a written service report upon completion.",
-    range: "$795 – $2,200+",
-    rangeNote: "Per clean, by home size · recurring & estate pricing on request",
+    table: {
+      columns: ["Home Size", "One-Time", "Weekly / Bi-Weekly"],
+      rows: [
+        ["Up to 2,500 sq ft", PRICE_TBD, PRICE_TBD],
+        ["2,500 – 3,500 sq ft", PRICE_TBD, PRICE_TBD],
+        ["3,500 – 5,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["5,000 – 7,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["Estate 7,000+ sq ft", PRICE_TBD, PRICE_TBD],
+      ],
+    },
     cta: "Enquire or Book",
     ctaHref: "/contact",
   },
 ];
 
-export type SubService = {
-  name: string;
-  idealFor: string;
-  range: string;
-  rangeNote: string;
+export const MOVE_IN_OUT: PriceTable = {
+  columns: ["Property Size", "Square Footage", "Price"],
+  rows: [
+    ["1BR / 1BA", "Up to 800 sq ft", PRICE_TBD],
+    ["2BR / 2BA", "Up to 1,400 sq ft", PRICE_TBD],
+    ["3BR / 2-3BA", "Up to 2,200 sq ft", PRICE_TBD],
+    ["4BR / 3-4BA", "Up to 3,200 sq ft", PRICE_TBD],
+    ["5BR+ / Estate", "4,500+ sq ft", PRICE_TBD],
+  ],
 };
 
-export const RESIDENTIAL_SUBSERVICES: SubService[] = [
-  {
-    name: "Move-In / Move-Out Cleaning",
-    idealFor:
-      "Tenants, homeowners, and property managers needing a complete, move-ready deep clean of an empty home — inside cabinets, appliances, and every surface, on your timeline.",
-    range: "$295 – $1,095",
-    rangeNote: "One-time, by property size",
-  },
-  {
-    name: "Airbnb & Short-Term Rental Turnover",
-    idealFor:
-      "Short-term rental hosts who need fast, reliable, guest-ready turnovers with a guaranteed service-level turnaround between bookings.",
-    range: "$95 – $395",
-    rangeNote: "Per turnover · guaranteed turnaround SLA",
-  },
-];
+export const AIRBNB_TURNOVER: PriceTable = {
+  columns: ["Property", "Service Level", "Price"],
+  rows: [
+    ["Studio / 1BR", "4-hr turnaround SLA", PRICE_TBD],
+    ["2BR", "5-hr turnaround SLA", PRICE_TBD],
+    ["3BR", "6-hr turnaround SLA", PRICE_TBD],
+    ["4BR+", "Custom turnaround", PRICE_TBD],
+  ],
+};
 
-export const RESIDENTIAL_ADDONS: string[] = [
-  "Interior Refrigerator Deep Clean",
-  "Interior Oven Deep Clean",
-  "Interior Windows",
-  "Interior Window Blinds",
-  "Laundry — Wash, Dry & Fold",
-  "Inside Kitchen Cabinets",
-  "Garage Cleaning",
-  "Basement Cleaning",
-  "Carpet Shampooing",
-  "Eco-Premium Product Upgrade",
-  "Post-Construction Clean-Up",
-  "Event Prep / Post-Event Clean",
+export const RESIDENTIAL_ADDONS: { name: string; price: string }[] = [
+  { name: "Interior Refrigerator Deep Clean", price: PRICE_TBD },
+  { name: "Interior Oven Deep Clean", price: PRICE_TBD },
+  { name: "Interior Windows (per window)", price: PRICE_TBD },
+  { name: "Interior Window Blinds (per blind)", price: PRICE_TBD },
+  { name: "Laundry — Wash, Dry & Fold (per load)", price: PRICE_TBD },
+  { name: "Inside Kitchen Cabinets", price: PRICE_TBD },
+  { name: "Garage Cleaning", price: PRICE_TBD },
+  { name: "Basement Cleaning", price: PRICE_TBD },
+  { name: "Carpet Shampooing (per room)", price: PRICE_TBD },
+  { name: "Eco-Premium Product Upgrade", price: PRICE_TBD },
+  { name: "Post-Construction Clean-Up", price: PRICE_TBD },
+  { name: "Event Prep / Post-Event Clean", price: PRICE_TBD },
 ];
 
 export const COMMERCIAL_PLANS: ServiceTier[] = [
@@ -233,8 +259,15 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
       "Small professional offices, law firms, dental/medical practices, executive suites, and insurance agencies.",
     includes:
       "All office areas, conference rooms, bathrooms, kitchen/break room, trash removal, vacuuming/mopping, and surface sanitizing. Frequency: 1–2x per week.",
-    range: "$750 – $6,500",
-    rangeNote: "Per month, by facility size & service frequency",
+    table: {
+      columns: ["Facility Size", "1x / Week", "2x / Week"],
+      rows: [
+        ["Up to 2,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["2,001 – 5,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["5,001 – 10,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["10,001 – 20,000 sq ft", PRICE_TBD, PRICE_TBD],
+      ],
+    },
     cta: "Request a Commercial Quote",
     ctaHref: "/contact",
   },
@@ -244,8 +277,15 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
       "Corporate headquarters, large medical centers, property management portfolios, luxury apartment lobbies, banks, and mid-size government offices.",
     includes:
       "All areas of the Executive Office plan, PLUS daily consumable restocking (soap, paper, trash liners), a dedicated supervisor per visit, monthly written inspection reports, emergency spot-clean response within 4 hours, OSHA-compliant procedures, and all supplies provided.",
-    range: "$3,500 – $14,000+",
-    rangeNote: "Per month, by facility size & service frequency",
+    table: {
+      columns: ["Facility Size", "3x / Week", "5x / Week"],
+      rows: [
+        ["Up to 5,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["5,001 – 15,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["15,001 – 30,000 sq ft", PRICE_TBD, PRICE_TBD],
+        ["30,000+ sq ft", PRICE_TBD, PRICE_TBD],
+      ],
+    },
     cta: "Request a Commercial Quote",
     ctaHref: "/contact",
   },
@@ -256,8 +296,15 @@ export const COMMERCIAL_PLANS: ServiceTier[] = [
       "Foreign embassies, diplomatic missions, consulates, federal government offices, military facilities, non-profit institutions, and religious organizations.",
     includes:
       "Everything in the Executive & Corporate plans, PLUS NDA-signed staff, background-check documentation provided, a dedicated named supervisor, 24/7 emergency response availability, security-protocol compliance, written chain-of-custody for access credentials, monthly compliance reports, bilingual service capability (English/French), and customized service frequency to meet facility requirements.",
-    range: "$6,500 – $28,000+",
-    rangeNote: "Per month, daily service · custom for large campuses",
+    table: {
+      columns: ["Facility Size", "Service Frequency", "Monthly Rate"],
+      rows: [
+        ["Small Embassy / Gov Office (under 5,000 sq ft)", "Daily", PRICE_TBD],
+        ["Mid-Size Facility (5,000 – 20,000 sq ft)", "Daily", PRICE_TBD],
+        ["Large Facility / Embassy Complex (20,000 – 50,000 sq ft)", "Daily", PRICE_TBD],
+        ["Major Embassy / Federal Campus (50,000+ sq ft)", "Daily + On-call", PRICE_TBD],
+      ],
+    },
     cta: "Request a Proposal",
     ctaHref: "/contact",
   },

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import Sprig from "@/components/ui/Sprig";
+import PriceTable from "@/components/services/PriceTable";
 import { SITE } from "@/lib/constants";
 import type { ServiceTier } from "@/lib/data";
 
 /* One package = one bordered card: name + badge, ideal-for, inclusions,
-   an indicative price range, and a clear enquire/book CTA. */
+   the per-size pricing table, and a clear enquire/book CTA. */
 export default function TierCard({
   tier,
   accent,
@@ -43,30 +44,23 @@ export default function TierCard({
           ))}
         </div>
 
-        {/* Price range + CTA */}
-        <div className="mt-8 flex flex-col gap-6 rounded-3xl border border-ink/10 bg-paper-2 p-6 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <div className="text-[11px] font-bold uppercase tracking-[0.18em] text-ink/55">
-              Investment
-            </div>
-            <div className="mt-1.5 font-display text-[30px] font-semibold leading-none text-ink">
-              {tier.range}
-            </div>
-            <div className="mt-2 max-w-[320px] text-[13px] leading-relaxed text-ink-soft">
-              {tier.rangeNote}
-            </div>
-          </div>
-          <div className="flex flex-none flex-col gap-2 sm:items-end">
-            <Link
-              href={tier.ctaHref}
-              className={`${accent === "navy" ? "btn-gold" : "btn-clay"} px-8 py-[14px] text-[15px]`}
-            >
-              {tier.cta}
-            </Link>
-            <a href={tel} className="text-[13px] font-semibold text-clay hover:underline">
-              or call {SITE.phone}
-            </a>
-          </div>
+        {/* Pricing table */}
+        <div className="mb-2 mt-7 text-[12px] font-bold uppercase tracking-wider text-ink/70">
+          Pricing
+        </div>
+        <PriceTable table={tier.table} accent={accent} />
+
+        {/* CTA */}
+        <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-2">
+          <Link
+            href={tier.ctaHref}
+            className={`${accent === "navy" ? "btn-gold" : "btn-clay"} px-8 py-[14px] text-[15px]`}
+          >
+            {tier.cta}
+          </Link>
+          <a href={tel} className="text-[14px] font-semibold text-clay hover:underline">
+            or call {SITE.phone} for exact pricing
+          </a>
         </div>
       </div>
     </article>
