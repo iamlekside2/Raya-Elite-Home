@@ -25,6 +25,50 @@ export const metadata: Metadata = {
 
 export const revalidate = 86400;
 
+/* Prominent top-level header for one of the two service tracks. */
+function ServiceBanner({
+  index,
+  eyebrow,
+  title,
+  children,
+}: {
+  index: string;
+  eyebrow: string;
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <div className="mb-12 border-b border-ink/10 pb-9">
+      <div className="flex items-center gap-5">
+        <span className="font-display text-[clamp(46px,8vw,88px)] font-semibold leading-none text-clay/25">
+          {index}
+        </span>
+        <div>
+          <div className="mb-1.5 text-[12.5px] font-bold uppercase tracking-[0.22em] text-clay">
+            {eyebrow}
+          </div>
+          <h2 className="font-display text-[clamp(28px,4.2vw,48px)] font-semibold leading-[1.05] text-ink">
+            {title}
+          </h2>
+        </div>
+      </div>
+      <p className="mt-6 max-w-[780px] text-[17px] leading-relaxed text-ink-soft">{children}</p>
+    </div>
+  );
+}
+
+/* Sub-section divider that groups packages under a service. */
+function GroupLabel({ children, className = "" }: { children: React.ReactNode; className?: string }) {
+  return (
+    <div className={`mb-7 flex items-center gap-4 ${className}`}>
+      <span className="text-[12.5px] font-bold uppercase tracking-[0.22em] text-ink/70">
+        {children}
+      </span>
+      <span className="h-px flex-1 bg-ink/12" />
+    </div>
+  );
+}
+
 export default function ServicesPage() {
   return (
     <>
@@ -36,23 +80,34 @@ export default function ServicesPage() {
         tagline="Every space is different. But the standard is always the same."
       />
 
-      {/* RESIDENTIAL */}
+      {/* ============ SERVICE 01 — RESIDENTIAL ============ */}
       <section className="bg-cream">
         <div className="container-x py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Residential Cleaning"
-            title="Your Home. Our Masterpiece."
-            subtitle="Life is too short for ordinary cleaning. Raya Elite delivers white-glove residential cleaning services that transform your home into the sanctuary it deserves to be."
-            className="mb-12"
-          />
+          <ServiceBanner
+            index="01"
+            eyebrow="Service 01 of 02"
+            title="Residential Cleaning"
+          >
+            <span className="font-display font-semibold text-ink">
+              Your Home. Our Masterpiece.
+            </span>{" "}
+            Life is too short for ordinary cleaning. Raya Elite delivers white-glove residential
+            cleaning services that transform your home into the sanctuary it deserves to be —
+            available across the packages and add-ons below.
+          </ServiceBanner>
 
+          {/* Packages under Residential */}
+          <GroupLabel>Cleaning Packages</GroupLabel>
           <div className="space-y-8">
             {RESIDENTIAL_TIERS.map((tier) => (
               <TierCard key={tier.name} tier={tier} accent="sage" />
             ))}
+          </div>
 
-            {/* Move-In / Move-Out */}
-            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+          {/* Additional services under Residential */}
+          <GroupLabel className="mt-16">Additional Residential Services</GroupLabel>
+          <div className="space-y-8">
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
               <div className="p-7 md:p-9">
                 <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
                   Move-In / Move-Out Cleaning
@@ -68,8 +123,7 @@ export default function ServicesPage() {
               </div>
             </article>
 
-            {/* Airbnb Turnover */}
-            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
               <div className="p-7 md:p-9">
                 <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
                   Airbnb &amp; Short-Term Rental Turnover
@@ -84,46 +138,52 @@ export default function ServicesPage() {
                 </div>
               </div>
             </article>
-
-            {/* Add-On Menu */}
-            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
-              <div className="p-7 md:p-9">
-                <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
-                  Residential Add-On Menu
-                </h3>
-                <p className="mt-3 max-w-[680px] text-[15px] leading-relaxed text-ink-soft">
-                  Customize any clean. Add any of the following when you book or mention them on your
-                  quote request.
-                </p>
-                <div className="mt-7 grid gap-x-10 gap-y-1 sm:grid-cols-2">
-                  {RESIDENTIAL_ADDONS.map((a) => (
-                    <div
-                      key={a.name}
-                      className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
-                    >
-                      <span className="text-[15px] font-semibold text-ink">{a.name}</span>
-                      <span className="flex-none text-right text-[14.5px] font-bold text-clay">
-                        {a.price}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </article>
           </div>
+
+          {/* Add-ons under Residential */}
+          <GroupLabel className="mt-16">Add-On Menu</GroupLabel>
+          <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
+            <div className="p-7 md:p-9">
+              <p className="max-w-[680px] text-[15px] leading-relaxed text-ink-soft">
+                Customize any clean. Add any of the following when you book or mention them on your
+                quote request.
+              </p>
+              <div className="mt-6 grid gap-x-10 gap-y-1 sm:grid-cols-2">
+                {RESIDENTIAL_ADDONS.map((a) => (
+                  <div
+                    key={a.name}
+                    className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
+                  >
+                    <span className="text-[15px] font-semibold text-ink">{a.name}</span>
+                    <span className="flex-none text-right text-[14.5px] font-bold text-clay">
+                      {a.price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </article>
         </div>
       </section>
 
-      {/* COMMERCIAL */}
+      {/* ============ SERVICE 02 — COMMERCIAL ============ */}
       <section className="bg-sand">
         <div className="container-x py-20 md:py-24">
-          <SectionHeading
-            eyebrow="Commercial Cleaning"
-            title="Your Office Speaks Before You Do. Make It Speak Volumes."
-            subtitle="A clean, professionally maintained office signals to clients, employees, and stakeholders that you operate at the highest standard. Raya Elite delivers commercial cleaning services that reflect the level of excellence your organization represents."
-            className="mb-14"
-          />
+          <ServiceBanner
+            index="02"
+            eyebrow="Service 02 of 02"
+            title="Commercial Cleaning"
+          >
+            <span className="font-display font-semibold text-ink">
+              Your Office Speaks Before You Do. Make It Speak Volumes.
+            </span>{" "}
+            A clean, professionally maintained office signals to clients, employees, and stakeholders
+            that you operate at the highest standard. Raya Elite delivers commercial cleaning that
+            reflects the excellence your organization represents — across the plans below.
+          </ServiceBanner>
 
+          {/* Plans under Commercial */}
+          <GroupLabel>Commercial Plans</GroupLabel>
           <div className="space-y-8">
             {COMMERCIAL_PLANS.map((plan) => (
               <TierCard key={plan.name} tier={plan} accent="navy" />
