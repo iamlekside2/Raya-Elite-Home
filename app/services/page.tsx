@@ -3,7 +3,8 @@ import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Accordion from "@/components/services/Accordion";
-import Sprig from "@/components/ui/Sprig";
+import TierCard from "@/components/services/TierCard";
+import PriceTable from "@/components/services/PriceTable";
 import {
   IMAGES,
   RESIDENTIAL_TIERS,
@@ -12,8 +13,6 @@ import {
   RESIDENTIAL_ADDONS,
   COMMERCIAL_PLANS,
   FAQS,
-  type PriceTable as PriceTableType,
-  type ServiceTier,
 } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
@@ -25,99 +24,6 @@ export const metadata: Metadata = {
 };
 
 export const revalidate = 86400;
-
-/* Shared pricing table — maps any column/row shape from the blueprint. */
-function PriceTable({ table, accent }: { table: PriceTableType; accent: "navy" | "sage" }) {
-  const headBg = accent === "navy" ? "bg-[#002147]" : "bg-sage-deep";
-  return (
-    <div className="overflow-x-auto rounded-3xl border border-ink/10">
-      <table className="w-full min-w-[560px] border-collapse text-left">
-        <thead>
-          <tr className={`${headBg} text-cream`}>
-            {table.columns.map((c, i) => (
-              <th
-                key={c}
-                className={`px-5 py-3.5 text-[12.5px] font-bold uppercase tracking-wider ${
-                  i === 0 ? "" : "text-center"
-                }`}
-              >
-                {c}
-              </th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {table.rows.map((row, ri) => (
-            <tr
-              key={ri}
-              className="border-t border-ink/8 bg-paper transition-colors hover:bg-paper-2"
-            >
-              {row.map((cell, ci) => (
-                <td
-                  key={ci}
-                  className={`px-5 py-[14px] align-top text-[14.5px] ${
-                    ci === 0
-                      ? "font-bold text-ink"
-                      : "text-center text-ink-soft"
-                  }`}
-                >
-                  {cell}
-                </td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-/* One package = one bordered card: name + badge, ideal-for, inclusions, table, CTA. */
-function TierCard({ tier, accent }: { tier: ServiceTier; accent: "navy" | "sage" }) {
-  const inclusions = tier.includes.split(/,\s*(?![^()]*\))/).map((s) => s.trim());
-  return (
-    <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
-      <div className="p-7 md:p-9">
-        <div className="flex flex-wrap items-center gap-3">
-          <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
-            {tier.name}
-          </h3>
-          {tier.badge && (
-            <span className="rounded-full bg-clay px-3 py-1 text-[11.5px] font-bold uppercase tracking-wider text-cream">
-              {tier.badge}
-            </span>
-          )}
-        </div>
-        <p className="mt-3 text-[15px] leading-relaxed text-ink-soft">
-          <span className="font-bold text-ink">Ideal for:</span> {tier.idealFor}
-        </p>
-
-        <div className="mb-2 mt-6 text-[12px] font-bold uppercase tracking-wider text-ink/70">
-          What&apos;s included
-        </div>
-        <div className="grid gap-x-7 gap-y-[9px] sm:grid-cols-2">
-          {inclusions.map((it) => (
-            <div key={it} className="flex items-start gap-3 text-[14.5px] leading-relaxed text-ink-soft">
-              <Sprig className="mt-[3px] h-[17px] w-[17px] flex-none text-sage" />
-              <span>{it}</span>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-7">
-          <PriceTable table={tier.table} accent={accent} />
-        </div>
-
-        <Link
-          href={tier.ctaHref}
-          className={`${accent === "navy" ? "btn-gold" : "btn-clay"} mt-7 inline-flex px-8 py-[14px] text-[15px]`}
-        >
-          {tier.cta}
-        </Link>
-      </div>
-    </article>
-  );
-}
 
 export default function ServicesPage() {
   return (
@@ -137,73 +43,74 @@ export default function ServicesPage() {
             eyebrow="Residential Cleaning"
             title="Your Home. Our Masterpiece."
             subtitle="Life is too short for ordinary cleaning. Raya Elite delivers white-glove residential cleaning services that transform your home into the sanctuary it deserves to be."
-            className="mb-14"
+            className="mb-12"
           />
 
           <div className="space-y-8">
             {RESIDENTIAL_TIERS.map((tier) => (
               <TierCard key={tier.name} tier={tier} accent="sage" />
             ))}
-          </div>
 
-          {/* Sub-services */}
-          <div className="mt-8 grid gap-8 lg:grid-cols-2">
-            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
-              <div className="p-7 md:p-8">
-                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+            {/* Move-In / Move-Out */}
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+              <div className="p-7 md:p-9">
+                <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
                   Move-In / Move-Out Cleaning
                 </h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
-                  A complete, move-ready deep clean for an empty home — inside cabinets, appliances,
-                  and every surface, on your timeline.
+                <p className="mt-3 max-w-[680px] text-[15px] leading-relaxed text-ink-soft">
+                  <span className="font-bold text-ink">Ideal for:</span> tenants, homeowners, and
+                  property managers needing a complete, move-ready deep clean of an empty home —
+                  inside cabinets, appliances, and every surface, on your timeline.
                 </p>
-                <div className="mt-6">
+                <div className="mt-7">
                   <PriceTable table={MOVE_IN_OUT} accent="sage" />
                 </div>
               </div>
             </article>
 
-            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
-              <div className="p-7 md:p-8">
-                <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
+            {/* Airbnb Turnover */}
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+              <div className="p-7 md:p-9">
+                <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
                   Airbnb &amp; Short-Term Rental Turnover
                 </h3>
-                <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
-                  Fast, reliable, guest-ready turnovers with a guaranteed service-level turnaround
-                  between bookings.
+                <p className="mt-3 max-w-[680px] text-[15px] leading-relaxed text-ink-soft">
+                  <span className="font-bold text-ink">Ideal for:</span> short-term rental hosts who
+                  need fast, reliable, guest-ready turnovers with a guaranteed service-level
+                  turnaround between bookings.
                 </p>
-                <div className="mt-6">
+                <div className="mt-7">
                   <PriceTable table={AIRBNB_TURNOVER} accent="sage" />
                 </div>
               </div>
             </article>
-          </div>
 
-          {/* Add-on menu */}
-          <article className="mt-8 overflow-hidden rounded-4xl border border-ink/10 bg-paper shadow-soft">
-            <div className="p-7 md:p-9">
-              <h3 className="font-display text-[22px] font-semibold leading-tight text-ink">
-                Residential Add-On Menu
-              </h3>
-              <p className="mt-2 text-[14.5px] leading-relaxed text-ink-soft">
-                Customize any clean. Add any of the following when you book or mention them on your
-                quote request.
-              </p>
-              <div className="mt-6 grid gap-x-10 gap-y-1 sm:grid-cols-2">
-                {RESIDENTIAL_ADDONS.map((a) => (
-                  <div
-                    key={a.name}
-                    className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
-                  >
-                    <span className="text-[15px] font-semibold text-ink">{a.name}</span>
-                    <span className="flex-none text-right text-[14.5px] font-bold text-clay">
-                      {a.price}
-                    </span>
-                  </div>
-                ))}
+            {/* Add-On Menu */}
+            <article className="overflow-hidden rounded-4xl border border-ink/10 bg-cream shadow-soft">
+              <div className="p-7 md:p-9">
+                <h3 className="font-display text-[24px] font-semibold leading-tight text-ink">
+                  Residential Add-On Menu
+                </h3>
+                <p className="mt-3 max-w-[680px] text-[15px] leading-relaxed text-ink-soft">
+                  Customize any clean. Add any of the following when you book or mention them on your
+                  quote request.
+                </p>
+                <div className="mt-7 grid gap-x-10 gap-y-1 sm:grid-cols-2">
+                  {RESIDENTIAL_ADDONS.map((a) => (
+                    <div
+                      key={a.name}
+                      className="flex items-baseline justify-between gap-4 border-b border-ink/8 py-3"
+                    >
+                      <span className="text-[15px] font-semibold text-ink">{a.name}</span>
+                      <span className="flex-none text-right text-[14.5px] font-bold text-clay">
+                        {a.price}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </div>
         </div>
       </section>
 
