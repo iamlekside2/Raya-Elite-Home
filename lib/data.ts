@@ -217,13 +217,13 @@ export const RESIDENTIAL_TIERS: ServiceTier[] = [
 ];
 
 export const MOVE_IN_OUT: PriceTable = {
-  columns: ["Property Size", "Square Footage", "Price"],
+  columns: ["Property Size", "Square Footage", "Price Range"],
   rows: [
-    ["1BR / 1BA", "Up to 800 sq ft", PRICE_TBD],
-    ["2BR / 2BA", "Up to 1,400 sq ft", PRICE_TBD],
-    ["3BR / 2-3BA", "Up to 2,200 sq ft", PRICE_TBD],
-    ["4BR / 3-4BA", "Up to 3,200 sq ft", PRICE_TBD],
-    ["5BR+ / Estate", "4,500+ sq ft", PRICE_TBD],
+    ["1BR / 1BA", "Up to 800 sq ft", "$295 – $350"],
+    ["2BR / 2BA", "Up to 1,400 sq ft", "$395 – $475"],
+    ["3BR / 2-3BA", "Up to 2,200 sq ft", "$525 – $650"],
+    ["4BR / 3-4BA", "Up to 3,200 sq ft", "$695 – $895"],
+    ["5BR+ / Estate", "4,500+ sq ft", "Custom from $1,095"],
   ],
 };
 
