@@ -262,7 +262,7 @@ export default function QuoteForm({
   return (
     <div
       ref={scrollRef}
-      className="max-h-[80vh] overflow-y-auto overscroll-contain rounded-[2rem] bg-cream p-7 shadow-soft md:p-9"
+      className="rounded-[2rem] bg-cream p-7 shadow-soft md:max-h-[80vh] md:overflow-y-auto md:overscroll-contain md:p-9"
     >
       <div className="kicker mb-2">{isBooking ? "Book Your Cleaning" : "Get a Free Quote"}</div>
       <h2 className="font-display text-[26px] font-semibold leading-tight text-ink">

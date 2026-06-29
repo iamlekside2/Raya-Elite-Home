@@ -97,12 +97,12 @@ export default function HomePage() {
                 triggerClassName="inline-flex min-h-[54px] items-center justify-center rounded-full border-2 border-white/60 px-8 py-[15px] text-[15px] font-bold text-white transition-all duration-200 hover:-translate-y-[3px] hover:border-white hover:bg-white hover:text-[#002147] hover:shadow-[0_16px_30px_-12px_rgba(0,0,0,0.5)] active:translate-y-0"
               />
             </div>
-            <div className="flex flex-wrap items-center gap-[18px] border-t border-white/10 pt-[30px]">
+            <div className="flex flex-wrap items-center gap-x-[18px] gap-y-2 border-t border-white/10 pt-[30px]">
               <span className="text-[18px] tracking-[3px] text-[#C9A84C]">★★★★★</span>
               <span className="text-[14px] text-white/90">500+ Satisfied Clients</span>
-              <span className="text-[#C9A84C]/50">·</span>
+              <span className="hidden sm:inline text-[#C9A84C]/50">·</span>
               <span className="text-[14px] text-white/90">Bonded &amp; Insured</span>
-              <span className="text-[#C9A84C]/50">·</span>
+              <span className="hidden sm:inline text-[#C9A84C]/50">·</span>
               <span className="text-[14px] text-white/90">Same-Day Response Guaranteed</span>
             </div>
           </div>
@@ -439,7 +439,7 @@ export default function HomePage() {
                 alt="A friendly Raya Elite cleaner"
                 width={1088}
                 height={1446}
-                className="mx-auto mt-2 hidden w-[460px] max-w-full self-end md:block"
+                className="mx-auto mt-2 hidden w-[460px] max-w-full self-end lg:block"
               />
             </div>
 

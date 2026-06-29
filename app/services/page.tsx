@@ -39,7 +39,7 @@ function ServiceBanner({
 }) {
   return (
     <div className="mb-12 border-b border-ink/10 pb-9">
-      <div className="flex items-center gap-5">
+      <div className="flex flex-wrap items-center gap-3 sm:gap-5">
         <span className="font-display text-[clamp(46px,8vw,88px)] font-semibold leading-none text-clay/25">
           {index}
         </span>

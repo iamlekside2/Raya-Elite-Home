@@ -12,6 +12,8 @@ export default function PriceTable({
   const underline = accent === "navy" ? "border-[#002147]/35" : "border-sage-deep/45";
   const lead = accent === "navy" ? "text-[#002147]" : "text-sage-deep";
   return (
+    <div>
+      <p className="mb-1.5 text-right text-[11px] text-ink/35 lg:hidden">← swipe to see full table</p>
     <div className="overflow-x-auto">
       <table className="w-full min-w-[440px] border-collapse text-left">
         <thead>
@@ -47,6 +49,7 @@ export default function PriceTable({
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 }

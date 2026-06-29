@@ -176,7 +176,7 @@ export default function BookPage() {
               We respond to all commercial and government inquiries within two business hours.
             </p>
           </div>
-          <div className="lg:text-right">
+          <div className="flex justify-center lg:block lg:text-right">
             <Link href="/contact" className="btn-clay px-9 py-4 text-[16px]">
               Request a Custom Proposal
             </Link>
