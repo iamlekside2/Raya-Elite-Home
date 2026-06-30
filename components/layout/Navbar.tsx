@@ -59,7 +59,7 @@ export default function Navbar() {
             aria-label="Menu"
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((o) => !o)}
-            className="flex flex-col gap-[5px] p-2 min-[900px]:hidden"
+            className="ml-auto flex flex-col gap-[5px] p-2 min-[900px]:hidden"
           >
             <span className="block h-[2px] w-[24px] rounded-full bg-ink" />
             <span className="block h-[2px] w-[24px] rounded-full bg-ink" />
