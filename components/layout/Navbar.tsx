@@ -61,9 +61,9 @@ export default function Navbar() {
             onClick={() => setMenuOpen((o) => !o)}
             className="ml-auto flex flex-col gap-[5px] p-2 min-[900px]:hidden"
           >
-            <span className="block h-[2px] w-[24px] rounded-full bg-ink" />
-            <span className="block h-[2px] w-[24px] rounded-full bg-ink" />
-            <span className="block h-[2px] w-[24px] rounded-full bg-ink" />
+            <span className={`block h-[2px] w-[24px] rounded-full bg-ink transition-transform duration-200 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`} />
+            <span className={`block h-[2px] w-[24px] rounded-full bg-ink transition-opacity duration-200 ${menuOpen ? "opacity-0" : ""}`} />
+            <span className={`block h-[2px] w-[24px] rounded-full bg-ink transition-transform duration-200 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`} />
           </button>
         </div>
       </header>
