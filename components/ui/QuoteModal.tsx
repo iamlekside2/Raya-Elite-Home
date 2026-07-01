@@ -83,14 +83,14 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
       {open && (
         <div
           onClick={close}
-          className="fixed inset-0 z-[120] flex items-center justify-center p-4"
+          className="fixed inset-0 z-[120] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
         >
           <div
             onClick={(e) => e.stopPropagation()}
             role="dialog"
             aria-modal="true"
             aria-label="Get a free quote"
-            className="w-full max-w-[440px] animate-rise rounded-[1.5rem] bg-cream p-6 shadow-lift"
+            className="max-h-[90vh] w-full max-w-[440px] animate-rise overflow-y-auto overscroll-contain rounded-[1.5rem] bg-cream p-6 shadow-lift"
           >
             <div className="mb-4 flex items-start justify-between gap-4">
               <div>
