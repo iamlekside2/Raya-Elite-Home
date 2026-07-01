@@ -49,11 +49,30 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
       />
 
-      {/* SECTION 1 — HERO (navy/gold, ported from the first design) */}
+      {/* SECTION 1 — HERO
+           Mobile:  photo strip on top (no overlay), navy text block below
+           Desktop: full-bleed background image with text overlay */}
+
+      {/* Mobile photo strip — hidden on desktop */}
+      <div className="relative h-[280px] overflow-hidden lg:hidden">
+        <Image
+          src={IMAGES.heroTeam}
+          alt=""
+          aria-hidden
+          fill
+          priority
+          quality={90}
+          sizes="100vw"
+          className="object-cover object-[68%_18%]"
+        />
+      </div>
+
+      {/* Text block (navy) — on mobile just the text; on desktop the full hero */}
       <section
-        className="relative flex min-h-[86vh] items-center overflow-hidden"
+        className="relative overflow-hidden"
         style={{ background: "linear-gradient(130deg,#00152e 0%,#002147 48%,#0a3262 100%)" }}
       >
+        {/* Desktop bg image + overlay */}
         <Image
           src={IMAGES.heroTeam}
           alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
@@ -61,17 +80,18 @@ export default function HomePage() {
           priority
           quality={90}
           sizes="100vw"
-          className="object-cover object-[68%_18%] lg:object-[62%_18%]"
+          className="hidden object-cover object-[62%_18%] lg:block"
         />
         <div
-          className="absolute inset-0"
+          aria-hidden
+          className="absolute inset-0 hidden lg:block"
           style={{
             background:
               "radial-gradient(circle at 82% 30%, rgba(201,168,76,0.12), transparent 52%), linear-gradient(90deg, rgba(0,16,34,0.82) 0%, rgba(0,22,46,0.58) 38%, rgba(0,33,71,0.18) 70%, rgba(0,33,71,0) 100%)",
           }}
         />
         {/* Text content */}
-        <div className="container-x relative py-20">
+        <div className="container-x relative py-14 lg:flex lg:min-h-[86vh] lg:items-center lg:py-20">
           <div className="max-w-[660px] animate-rise">
             <div className="mb-[30px] inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/50 px-[18px] py-2">
               <span className="inline-block h-[7px] w-[7px] rotate-45 bg-[#C9A84C]" />
