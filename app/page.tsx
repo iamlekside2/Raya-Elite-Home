@@ -61,7 +61,7 @@ export default function HomePage() {
           priority
           quality={90}
           sizes="100vw"
-          className="object-cover object-[30%_18%] lg:object-[62%_18%]"
+          className="object-cover object-[52%_18%] lg:object-[62%_18%]"
         />
         <div
           className="absolute inset-0"
