@@ -407,11 +407,11 @@ export default function HomePage() {
                 "radial-gradient(80% 60% at 12% 0%, rgba(201,168,76,0.16), transparent 60%)",
             }}
           />
-          <div className="relative grid items-end gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-10">
             {/* Left — pitch + cleaner */}
-            <div className="flex h-full flex-col">
+            <div className="flex flex-col">
               {/* Text block — has its own bottom padding */}
-              <div className="pb-8 pt-0">
+              <div className="pb-6 pt-0 lg:pb-8">
                 <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
                   Book In Minutes
                 </span>
@@ -443,8 +443,8 @@ export default function HomePage() {
               />
             </div>
 
-            {/* Right — full lead-capture form, vertically centred against the image */}
-            <div className="flex items-center self-stretch py-12 md:py-14">
+            {/* Right — full lead-capture form */}
+            <div className="pb-10 lg:flex lg:items-center lg:self-stretch lg:py-14">
               <div className="w-full">
                 <LeadForm />
               </div>
