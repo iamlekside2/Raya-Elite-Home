@@ -50,29 +50,68 @@ export default function HomePage() {
       />
 
       {/* SECTION 1 — HERO
-           Mobile:  photo strip on top (no overlay), navy text block below
-           Desktop: full-bleed background image with text overlay */}
+           Mobile:  cream bg, contained rounded image on top, dark text below
+           Desktop: full-bleed background image with white text overlay */}
 
-      {/* Mobile photo strip — hidden on desktop */}
-      <div className="relative h-[280px] overflow-hidden lg:hidden">
-        <Image
-          src={IMAGES.heroTeam}
-          alt=""
-          aria-hidden
-          fill
-          priority
-          quality={90}
-          sizes="100vw"
-          className="object-cover object-[68%_18%]"
-        />
+      {/* ── MOBILE HERO (hidden on lg+) ── */}
+      <div className="bg-cream pb-14 pt-6 lg:hidden">
+        {/* Contained photo with rounded corners */}
+        <div className="container-x">
+          <div className="relative h-[260px] overflow-hidden rounded-3xl">
+            <Image
+              src={IMAGES.heroTeam}
+              alt="The Raya Elite cleaning team in branded uniforms"
+              fill
+              priority
+              quality={90}
+              sizes="100vw"
+              className="object-cover object-[68%_18%]"
+            />
+          </div>
+        </div>
+        {/* Text content */}
+        <div className="container-x mt-8">
+          <div className="mb-5 inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/60 px-[18px] py-2">
+            <span className="inline-block h-[7px] w-[7px] rotate-45 bg-[#C9A84C]" />
+            <span className="text-[11px] uppercase tracking-[2.5px] text-[#C9A84C]">
+              Serving Maryland &amp; Washington D.C.
+            </span>
+          </div>
+          <h1 className="font-playfair text-[clamp(32px,8vw,46px)] font-bold leading-[1.1] text-ink">
+            Maryland&apos;s Most Trusted Luxury Cleaning Service
+          </h1>
+          <p className="mt-4 text-[16px] leading-[1.7] text-ink-soft">
+            Your home or office reflects who you are. We make sure it always looks the part — with
+            thorough, professional cleaning that respects your space, your time, and your standards.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-4">
+            <Link
+              href="/book"
+              className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#002147] px-8 py-[14px] text-[15px] font-bold text-[#C9A84C] shadow-[0_6px_18px_-8px_rgba(0,0,0,0.4)] transition-all duration-200 hover:-translate-y-[2px] active:translate-y-0"
+            >
+              Book Your Cleaning
+            </Link>
+            <QuoteModal
+              triggerLabel="Get a Free Quote"
+              triggerClassName="inline-flex min-h-[52px] items-center justify-center rounded-full border-2 border-[#002147]/30 px-8 py-[14px] text-[15px] font-bold text-ink transition-all duration-200 hover:border-[#002147] active:translate-y-0"
+            />
+          </div>
+          <div className="mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-ink/10 pt-6">
+            <span className="text-[17px] tracking-[3px] text-[#C9A84C]">★★★★★</span>
+            <span className="text-[13px] text-ink-soft">500+ Satisfied Clients</span>
+            <span className="text-[#C9A84C]/40">·</span>
+            <span className="text-[13px] text-ink-soft">Bonded &amp; Insured</span>
+            <span className="text-[#C9A84C]/40">·</span>
+            <span className="text-[13px] text-ink-soft">Same-Day Response</span>
+          </div>
+        </div>
       </div>
 
-      {/* Text block (navy) — on mobile just the text; on desktop the full hero */}
+      {/* ── DESKTOP HERO (hidden below lg) ── */}
       <section
-        className="relative overflow-hidden"
+        className="relative hidden overflow-hidden lg:flex lg:min-h-[86vh] lg:items-center"
         style={{ background: "linear-gradient(130deg,#00152e 0%,#002147 48%,#0a3262 100%)" }}
       >
-        {/* Desktop bg image + overlay */}
         <Image
           src={IMAGES.heroTeam}
           alt="The Raya Elite cleaning team in branded uniforms inside a bright home"
@@ -80,18 +119,17 @@ export default function HomePage() {
           priority
           quality={90}
           sizes="100vw"
-          className="hidden object-cover object-[62%_18%] lg:block"
+          className="object-cover object-[62%_18%]"
         />
         <div
           aria-hidden
-          className="absolute inset-0 hidden lg:block"
+          className="absolute inset-0"
           style={{
             background:
               "radial-gradient(circle at 82% 30%, rgba(201,168,76,0.12), transparent 52%), linear-gradient(90deg, rgba(0,16,34,0.82) 0%, rgba(0,22,46,0.58) 38%, rgba(0,33,71,0.18) 70%, rgba(0,33,71,0) 100%)",
           }}
         />
-        {/* Text content */}
-        <div className="container-x relative py-14 lg:flex lg:min-h-[86vh] lg:items-center lg:py-20">
+        <div className="container-x relative py-20">
           <div className="max-w-[660px] animate-rise">
             <div className="mb-[30px] inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/50 px-[18px] py-2">
               <span className="inline-block h-[7px] w-[7px] rotate-45 bg-[#C9A84C]" />
