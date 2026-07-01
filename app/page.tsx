@@ -415,21 +415,22 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* SECTION 11 — LEAD CAPTURE */}
-      <section className="container-x py-20 md:py-24">
-        <div className="relative overflow-hidden rounded-[2.5rem] bg-clay px-7 pt-12 pb-0 text-cream md:px-12 md:pt-14">
+      {/* SECTION 11 — LEAD CAPTURE
+           Mobile:  section IS the navy bg — text + form stack full-width
+           Desktop: rounded clay card inside container-x, 2-col with cleaner image */}
+      <section className="bg-clay px-6 py-16 text-cream sm:px-8 md:py-20 lg:bg-transparent lg:px-0 lg:py-24">
+        <div className="relative mx-auto max-w-[1200px] overflow-hidden pb-0 lg:rounded-[2.5rem] lg:bg-clay lg:px-12 lg:pt-14">
           <div
             aria-hidden
-            className="pointer-events-none absolute inset-0"
+            className="pointer-events-none absolute inset-0 hidden lg:block"
             style={{
               background:
                 "radial-gradient(80% 60% at 12% 0%, rgba(201,168,76,0.16), transparent 60%)",
             }}
           />
           <div className="relative grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end lg:gap-10">
-            {/* Left — pitch + cleaner */}
+            {/* Left — pitch text (+ cleaner image desktop only) */}
             <div className="flex flex-col">
-              {/* Text block — has its own bottom padding */}
               <div className="pb-6 pt-0 lg:pb-8">
                 <span className="inline-flex items-center gap-2 text-[12px] font-bold uppercase tracking-[0.22em] text-gold">
                   Book In Minutes
@@ -452,7 +453,6 @@ export default function HomePage() {
                   .
                 </p>
               </div>
-              {/* Image — mt-auto pushes it to the very bottom of the card (pb-0) */}
               <Image
                 src="/images/form-lady-new.png"
                 alt="A friendly Raya Elite cleaner"
