@@ -54,10 +54,10 @@ export default function HomePage() {
            Desktop: full-bleed background image with white text overlay */}
 
       {/* ── MOBILE HERO (hidden on lg+) ── */}
-      <div className="bg-cream pb-14 pt-6 lg:hidden">
+      <div className="bg-cream pb-14 pt-4 lg:hidden">
         {/* Contained photo with rounded corners */}
         <div className="container-x">
-          <div className="relative h-[260px] overflow-hidden rounded-3xl">
+          <div className="relative h-[230px] overflow-hidden rounded-3xl">
             <Image
               src={IMAGES.heroTeam}
               alt="The Raya Elite cleaning team in branded uniforms"
@@ -70,13 +70,7 @@ export default function HomePage() {
           </div>
         </div>
         {/* Text content */}
-        <div className="container-x mt-8">
-          <div className="mb-5 inline-flex items-center gap-[11px] rounded-full border border-[#C9A84C]/60 px-[18px] py-2">
-            <span className="inline-block h-[7px] w-[7px] rotate-45 bg-[#C9A84C]" />
-            <span className="text-[11px] uppercase tracking-[2.5px] text-[#C9A84C]">
-              Serving Maryland &amp; Washington D.C.
-            </span>
-          </div>
+        <div className="container-x mt-5">
           <h1 className="font-playfair text-[clamp(32px,8vw,46px)] font-bold leading-[1.1] text-ink">
             Maryland&apos;s Most Trusted Luxury Cleaning Service
           </h1>
