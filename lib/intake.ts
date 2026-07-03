@@ -23,24 +23,24 @@ function makeTransporter() {
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  if (!host || !user || !pass) return null;
-  return nodemailer.createTransport({
-    host,
-    port: parseInt(process.env.SMTP_PORT || "465"),
-    secure: (process.env.SMTP_PORT || "465") === "465",
-    auth: { user, pass },
-  });
+  // Explicit SMTP config wins if provided
+  if (host && user && pass) {
+    return nodemailer.createTransport({
+      host,
+      port: parseInt(process.env.SMTP_PORT || "465"),
+      secure: (process.env.SMTP_PORT || "465") === "465",
+      auth: { user, pass },
+    });
+  }
+  // Default: the cPanel server's own local sendmail — no credentials needed
+  return nodemailer.createTransport({ sendmail: true });
 }
 
+const FROM = `Raya Elite <noreply@rayaelitehomesandofficescleaningservices.com>`;
+
 export async function sendEmail(to: string, subject: string, text: string) {
-  const transport = makeTransporter();
-  if (!transport) {
-    console.log(`[intake] email skipped (no SMTP config) → ${to}: ${subject}`);
-    return;
-  }
-  const from = process.env.SMTP_USER!;
   try {
-    await transport.sendMail({ from: `Raya Elite <${from}>`, to, subject, text });
+    await makeTransporter().sendMail({ from: FROM, to, subject, text });
   } catch (e) {
     console.error("[intake] email error", e);
   }
