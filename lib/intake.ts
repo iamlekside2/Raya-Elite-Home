@@ -58,8 +58,6 @@ export async function writeSheet(path: "homepage" | "contact" | "book", row: Rec
   }
 }
 
-const SIGNOFF = `\n— The Raya Elite Team\n${SITE.phone} · ${SITE.email}\nMonday–Saturday 7AM–6PM · Sunday 8AM–4PM`;
-
 export const intakeEmail = INTAKE_EMAIL;
 
 // ---- Path 1: Homepage ------------------------------------------------------
@@ -70,8 +68,10 @@ export function homepageClientEmail(name: string) {
       `Hi ${name},\n\n` +
       `Thanks for reaching out. We've received your message and a member of our team will be in touch with you shortly.\n\n` +
       `If you'd like to get a head start, you can tell us more about your space and get an accurate quote here: ${SITE.url}/contact\n\n` +
-      `Or if you're ready to schedule a cleaning: ${SITE.url}/book\n` +
-      SIGNOFF,
+      `Or if you're ready to schedule a cleaning: ${SITE.url}/book\n\n` +
+      `— The Raya Elite Team\n` +
+      `📞 ${SITE.phone}\n` +
+      `Monday–Saturday 7AM–6PM · Sunday 8AM–4PM`,
   };
 }
 
@@ -142,8 +142,11 @@ export function quoteClientEmail(d: QuotePayload) {
       `Type of clean: ${dash(d.cleanType)}\n` +
       `Frequency: ${dash(d.frequency)}\n` +
       `Preferred start: ${dash(d.startWhen)}\n` +
-      `Preferred time: ${dash(d.timeOfDay)}\n` +
-      SIGNOFF,
+      `Preferred time: ${dash(d.timeOfDay)}\n\n` +
+      `If anything changes before we get back to you:\n` +
+      `📞 ${SITE.phone} · ${SITE.email}\n` +
+      `Monday–Saturday 7AM–6PM · Sunday 8AM–4PM\n` +
+      `— The Raya Elite Team`,
   };
 }
 
@@ -175,8 +178,11 @@ export function bookingClientEmail(d: QuotePayload) {
       `Preferred start: ${dash(d.startWhen)}\n` +
       `Preferred time: ${dash(d.timeOfDay)}\n` +
       `Notes: ${dash(d.notes, "None")}\n\n` +
-      `No payment is required today. We'll confirm your date and time and send a final appointment confirmation once everything is locked in.\n` +
-      SIGNOFF,
+      `No payment is required today. We'll confirm your date and time and send a final appointment confirmation once everything is locked in.\n\n` +
+      `Questions before we call?\n` +
+      `📞 ${SITE.phone} · ${SITE.email}\n` +
+      `Monday–Saturday 7AM–6PM · Sunday 8AM–4PM\n` +
+      `— The Raya Elite Team`,
   };
 }
 
@@ -187,10 +193,15 @@ export function bookingIntakeEmail(d: QuotePayload) {
       `New Booking Request — Booking Page\n\n` +
       `Received: ${d.timestamp}\n\n` +
       `CONTACT\nName: ${d.name} · Email: ${d.email} · Phone: ${dash(d.phone)}\n\n` +
-      spaceBlock(d) +
-      `\n\nSERVICE\nClean Type: ${dash(d.cleanType)} · Frequency: ${dash(d.frequency)}\n\n` +
+      `SPACE\n` +
+      `Type: ${dash(d.spaceType, "Not specified")}\n` +
+      `Bedrooms: ${dash(d.bedrooms, "N/A")} · Bathrooms: ${dash(d.bathrooms, "N/A")}\n` +
+      `Sq Footage: ${dash(d.sqft, "N/A")}\n` +
+      `Restrooms: ${dash(d.restrooms, "N/A")} · Levels: ${dash(d.levels, "N/A")}\n` +
+      `Pets: ${dash(d.pets, "N/A")}\n\n` +
+      `SERVICE\nClean Type: ${dash(d.cleanType)} · Frequency: ${dash(d.frequency)}\n\n` +
       `SCHEDULING\nPreferred Start: ${dash(d.startWhen)} · Preferred Time: ${dash(d.timeOfDay)}\n\n` +
       `ACCESS & SPECIAL INSTRUCTIONS\n${dash(d.notes, "None provided")}\n\n` +
-      `This client is ready to book. Check team availability, confirm by phone, and send the appointment confirmation email. Target: within 2 business hours.`,
+      `This client is ready to book. Check team availability, confirm the appointment by phone, and send the appointment confirmation email. Target: within 2 business hours.`,
   };
 }
