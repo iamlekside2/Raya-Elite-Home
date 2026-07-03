@@ -19,30 +19,57 @@ export const dash = (v: unknown, fallback = "Not provided") => {
 
 // ── Email sending via cPanel SMTP ─────────────────────────────────────────────
 
-function makeTransporter() {
+const FROM = `Raya Elite <noreply@rayaelitehomesandofficescleaningservices.com>`;
+
+function smtpFromEnv() {
   const host = process.env.SMTP_HOST;
   const user = process.env.SMTP_USER;
   const pass = process.env.SMTP_PASS;
-  // Explicit SMTP config wins if provided
-  if (host && user && pass) {
-    return nodemailer.createTransport({
-      host,
-      port: parseInt(process.env.SMTP_PORT || "465"),
-      secure: (process.env.SMTP_PORT || "465") === "465",
-      auth: { user, pass },
-    });
-  }
-  // Default: the cPanel server's own local sendmail — no credentials needed
-  return nodemailer.createTransport({ sendmail: true });
+  if (!host || !user || !pass) return null;
+  return nodemailer.createTransport({
+    host,
+    port: parseInt(process.env.SMTP_PORT || "465"),
+    secure: (process.env.SMTP_PORT || "465") === "465",
+    auth: { user, pass },
+  });
 }
 
-const FROM = `Raya Elite <noreply@rayaelitehomesandofficescleaningservices.com>`;
-
 export async function sendEmail(to: string, subject: string, text: string) {
+  const msg = { from: FROM, to, subject, text };
+
+  // Explicit SMTP config wins if provided
+  const smtp = smtpFromEnv();
+  if (smtp) {
+    try {
+      await smtp.sendMail(msg);
+    } catch (e) {
+      console.error("[intake] email error (smtp)", e);
+    }
+    return;
+  }
+
+  // cPanel: sendmail binary at its full path (not in PATH inside the app jail)
   try {
-    await makeTransporter().sendMail({ from: FROM, to, subject, text });
+    await nodemailer
+      .createTransport({ sendmail: true, path: "/usr/sbin/sendmail" })
+      .sendMail(msg);
+    return;
   } catch (e) {
-    console.error("[intake] email error", e);
+    console.error("[intake] email error (sendmail), trying localhost:25", e);
+  }
+
+  // Last resort: the server's own Exim on localhost:25 (accepts local connections)
+  try {
+    await nodemailer
+      .createTransport({
+        host: "127.0.0.1",
+        port: 25,
+        secure: false,
+        tls: { rejectUnauthorized: false },
+      })
+      .sendMail(msg);
+  } catch (e) {
+    console.error("[intake] email error (localhost:25)", e);
   }
 }
 
