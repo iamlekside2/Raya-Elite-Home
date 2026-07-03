@@ -1,13 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import {
-  sendEmail,
-  writeSheet,
-  intakeEmail,
-  bookingClientEmail,
-  bookingIntakeEmail,
-  dash,
-  type QuotePayload,
-} from "@/lib/intake";
+import { writeSheet, dash, type QuotePayload } from "@/lib/intake";
 
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -21,7 +13,6 @@ export async function POST(req: NextRequest) {
   const name = s("name");
   const email = s("email");
   const phone = s("phone");
-  // Booking requires a direct line to confirm the appointment.
   if (!name || !email || !phone) {
     return NextResponse.json(
       { error: "Name, email, and phone are required to confirm a booking." },
@@ -49,12 +40,6 @@ export async function POST(req: NextRequest) {
     notes: s("notes") || s("message"),
     timestamp,
   };
-
-  const ce = bookingClientEmail(d);
-  await sendEmail(email, ce.subject, ce.text);
-
-  const ie = bookingIntakeEmail(d);
-  await sendEmail(intakeEmail, ie.subject, ie.text);
 
   await writeSheet("book", {
     timestamp,
