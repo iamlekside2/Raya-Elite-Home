@@ -29,10 +29,10 @@ export async function POST(req: NextRequest) {
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
 
   const ce = homepageClientEmail(name);
-  await sendEmail(email, ce.subject, ce.text);
+  await sendEmail(email, ce.subject, ce.text, ce.html);
 
   const ie = homepageIntakeEmail({ name, email, phone, service, notes, timestamp });
-  await sendEmail(intakeEmail, ie.subject, ie.text);
+  await sendEmail(intakeEmail, ie.subject, ie.text, ie.html);
 
   await writeSheet("homepage", {
     timestamp,

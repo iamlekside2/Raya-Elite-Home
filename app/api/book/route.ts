@@ -50,10 +50,10 @@ export async function POST(req: NextRequest) {
   };
 
   const ce = bookingClientEmail(d);
-  await sendEmail(email, ce.subject, ce.text);
+  await sendEmail(email, ce.subject, ce.text, ce.html);
 
   const ie = bookingIntakeEmail(d);
-  await sendEmail(intakeEmail, ie.subject, ie.text);
+  await sendEmail(intakeEmail, ie.subject, ie.text, ie.html);
 
   await writeSheet("book", {
     timestamp,

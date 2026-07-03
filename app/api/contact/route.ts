@@ -46,10 +46,10 @@ export async function POST(req: NextRequest) {
   };
 
   const ce = quoteClientEmail(d);
-  await sendEmail(email, ce.subject, ce.text);
+  await sendEmail(email, ce.subject, ce.text, ce.html);
 
   const ie = quoteIntakeEmail(d);
-  await sendEmail(intakeEmail, ie.subject, ie.text);
+  await sendEmail(intakeEmail, ie.subject, ie.text, ie.html);
 
   await writeSheet("contact", {
     timestamp,
