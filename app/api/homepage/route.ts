@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeSheet, dash } from "@/lib/intake";
+import {
+  sendEmail,
+  writeSheet,
+  intakeEmail,
+  homepageClientEmail,
+  homepageIntakeEmail,
+  dash,
+} from "@/lib/intake";
 
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -20,6 +27,12 @@ export async function POST(req: NextRequest) {
   }
 
   const timestamp = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+
+  const ce = homepageClientEmail(name);
+  await sendEmail(email, ce.subject, ce.text);
+
+  const ie = homepageIntakeEmail({ name, email, phone, service, notes, timestamp });
+  await sendEmail(intakeEmail, ie.subject, ie.text);
 
   await writeSheet("homepage", {
     timestamp,

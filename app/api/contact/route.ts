@@ -1,5 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { writeSheet, dash, type QuotePayload } from "@/lib/intake";
+import {
+  sendEmail,
+  writeSheet,
+  intakeEmail,
+  quoteClientEmail,
+  quoteIntakeEmail,
+  dash,
+  type QuotePayload,
+} from "@/lib/intake";
 
 export async function POST(req: NextRequest) {
   let body: Record<string, unknown>;
@@ -36,6 +44,12 @@ export async function POST(req: NextRequest) {
     notes: s("notes") || s("message"),
     timestamp,
   };
+
+  const ce = quoteClientEmail(d);
+  await sendEmail(email, ce.subject, ce.text);
+
+  const ie = quoteIntakeEmail(d);
+  await sendEmail(intakeEmail, ie.subject, ie.text);
 
   await writeSheet("contact", {
     timestamp,
