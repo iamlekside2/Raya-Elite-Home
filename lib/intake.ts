@@ -9,7 +9,7 @@ import { SITE } from "@/lib/constants";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM = process.env.INTAKE_FROM || `Raya Elite <onboarding@resend.dev>`;
-const INTAKE_EMAIL = process.env.INTAKE_EMAIL || "intake@rayaelitecleaning.com";
+const INTAKE_EMAIL = process.env.INTAKE_EMAIL || "intake@rayaelitehomesandofficescleaningservices.com";
 const SHEETS_WEBHOOK =
   process.env.GOOGLE_SHEETS_WEBHOOK_URL ||
   "https://script.google.com/macros/s/AKfycbxUgoXIZoulqaMkQJQuGtEj4K3hdXkPNlkKgn9MvVom26vPA_S0rO0V_JNlP2t6N0qT/exec";

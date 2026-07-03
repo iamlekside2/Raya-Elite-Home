@@ -20,7 +20,7 @@ export default function TermsPage() {
         <>
           <LP>
             These Terms and Conditions (&quot;Terms&quot;) govern your use of the Raya Elite Home &amp;
-            Office Cleaning Services LLC website at rayaelitecleaning.com and your engagement with our
+            Office Cleaning Services LLC website at rayaelitehomesandofficescleaningservices.com and your engagement with our
             cleaning services. By accessing our website or booking any service with us, you agree to be
             bound by these Terms.
           </LP>
@@ -41,7 +41,7 @@ export default function TermsPage() {
           items={[
             "Business Name: Raya Elite Home & Office Cleaning Services LLC",
             "Operating State: Maryland, USA",
-            "Website: rayaelitecleaning.com",
+            "Website: rayaelitehomesandofficescleaningservices.com",
             `Contact: ${SITE.email}`,
           ]}
         />

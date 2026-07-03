@@ -22,7 +22,7 @@ export default function PrivacyPage() {
             Raya Elite Home &amp; Office Cleaning Services LLC (&quot;Raya Elite,&quot; &quot;we,&quot;
             &quot;us,&quot; or &quot;our&quot;) is committed to protecting your personal information and
             being transparent about how we use it. This Privacy Policy explains what information we
-            collect when you visit rayaelitecleaning.com, request a quote, book a service, or
+            collect when you visit rayaelitehomesandofficescleaningservices.com, request a quote, book a service, or
             communicate with our team — and exactly what we do with it.
           </LP>
           <LP>
@@ -155,7 +155,7 @@ export default function PrivacyPage() {
       <LSection title="8. External Links">
         <LP>
           Our website may contain links to third-party websites — including our social media profiles,
-          review platforms, and booking tools. Once you leave rayaelitecleaning.com, this Privacy
+          review platforms, and booking tools. Once you leave rayaelitehomesandofficescleaningservices.com, this Privacy
           Policy no longer applies. We encourage you to review the privacy policies of any external
           sites you visit.
         </LP>

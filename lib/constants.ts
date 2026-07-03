@@ -3,10 +3,10 @@ export const SITE = {
   shortName: "Raya Elite",
   tagline: "An Elite Standard — Every Time",
   phone: "(240) 555-0147",
-  email: "info@rayaelitecleaning.com",
+  email: "info@rayaelitehomesandofficescleaningservices.com",
   hours: ["Mon–Sat 7AM–6PM", "Sun 8AM–4PM"],
   area: "Maryland & Washington D.C.",
-  url: "https://rayaelitecleaning.com",
+  url: "https://rayaelitehomesandofficescleaningservices.com",
 } as const;
 
 export type NavItem = { label: string; href: string };
