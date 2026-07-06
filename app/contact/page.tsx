@@ -57,6 +57,8 @@ export default function ContactPage({ searchParams }: { searchParams: { type?: s
             <div className="font-display text-[19px] font-semibold">Prefer to reach us directly?</div>
             <div className="mt-4 space-y-2 text-[15px] leading-relaxed text-cream/90">
               <div>📞 <a href={tel} className="font-semibold underline-offset-2 hover:underline">{SITE.phone}</a></div>
+              <div>📞 Toll-free: <a href={`tel:${SITE.tollFree.replace(/[^0-9]/g, "")}`} className="font-semibold underline-offset-2 hover:underline">{SITE.tollFree}</a></div>
+              <div>📠 Fax: {SITE.fax}</div>
               <div>✉️ {SITE.email}</div>
               <div>📍 {SITE.area}</div>
               <div>🕐 {SITE.hours[0]} · {SITE.hours[1]}</div>

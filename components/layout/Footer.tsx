@@ -91,6 +91,8 @@ export default function Footer() {
           </div>
           <div className="text-[15px] leading-[1.9] text-paper/70">
             <div>{SITE.phone}</div>
+            <div>Toll-free: {SITE.tollFree}</div>
+            <div>Fax: {SITE.fax}</div>
             <div>{SITE.email}</div>
             <div className="mt-[10px]">{SITE.hours[0]}</div>
             <div>{SITE.hours[1]}</div>
