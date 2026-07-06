@@ -60,7 +60,8 @@ export default function ContactPage({ searchParams }: { searchParams: { type?: s
               <div>📞 Toll-free: <a href={`tel:${SITE.tollFree.replace(/[^0-9]/g, "")}`} className="font-semibold underline-offset-2 hover:underline">{SITE.tollFree}</a></div>
               <div>📠 Fax: {SITE.fax}</div>
               <div>✉️ {SITE.email}</div>
-              <div>📍 {SITE.area}</div>
+              <div>📍 {SITE.address}</div>
+              <div>🗺️ Serving {SITE.area}</div>
               <div>🕐 {SITE.hours[0]} · {SITE.hours[1]}</div>
             </div>
           </div>
@@ -90,11 +91,14 @@ export default function ContactPage({ searchParams }: { searchParams: { type?: s
             </p>
           </div>
           <div className="arch-sm relative aspect-[4/3] overflow-hidden bg-sage-deep shadow-lift">
-            <div className="absolute inset-0 [background:radial-gradient(circle_at_45%_45%,rgba(216,162,74,0.35),transparent_50%)]" />
-            <div className="absolute left-[45%] top-[45%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold shadow-[0_0_0_10px_rgba(216,162,74,0.25)]" />
-            <div className="absolute bottom-5 left-6 font-mono text-[12px] text-cream/60">
-              [ Google Maps — MD &amp; DC service area ]
-            </div>
+            <iframe
+              src="https://www.google.com/maps?q=403+West+Pennsylvania+Avenue,+Towson,+MD+21204&output=embed"
+              title="Raya Elite — 403 West Pennsylvania Avenue, Towson, Maryland 21204"
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
@@ -148,8 +152,13 @@ export default function ContactPage({ searchParams }: { searchParams: { type?: s
           </p>
           <div className="mt-5 flex flex-wrap justify-center gap-3">
             {SOCIALS.map((s) => (
-              <a key={s} href="#" className="rounded-full border border-cream/25 px-5 py-2 text-[14px] font-semibold text-cream transition-colors hover:border-clay hover:bg-clay">
-                {s}
+              <a
+                key={s.label}
+                href={s.href}
+                {...(s.href !== "#" ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                className="rounded-full border border-cream/25 px-5 py-2 text-[14px] font-semibold text-cream transition-colors hover:border-clay hover:bg-clay"
+              >
+                {s.label}
               </a>
             ))}
           </div>

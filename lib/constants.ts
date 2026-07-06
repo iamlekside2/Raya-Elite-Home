@@ -8,6 +8,8 @@ export const SITE = {
   email: "info@rayaelitehomesandofficescleaningservices.com",
   hours: ["Mon–Sat 7AM–6PM", "Sun 8AM–4PM"],
   area: "Maryland & Washington D.C.",
+  address: "403 West Pennsylvania Avenue, Towson, Maryland 21204",
+  instagram: "https://www.instagram.com/rayaelitehomeandofficecleaners",
   url: "https://rayaelitehomesandofficescleaningservices.com",
 } as const;
 
@@ -49,7 +51,12 @@ export const FOOTER_COMPANY: { label: string; href: string }[] = [
   { label: "Contact Us", href: "/contact" },
 ];
 
-export const SOCIALS = ["Instagram", "Facebook", "LinkedIn", "TikTok"];
+export const SOCIALS: { label: string; href: string }[] = [
+  { label: "Instagram", href: "https://www.instagram.com/rayaelitehomeandofficecleaners" },
+  { label: "Facebook", href: "#" },
+  { label: "LinkedIn", href: "#" },
+  { label: "TikTok", href: "#" },
+];
 
 // Tidio live-chat public key. Paste the key here (the xxxx in
 // //code.tidio.co/xxxx.js) OR set NEXT_PUBLIC_TIDIO_KEY in the env.
