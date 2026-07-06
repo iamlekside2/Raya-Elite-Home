@@ -354,14 +354,15 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* B — Van image */}
-            <div className="relative h-[420px] overflow-hidden rounded-4xl shadow-lift lg:h-[540px]">
+            {/* B — Van image (natural aspect ratio so the full van is visible) */}
+            <div className="overflow-hidden rounded-4xl shadow-lift">
               <Image
                 src="/images/van.jpeg"
                 alt="Raya Elite branded cleaning van"
-                fill
+                width={1600}
+                height={914}
                 sizes="(max-width:1024px) 100vw, 50vw"
-                className="object-cover"
+                className="h-auto w-full"
               />
             </div>
           </div>
