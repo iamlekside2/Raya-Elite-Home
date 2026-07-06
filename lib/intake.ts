@@ -270,7 +270,7 @@ function spaceBlockText(d: QuotePayload) {
     `Type: ${dash(d.spaceType, "Not specified")}\n` +
     `Bedrooms: ${dash(d.bedrooms, "N/A")} · Bathrooms: ${dash(d.bathrooms, "N/A")}\n` +
     `Sq Footage: ${dash(d.sqft, "N/A")}\n` +
-    `Levels: ${dash(d.levels, "N/A")}\n` +
+    `Restrooms: ${dash(d.restrooms, "N/A")} · Levels: ${dash(d.levels, "N/A")}\n` +
     `Pets: ${dash(d.pets, "N/A")}\n` +
     `Space Description: ${dash(d.spaceNotes)}`
   );
@@ -291,7 +291,7 @@ function spaceSect(d: QuotePayload, withDescription: boolean) {
     kv("Type", hval(d.spaceType, "Not specified")) +
       kv("Bedrooms / Bathrooms", `${hval(d.bedrooms, "N/A")} / ${hval(d.bathrooms, "N/A")}`) +
       kv("Sq Footage", hval(d.sqft, "N/A")) +
-      kv("Levels", hval(d.levels, "N/A")) +
+      kv("Restrooms / Levels", `${hval(d.restrooms, "N/A")} / ${hval(d.levels, "N/A")}`) +
       kv("Pets", hval(d.pets, "N/A")) +
       (withDescription ? kv("Description", hval(d.spaceNotes)) : "")
   );
@@ -432,7 +432,7 @@ export function bookingIntakeEmail(d: QuotePayload) {
     `Type: ${dash(d.spaceType, "Not specified")}\n` +
     `Bedrooms: ${dash(d.bedrooms, "N/A")} · Bathrooms: ${dash(d.bathrooms, "N/A")}\n` +
     `Sq Footage: ${dash(d.sqft, "N/A")}\n` +
-    `Levels: ${dash(d.levels, "N/A")}\n` +
+    `Restrooms: ${dash(d.restrooms, "N/A")} · Levels: ${dash(d.levels, "N/A")}\n` +
     `Pets: ${dash(d.pets, "N/A")}\n\n` +
     `SERVICE\nClean Type: ${dash(d.cleanType)} · Frequency: ${dash(d.frequency)}\n\n` +
     `SCHEDULING\nPreferred Start: ${dash(d.startWhen)} · Preferred Time: ${dash(d.timeOfDay)}\n\n` +
