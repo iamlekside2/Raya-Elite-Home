@@ -29,7 +29,7 @@ export default function LeadForm() {
     }
     setStatus("sending");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("/api/homepage", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -37,8 +37,8 @@ export default function LeadForm() {
           email: form.email,
           phone: form.phone,
           service: form.help,
-          message: form.space || `Quote request: ${form.help || "General enquiry"}`,
-          source: "lead-form",
+          notes: form.space,
+          source: "homepage-book-form",
         }),
       });
       if (!res.ok) throw new Error("failed");
