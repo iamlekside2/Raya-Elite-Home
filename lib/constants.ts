@@ -53,9 +53,10 @@ export const FOOTER_COMPANY: { label: string; href: string }[] = [
 
 export const SOCIALS: { label: string; href: string }[] = [
   { label: "Instagram", href: "https://www.instagram.com/rayaelitehomeandofficecleaners" },
-  { label: "Facebook", href: "#" },
-  { label: "LinkedIn", href: "#" },
-  { label: "TikTok", href: "#" },
+  // Re-enable as the accounts go live:
+  // { label: "Facebook", href: "#" },
+  // { label: "LinkedIn", href: "#" },
+  // { label: "TikTok", href: "#" },
 ];
 
 // Tidio live-chat public key. Paste the key here (the xxxx in
