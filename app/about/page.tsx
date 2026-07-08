@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
@@ -7,12 +8,12 @@ import StatsCounter from "@/components/about/StatsCounter";
 import Sprig from "@/components/ui/Sprig";
 import { IMAGES, VALUES, LEADERSHIP, CERTS } from "@/lib/data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "About Raya Elite | Maryland's Luxury Cleaning Company — Our Story & Standards",
   description:
     "Raya Elite is a Maryland-based luxury cleaning company built on professionalism, integrity, and an uncompromising standard of service. Meet the team behind the clean.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 
 const tint = ["bg-clay-tint text-clay", "bg-sage-tint text-sage-deep", "bg-clay-tint text-clay"];
 

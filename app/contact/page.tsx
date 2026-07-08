@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -6,12 +7,12 @@ import QuoteForm from "@/components/contact/QuoteForm";
 import { IMAGES } from "@/lib/data";
 import { SITE, SOCIALS } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Contact Raya Elite | Get a Free Quote — Maryland & DC Cleaning Services",
   description:
     "Get in touch with Raya Elite for a free, accurate cleaning quote. We serve residential, commercial, government, and embassy clients across Maryland and Washington DC. We respond within two business hours.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 
 const TYPE_MAP: Record<string, string> = {
   government: "Government or agency facility",

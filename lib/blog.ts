@@ -88,7 +88,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "How Often Should You Deep Clean Your Home?",
     excerpt:
       "A regular clean maintains your home. A deep clean restores it. Here's how to know when it's time — and how often to schedule one.",
-    img: "/images/service-residential.png",
+    img: "/images/service-residential.webp",
     date: "June 2026",
     read: "",
     intro:
@@ -147,7 +147,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "Move-In Cleaning Checklist: What Gets Missed — And How We Fix It",
     excerpt:
       "Most move-in cleans skip the same spots. Here's what consistently gets missed in vacant properties — and how a professional move-in clean addresses each one.",
-    img: "/images/service-moveinout.png",
+    img: "/images/service-moveinout.webp",
     date: "June 2026",
     read: "",
     intro:

@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { LegalShell, LSection, LSub, LP, LUL } from "@/components/legal/Legal";
 import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Terms & Conditions | Raya Elite Home & Office Cleaning Services LLC",
   description:
     "Read Raya Elite's terms and conditions governing the use of our website and cleaning services in Maryland and Washington DC. Clear, fair, and straightforward.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

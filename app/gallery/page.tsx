@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import GalleryClient from "@/components/gallery/GalleryClient";
 import { IMAGES } from "@/lib/data";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Before & After Gallery | Raya Elite Cleaning Results",
   description:
     "See Raya Elite's cleaning results in action — before and after photos from residential, office, move-in/out, and commercial cleaning jobs across Maryland and DC.",
-  alternates: { canonical: "/gallery" },
-};
+  path: "/gallery",
+});
 
 export default function GalleryPage() {
   return (

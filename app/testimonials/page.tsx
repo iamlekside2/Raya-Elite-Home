@@ -1,17 +1,19 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import TestimonialsGrid from "@/components/testimonials/TestimonialsGrid";
 import VideoTestimonials from "@/components/testimonials/VideoTestimonials";
 import BirdeyeWidget from "@/components/reviews/BirdeyeWidget";
-import { IMAGES } from "@/lib/data";
+import { IMAGES, TESTIMONIALS } from "@/lib/data";
+import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Client Reviews & Testimonials | Raya Elite Cleaning",
   description:
     "See what Maryland and DC clients say about Raya Elite. Hundreds of 5-star reviews from homeowners, businesses, and government clients.",
-  alternates: { canonical: "/testimonials" },
-};
+  path: "/testimonials",
+});
 
 export const revalidate = 3600;
 
@@ -21,9 +23,30 @@ const STATS = [
   { num: "100%", label: "Would Recommend" },
 ];
 
+// Backs the site-wide 5.0 aggregate rating with actual review markup.
+const reviewsSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": `${SITE.url}/#business`,
+  name: SITE.name,
+  url: SITE.url,
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "500" },
+  review: TESTIMONIALS.map((t) => ({
+    "@type": "Review",
+    reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+    author: { "@type": "Person", name: t.name },
+    reviewBody: t.quote,
+  })),
+};
+
 export default function TestimonialsPage() {
   return (
     <>
+      <script
+        id="ld-reviews"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewsSchema) }}
+      ></script>
       <PageHeader
         img={IMAGES.testimonialsHeader}
         imgAlt="Clean, comfortable home interior"

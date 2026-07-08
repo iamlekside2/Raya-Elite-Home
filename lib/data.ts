@@ -41,13 +41,13 @@ export const SERVICES_PREVIEW = [
     title: "Residential Cleaning",
     price: "Starting at $149",
     desc: "From recurring upkeep to our white-glove Presidential service — plus move-in/move-out and Airbnb turnovers. Three packages built around your home, your schedule, and the standard it deserves.",
-    img: "/images/service-residential.png",
+    img: "/images/service-residential.webp",
   },
   {
     title: "Commercial Cleaning",
     price: "From $750 / month",
     desc: "Offices, corporate facilities, embassies, and government missions. Professionally maintained spaces with dedicated supervisors, compliance documentation, and schedules that work around your operation.",
-    img: "/images/service-office.png",
+    img: "/images/service-office.webp",
   },
 ];
 
@@ -409,16 +409,16 @@ export type GalleryItem = {
 
 export const GALLERY: GalleryItem[] = [
   { title: "Kitchen Deep Clean", cat: "Deep Clean", tag: "Before / After", img: "/images/cleaning-lady.jpeg" },
-  { title: "Master Bath Restoration", cat: "Residential", tag: "Before / After", img: "/images/service-residential.png" },
+  { title: "Master Bath Restoration", cat: "Residential", tag: "Before / After", img: "/images/service-residential.webp" },
   { title: "Corporate Lobby", cat: "Office & Commercial", tag: "Completed", img: "/images/office-cleaning.jpeg" },
-  { title: "Move-Out Apartment", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.png" },
+  { title: "Move-Out Apartment", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.webp" },
   { title: "Living Room Detail", cat: "Residential", tag: "Completed", img: "/images/cleaning-lady.jpeg" },
   { title: "Post-Construction Suite", cat: "Post-Construction", tag: "Before / After", img: "/images/office-cleaning.jpeg" },
-  { title: "Executive Office", cat: "Office & Commercial", tag: "Completed", img: "/images/service-office.png" },
-  { title: "Hardwood Floor Polish", cat: "Deep Clean", tag: "Completed", img: "/images/service-residential.png" },
+  { title: "Executive Office", cat: "Office & Commercial", tag: "Completed", img: "/images/service-office.webp" },
+  { title: "Hardwood Floor Polish", cat: "Deep Clean", tag: "Completed", img: "/images/service-residential.webp" },
   { title: "Embassy Residence", cat: "Office & Commercial", tag: "Completed", img: "/images/team-cleaning.jpeg" },
   { title: "Family Home Refresh", cat: "Residential", tag: "Completed", img: "/images/cleaning-lady.jpeg" },
-  { title: "Studio Move-In", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.png" },
+  { title: "Studio Move-In", cat: "Move-In/Out", tag: "Before / After", img: "/images/service-moveinout.webp" },
   { title: "Bank Branch Floor", cat: "Office & Commercial", tag: "Completed", img: "/images/van.jpeg" },
 ];
 
@@ -447,14 +447,14 @@ export const BLOG_PREVIEW = [
     title: "How Often Should You Deep Clean Your Home?",
     desc: "A regular clean maintains your home. A deep clean restores it. If you've never had one — or it's been longer than you'd like to admit — this guide tells you exactly what to expect, what gets covered, and how to know when it's time.",
     href: "/blog/how-often-should-you-deep-clean-your-home",
-    img: "/images/service-residential.png",
+    img: "/images/service-residential.webp",
   },
   {
     cat: "Moving",
     title: "Move-In Cleaning Checklist: What Gets Missed — And How We Fix It",
     desc: "There are corners in every property that the previous occupant never thought about and the next one will notice immediately. This checklist covers the areas that consistently get overlooked, and exactly how our team handles each one.",
     href: "/blog/move-in-cleaning-checklist-what-gets-missed",
-    img: "/images/service-moveinout.png",
+    img: "/images/service-moveinout.webp",
   },
 ];
 

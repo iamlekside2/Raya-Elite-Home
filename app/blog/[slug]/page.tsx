@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS, getPost } from "@/lib/blog";
+import { pageMeta } from "@/lib/seo";
+import { SITE } from "@/lib/constants";
 import Sprig from "@/components/ui/Sprig";
 
 export function generateStaticParams() {
@@ -12,11 +14,11 @@ export function generateStaticParams() {
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const post = getPost(params.slug);
   if (!post) return { title: "Article Not Found" };
-  return {
+  return pageMeta({
     title: `${post.title} | Raya Elite Blog`,
     description: post.excerpt,
-    alternates: { canonical: `/blog/${post.slug}` },
-  };
+    path: `/blog/${post.slug}`,
+  });
 }
 
 export default function BlogPostPage({ params }: { params: { slug: string } }) {
@@ -25,8 +27,40 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
 
   const related = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: `${SITE.url}${post.img}`,
+    datePublished: post.date,
+    author: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    publisher: { "@type": "Organization", name: SITE.name, url: SITE.url },
+    mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE.url },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE.url}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE.url}/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        id="ld-article"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      ></script>
+      <script
+        id="ld-breadcrumb"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      ></script>
       {/* Header */}
       <section
         className="relative overflow-hidden"

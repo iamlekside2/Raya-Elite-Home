@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import { LegalShell, LSection, LSub, LP, LUL } from "@/components/legal/Legal";
 import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Privacy Policy | Raya Elite Home & Office Cleaning Services LLC",
   description:
     "Raya Elite's privacy policy explains how we collect, use, and protect your personal information when you visit our website or book our cleaning services in Maryland and Washington DC.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 
 export default function PrivacyPage() {
   return (

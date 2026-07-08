@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
 import SectionHeading from "@/components/ui/SectionHeading";
 import TrustBadges from "@/components/ui/TrustBadges";
 import BirdeyeWidget from "@/components/reviews/BirdeyeWidget";
@@ -20,18 +20,21 @@ import {
 } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Raya Elite Cleaning | Luxury Home & Office Cleaning in Maryland & DC",
   description:
     "Professional home and office cleaning in Maryland and Washington DC. Bonded, insured, and trusted by homeowners, businesses, and government clients. Book online today.",
-  alternates: { canonical: "/" },
-};
+  path: "/",
+});
 
 const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": ["LocalBusiness", "CleaningService"],
+  "@id": `${SITE.url}/#business`,
   name: SITE.name,
   url: SITE.url,
+  logo: `${SITE.url}/images/raya-logo-v3.png`,
+  image: `${SITE.url}/images/raya-logo-v3.png`,
   telephone: "+1-443-646-8794",
   faxNumber: "+1-443-625-2280",
   email: SITE.email,
@@ -43,20 +46,56 @@ const localBusinessSchema = {
     postalCode: "21204",
     addressCountry: "US",
   },
+  geo: { "@type": "GeoCoordinates", latitude: 39.402, longitude: -76.607 },
+  hasMap:
+    "https://www.google.com/maps?q=403+West+Pennsylvania+Avenue,+Towson,+MD+21204",
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+      opens: "07:00",
+      closes: "18:00",
+    },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Sunday", opens: "08:00", closes: "16:00" },
+  ],
+  contactPoint: [
+    {
+      "@type": "ContactPoint",
+      telephone: "+1-888-240-4558",
+      contactType: "customer service",
+      contactOption: "TollFree",
+      areaServed: "US",
+    },
+  ],
   sameAs: ["https://www.instagram.com/rayaelitehomeandofficecleaners"],
   areaServed: ["Maryland", "Washington DC"],
   priceRange: "$$–$$$",
   aggregateRating: { "@type": "AggregateRating", ratingValue: "5.0", reviewCount: "500" },
 };
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: HOMEPAGE_FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
 export default function HomePage() {
   return (
     <>
-      <Script
+      <script
         id="ld-localbusiness"
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
-      />
+      ></script>
+      <script
+        id="ld-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      ></script>
 
       {/* SECTION 1 — HERO
            Mobile:  cream bg, contained rounded image on top, dark text below
@@ -140,9 +179,10 @@ export default function HomePage() {
                 Serving Maryland &amp; Washington D.C.
               </span>
             </div>
-            <h1 className="m-0 mb-6 font-playfair text-[clamp(38px,5.4vw,62px)] font-bold leading-[1.07] text-white">
+            {/* Visual duplicate of the mobile <h1> — aria-hidden so the document has one H1 */}
+            <p aria-hidden className="m-0 mb-6 font-playfair text-[clamp(38px,5.4vw,62px)] font-bold leading-[1.07] text-white">
               Maryland&apos;s Most Trusted Luxury Cleaning Service
-            </h1>
+            </p>
             <p className="m-0 mb-[38px] max-w-[580px] text-[clamp(16px,1.5vw,19px)] leading-[1.7] text-white/[0.85]">
               Your home or office reflects who you are. We make sure it always looks the part — with
               thorough, professional cleaning that respects your space, your time, and your standards.
@@ -294,8 +334,16 @@ export default function HomePage() {
       {/* SECTION 6 — TRUST BADGES */}
       <TrustBadges />
 
-      {/* PARALLAX DIVIDER */}
-      <section className="relative flex min-h-[460px] items-center justify-center bg-[url('/images/team-cleaning.jpeg')] bg-fixed bg-cover bg-center">
+      {/* PHOTO DIVIDER (optimized next/image instead of CSS bg-fixed) */}
+      <section className="relative flex min-h-[460px] items-center justify-center overflow-hidden">
+        <Image
+          src="/images/team-cleaning.jpeg"
+          alt=""
+          aria-hidden
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
         <div className="absolute inset-0 bg-ink/55" />
         <p className="relative z-10 max-w-[1180px] px-6 text-center font-display text-[clamp(26px,3.4vw,40px)] font-semibold leading-snug text-cream">
           <span className="block">At Raya Elite…</span>
@@ -498,10 +546,11 @@ export default function HomePage() {
                 </p>
               </div>
               <Image
-                src="/images/form-lady-new.png"
+                src="/images/form-lady-new.webp"
                 alt="A friendly Raya Elite cleaner"
                 width={1088}
                 height={1446}
+                sizes="460px"
                 className="mx-auto mt-2 hidden w-[460px] max-w-full self-end lg:block"
               />
             </div>

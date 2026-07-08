@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -8,12 +9,12 @@ import Sprig from "@/components/ui/Sprig";
 import { BOOK_REASSURANCE, IMAGES } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Book a Cleaning | Raya Elite Home & Office Cleaning — Maryland & DC",
   description:
     "Book your residential or commercial cleaning online in under two minutes. Choose your service, pick a date, and we'll handle the rest. Same-day confirmation guaranteed.",
-  alternates: { canonical: "/book" },
-};
+  path: "/book",
+});
 
 const CONFIDENCE = [
   { title: "Satisfaction Guaranteed", desc: "If something isn't right, we return and fix it. No debate, no fine print." },

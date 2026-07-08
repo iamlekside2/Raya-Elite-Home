@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import SectionHeading from "@/components/ui/SectionHeading";
@@ -16,12 +17,12 @@ import {
 } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Cleaning Services & Pricing | Raya Elite Home & Office Cleaning — Maryland & DC",
   description:
     "Residential white-glove cleaning, deep cleans, move-in/out, Airbnb turnovers, and commercial, embassy & government services across Maryland and Washington DC. Full transparent pricing. Book online today.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 
 export const revalidate = 86400;
 
@@ -69,9 +70,47 @@ function GroupLabel({ children, className = "" }: { children: React.ReactNode; c
   );
 }
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQS.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+// Tier prices are masked on the site ("$0 – $0" placeholders), so offers are
+// listed without price fields until real figures are published.
+const servicesSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Cleaning service",
+  provider: { "@id": `${SITE.url}/#business`, "@type": "LocalBusiness", name: SITE.name, url: SITE.url },
+  areaServed: ["Maryland", "Washington DC"],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Cleaning Services",
+    itemListElement: [...RESIDENTIAL_TIERS, ...COMMERCIAL_PLANS].map((t) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: t.name, description: t.idealFor },
+    })),
+  },
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <script
+        id="ld-services-faq"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      ></script>
+      <script
+        id="ld-services-catalog"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesSchema) }}
+      ></script>
       <PageHeader
         img={IMAGES.servicesHeader}
         imgAlt="Bright, spotless living room"

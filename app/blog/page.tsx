@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
+import { pageMeta } from "@/lib/seo";
 import Image from "next/image";
 import Link from "next/link";
 import PageHeader from "@/components/layout/PageHeader";
 import { IMAGES } from "@/lib/data";
 import { BLOG_POSTS } from "@/lib/blog";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMeta({
   title: "Blog | Cleaning Advice & Guides — Raya Elite Maryland & DC",
   description:
     "Practical cleaning guides for homeowners and businesses across Maryland and Washington DC — written by people who clean for a living.",
-  alternates: { canonical: "/blog" },
-};
+  path: "/blog",
+});
 
 export default function BlogPage() {
   return (
