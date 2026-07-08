@@ -47,6 +47,7 @@ export const metadata: Metadata = {
     siteName: "Raya Elite Cleaning",
   },
   twitter: { card: "summary_large_image" },
+  verification: { google: "yobw0ezKiIV21msNCIuLOEHTSqMv7g0MlaWRVoNlRQU" },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
