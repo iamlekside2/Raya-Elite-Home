@@ -246,11 +246,14 @@ export default function ServicesPage() {
             </div>
           </div>
           <div className="arch-sm relative aspect-[4/3] overflow-hidden bg-sage-deep shadow-lift">
-            <div className="absolute inset-0 [background:radial-gradient(circle_at_45%_45%,rgba(216,162,74,0.4),transparent_50%)]" />
-            <div className="absolute left-[45%] top-[45%] h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold shadow-[0_0_0_10px_rgba(216,162,74,0.25)]" />
-            <div className="absolute bottom-5 left-6 font-mono text-[12px] text-cream/60">
-              [ Google Maps — MD &amp; DC coverage ]
-            </div>
+            <iframe
+              src="https://www.google.com/maps?q=403+West+Pennsylvania+Avenue,+Towson,+MD+21204&output=embed"
+              title="Raya Elite — 403 West Pennsylvania Avenue, Towson, Maryland 21204"
+              className="absolute inset-0 h-full w-full border-0"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
+            />
           </div>
         </div>
       </section>
