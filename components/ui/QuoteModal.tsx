@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 import { QUOTE_HELP_OPTIONS } from "@/lib/data";
 import { SITE } from "@/lib/constants";
 import Sprig from "@/components/ui/Sprig";
@@ -19,8 +20,12 @@ const inputCls =
 
 export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const [form, setForm] = useState<FormState>(empty);
   const [status, setStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
+
+  // Only portal on the client (document is unavailable during SSR).
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -80,10 +85,10 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
         {triggerLabel}
       </button>
 
-      {open && (
+      {open && mounted && createPortal(
         <div
           onClick={close}
-          className="fixed inset-0 z-[120] flex items-center justify-center bg-ink/60 p-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[120] flex items-center justify-center overflow-y-auto bg-ink/60 p-4 backdrop-blur-sm"
         >
           <div
             onClick={(e) => e.stopPropagation()}
@@ -175,7 +180,8 @@ export default function QuoteModal({ triggerLabel, triggerClassName }: Props) {
               </form>
             )}
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </>
   );
