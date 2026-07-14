@@ -30,7 +30,7 @@ const CLEAN_TYPES = [
   { key: "Other", icon: "💬" },
 ];
 
-const FREQUENCY = ["One-time", "Weekly", "Every two weeks", "Monthly"];
+const FREQUENCY = ["One-time", "Daily", "Weekly", "Every two weeks", "Monthly"];
 
 const START = [
   { key: "As soon as possible", icon: "🚀" },
